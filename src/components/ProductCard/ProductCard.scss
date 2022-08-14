@@ -1,0 +1,36 @@
+.card {
+    width: 200px;
+    background-color: whitesmoke;
+    max-height: 300px;
+    margin: 2%;
+    padding: 1%;
+    border-radius: 23px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    text-align: center;
+}
+
+.imageCard {
+    height: 150px;
+    overflow: hidden;
+}
+
+.card > div {
+    margin: 4%;
+    user-select: none;
+}
+
+.card > div > button {
+    width: 70%;
+    padding: 3%;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 10px;
+    border: solid thin gray;
+}
+
+.card > div > button:hover {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(107,9,121,0.9472163865546218) 35%, rgba(0,212,255,1) 100%);
+    color: white
+    
+ }

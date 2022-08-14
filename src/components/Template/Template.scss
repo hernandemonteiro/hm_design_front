@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    min-height: 100%;
+}
+
+.boxContent {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 2% 0 5% 2%;
+    width: 69%;
+    min-height: 80vh;
+    padding-bottom: 7%;
+}
+
+@media (max-width: 600px) {
+    .boxContent {
+        width: 100%;
+    }
+}

@@ -1,0 +1,32 @@
+nav {
+    text-align: center;
+    padding: 2%;
+    width: 25%;
+    margin: 2% 0 0 0;
+    border-radius: 20px;
+    height: 100%;
+    background-color: rgb(248, 248, 248);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(107,9,121,0.9472163865546218) 35%, rgba(0,212,255,1) 100%);
+}
+
+.btnMenu {
+    width: 90%;
+    padding: 3%;
+    text-transform: uppercase;
+    margin-bottom: 3%;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+}
+
+.btnMenu:hover {
+    background-color: aqua;
+}
+
+@media (max-width: 600px) {
+    nav {
+        width: 100%;
+    }
+}
