@@ -1,6 +1,6 @@
 import ProductCard from "../../components/ProductCard";
 import Template from "../../components/Template";
-import StartUp from "../../dist/StartUp";
+// import StartUp from "../../dist/StartUp";
 
 
 /// Home is the first page rendered;
