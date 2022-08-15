@@ -1,7 +1,7 @@
-import React from "react";
 import ProductCard from "../../components/ProductCard";
 import Template from "../../components/Template";
-// import { ProductController } from "../../controllers/ProductController";
+import StartUp from "../../dist/StartUp";
+
 
 /// Home is the first page rendered;
 /// the page list products in sort order;
@@ -10,12 +10,11 @@ import Template from "../../components/Template";
 
 export default function Home() {
 
-    // const product = new ProductController();
+    let port = 5000;
+    // StartUp.app.listen(port, () => console.log(`Servidor rodando na porta: ${port}`));
 
     return (
-
         <Template>
-            {/* <button onClick={() => product.registerProduct('Cartão', '1.99', 'description in development', 'imgs' )}></button> */}
             <ProductCard />
             <ProductCard />
             <ProductCard />
