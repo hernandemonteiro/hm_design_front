@@ -7,7 +7,7 @@ export default function ProductCard() {
 
         <div className="card">
             <div className="imageCard">
-                <img src="src\assets\images\product_hm_design.png" />
+                <img src="../../assets/images/product_hm_design.png" />
             </div>
             <div className="productName">
                 <h2>Product Name</h2>
