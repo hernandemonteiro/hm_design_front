@@ -7,7 +7,7 @@ export default function ProductCard() {
 
         <div className="card">
             <div className="imageCard">
-                <img src="https://www.datocms-assets.com/76860/1660532346-product_hm_design.pnghttps://www.datocms-assets.com/76860/1660532346-product_hm_design.png" />
+                <img src="https://www.datocms-assets.com/76860/1660532346-product_hm_design.png" />
             </div>
             <div className="productName">
                 <h2>Product Name</h2>
