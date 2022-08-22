@@ -1,24 +1,29 @@
 import ProductCard from "../../components/ProductCard";
 import Template from "../../components/Template";
-// import StartUp from "../../dist/StartUp";
+import { useEffect, useState } from "react";
 
-
-/// Home is the first page rendered;
-/// the page list products in sort order;
-
-/// @route = "/"
+/* @description the first page rendered, list products in sort order
+ *  @route = "/"
+ *
+ */
 
 export default function Home() {
+  function getProducts(result: any) {
+    console.log(result);
+  }
+  useEffect(() => {
+    fetch(`${process.env.API_URL}/products`)
+      .then((response) =>
+        response
+          .json()
+          .then((response) => getProducts(response.result))
+      )
+      .catch((error) => console.log("Error: " + error.message));
+  }, []);
 
-    let port = 5000;
-    // StartUp.app.listen(port, () => console.log(`Servidor rodando na porta: ${port}`));
-
-    return (
-        <Template>
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-        </Template>
-    )
+  return (
+    <Template>
+      <ProductCard name={"element.name"} price={15} id={"element._id"} />
+    </Template>
+  );
 }

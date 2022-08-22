@@ -18,21 +18,23 @@ form {
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
-form > h1 {
+form>h1 {
     margin-bottom: 10%;
 }
 
-form > input {
+form>input {
     width: 90%;
     padding: 3%;
     margin-bottom: 7%;
 }
 
-form > input:focus {
+form>input:focus {
     outline-color: green;
 }
 
+
 button {
+    width: 100%;
     padding: 3%;
     margin: 2%;
     text-transform: uppercase;
@@ -41,11 +43,4 @@ button {
 label {
     width: 100%;
     margin-bottom: 1%;
-}
-
-.containerButtons {
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
 }

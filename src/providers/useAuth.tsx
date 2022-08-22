@@ -1,27 +1,28 @@
 import React, { createContext, useContext, useState } from "react";
 
 interface AuthProps {
-    authContext: any,
-    authProvider: any,
     children?: any
 }
-export const authContext = createContext({})
 
-const initialStateAuth = {
-    UserId: '',
-    Email: '',
-    isLoged: false
-}
+export const AuthContext  = createContext<any>({})
 
-export const authProvider = (props: AuthProps) => {
+
+export const AuthProvider = (props: AuthProps) => {
+
+    const initialState = {
+        UserId: '',
+        Name: '',
+        Type: '',
+        isLogged: false
+    }
     
-    const [user, setUser] = useState(initialStateAuth);
+    const [user, setUser] = useState<any>(initialState);
 
     return (
-        <authContext.Provider value={{ user, setUser }}>
+        <AuthContext.Provider value={{ user, setUser }}>
             {props.children}
-        </authContext.Provider>
+        </AuthContext.Provider>
     )
 }
 
-export const useAuth = () => useContext(authContext);
+export const useAuth = () => useContext(AuthContext);
