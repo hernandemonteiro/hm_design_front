@@ -12,7 +12,7 @@ export default function useLogin(email: string, password: string) {
 
         let encryptedPassword = CryptoJS.SHA256(password).toString();
 
-        fetch(`${process.env.API_URL}/users`)
+        fetch(`${import.meta.env.API_URL}/users`)
             .then(response => response.json())
             .then(response => response.result)
             .then(response => response.filter((element: {

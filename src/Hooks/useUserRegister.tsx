@@ -22,7 +22,7 @@ export default function useUserRegister() {
         let encryptedPassword = CryptoJS.SHA256(password).toString();
 
         e.preventDefault();
-        let url = `${process.env.API_URL}/users?name=${name}&email=${email}&password=${encryptedPassword}&type=1`;
+        let url = `${import.meta.env.API_URL}/users?name=${name}&email=${email}&password=${encryptedPassword}&type=1`;
 
         if (password === passwordConfirm) {
 

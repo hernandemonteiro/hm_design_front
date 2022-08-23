@@ -12,7 +12,7 @@ export default function Home() {
     console.log(result);
   }
   useEffect(() => {
-    fetch(`${process.env.API_URL}/products`)
+    fetch(`${import.meta.env.API_URL}/products`)
       .then((response) =>
         response
           .json()
