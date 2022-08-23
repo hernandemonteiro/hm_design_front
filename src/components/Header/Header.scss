@@ -7,11 +7,11 @@ header {
     background-color: white;
     border-radius: 0 0 25px 25px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(107,9,121,0.9472163865546218) 35%, rgba(0,212,255,1) 100%);
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(107, 9, 121, 0.9472163865546218) 35%, rgba(0, 212, 255, 1) 100%);
 }
 
-.HeaderLogo{
+.HeaderLogo {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,7 +43,7 @@ header {
     border-radius: 15px;
 }
 
-.SearchLayout > input {
+.SearchLayout>input {
 
     width: 90%;
     border: none;
@@ -53,7 +53,7 @@ header {
 }
 
 
-.SearchLayout > button {
+.SearchLayout>button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,9 +74,9 @@ header {
     color: gray;
 }
 
-@media (max-width: 600px){
-    
-    .HeaderLogo{
+@media (max-width: 600px) {
+
+    .HeaderLogo {
         width: 100%;
         margin: 3%;
     }
@@ -85,8 +85,9 @@ header {
         width: 100%;
         margin: 3%;
     }
-    .SearchLayout{
-        width: 100%;    
+
+    .SearchLayout {
+        width: 100%;
     }
 
     .UserCart {
