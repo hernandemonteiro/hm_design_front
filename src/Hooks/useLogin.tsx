@@ -10,7 +10,7 @@ export default function useLogin(email: string, password: string) {
 
     let encryptedPassword = CryptoJS.SHA256(password).toString();
 
-    fetch(`http://localhost:8080/users`)
+    fetch(`${import.meta.env.VITE_API_URL}/users`)
       .then((response) => response.json())
       .then((response) => response.result)
       .then((response) =>

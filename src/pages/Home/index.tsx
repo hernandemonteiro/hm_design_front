@@ -8,7 +8,7 @@ import { useEffect } from "react";
 
 export default function Home() {
   useEffect(() => {
-    fetch(`http://localhost:8080/products`)
+    fetch(`${import.meta.env.VITE_API_URL}/products`)
       .then((response) =>
         response.json().then((response) => console.log(response.result))
       )
