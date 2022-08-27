@@ -1,14 +1,19 @@
-FROM node
+FROM node:14-slim
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY package*.json .
+# Setup a path for using local npm packages
+RUN mkdir -p /opt/node_modules
 
-RUN npm install
+COPY ./package.json /app
+COPY ./package-lock.json /app
 
-COPY . .
+RUN npm ci
 
-EXPOSE 3000
+COPY ./ /app
+
+RUN npm run build
+
+EXPOSE 3001
 
 CMD ["npm", "start"]
-

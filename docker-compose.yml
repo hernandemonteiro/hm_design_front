@@ -1,0 +1,11 @@
+version: '3.5'
+services:
+  app:
+    build: .
+    container_name: vite-hm-design
+    command: npm start
+    image: vite-hm-design:latest
+    ports:
+      - '3001:3001'
+    volumes:
+      - .:/app
