@@ -6,6 +6,6 @@ services:
     command: npm start
     image: vite-hm-design:latest
     ports:
-      - '3001:3001'
+      - '5173:5173'
     volumes:
       - .:/app

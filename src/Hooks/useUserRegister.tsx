@@ -17,7 +17,7 @@ export default function useUserRegister() {
     let encryptedPassword = CryptoJS.SHA256(password).toString();
 
     e.preventDefault();
-    let url = `${import.meta.env.VITE_API_URL}/users?name=${name}&email=${email}&password=${encryptedPassword}&type=1`;
+    let url = `${import.meta.env.VITE_API_URL}/users/${name}/${email}/${encryptedPassword}/1`;
 
     if (password === passwordConfirm) {
       fetch(url, { method: "PUT" })

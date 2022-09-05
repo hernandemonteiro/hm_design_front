@@ -19,7 +19,7 @@
     user-select: none;
 }
 
-.card>div>button {
+.buttonsAction>button {
     width: 70%;
     padding: 3%;
     text-transform: uppercase;
@@ -28,7 +28,7 @@
     border: solid thin gray;
 }
 
-.card>div>button:hover {
+.buttonsAction>button:hover {
     background: rgb(2, 0, 36);
     background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(107, 9, 121, 0.9472163865546218) 35%, rgba(0, 212, 255, 1) 100%);
     color: white

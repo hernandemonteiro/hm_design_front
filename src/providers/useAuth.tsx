@@ -3,16 +3,16 @@ import React, { createContext, useContext, useState } from "react";
 interface AuthProps {
   children?: any;
 }
-
-export const AuthContext = createContext<any>({});
+const initialState = {
+  UserId: "",
+  Name: "",
+  Type: "",
+  isLogged: false,
+};
+export const AuthContext = createContext<any>(initialState);
 
 export const AuthProvider = (props: AuthProps) => {
-  const initialState = {
-    UserId: "",
-    Name: "",
-    Type: "",
-    isLogged: false,
-  };
+  
 
   const [user, setUser] = useState<any>(initialState);
 

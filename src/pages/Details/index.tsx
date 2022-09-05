@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function Details() {
-  return <h1>Ok</h1>;
+  return <h1>funcionando [Ok]</h1>;
 }

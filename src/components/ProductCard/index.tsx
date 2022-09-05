@@ -21,9 +21,11 @@ export default function ProductCard(props: ProductCardProps) {
       <div className="productPrice">
         <h1>R${props.price}</h1>
       </div>
-      <div className="buttonsAction">
-        <button>Detalhes</button>
-      </div>
+      <Link to={`/Details/${props.id}`}>
+        <div className="buttonsAction">
+          <button>Detalhes</button>
+        </div>
+      </Link>
     </div>
   );
 }
