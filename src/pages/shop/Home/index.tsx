@@ -1,5 +1,5 @@
-import ProductCard from "../../components/Shop/ProductCard";
-import Template from "../../components/Shop/Template";
+import ProductCard from "../../../components/Shop/ProductCard";
+import Template from "../../../components/Shop/Template";
 import { useEffect, useState } from "react";
 
 /* @description the first page rendered, list products in sort order

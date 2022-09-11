@@ -1,5 +1,5 @@
-import ProductDetail from "../../components/Shop/ProductDetail";
-import Template from "../../components/Shop/Template";
+import ProductDetail from "../../../components/Shop/ProductDetail";
+import Template from "../../../components/Shop/Template";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
