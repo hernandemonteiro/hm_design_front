@@ -2,9 +2,9 @@ version: '3.5'
 services:
   app:
     build: .
-    container_name: monteiro98/hm_front
+    container_name: hm_front
     command: npm start
-    image: monteiro98/hm_front:latest
+    image: hm_front:latest
     ports:
       - 3000:3000
     volumes:
