@@ -11,10 +11,9 @@ interface TemplateProps {
   children?: any;
 }
 
-/* @component Template is the base view for all pages in the application;
- * @params children : allow change the content in the principal box View;
+/* @description Template is the base view for all pages in the application;
+ * @param {props} [children] allow change the content in the principal box View;
  */
-
 export default function Template(props: TemplateProps) {
   return (
     <div className="container">
