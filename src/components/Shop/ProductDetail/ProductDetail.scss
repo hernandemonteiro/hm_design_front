@@ -1,0 +1,35 @@
+.Detail {
+    width: 100%;
+    background-color: whitesmoke;
+    height: 100%;
+    margin: 2%;
+    padding: 1%;
+    border-radius: 23px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    text-align: center;
+}
+
+.imageDetail {
+    max-height: 100%;
+    overflow: hidden;
+}
+
+.Detail>div {
+    margin: 4%;
+    user-select: none;
+}
+
+.buttonsAction>button {
+    width: 70%;
+    padding: 3%;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 10px;
+    border: solid thin gray;
+}
+
+.buttonsAction>button:hover {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(107, 9, 121, 0.9472163865546218) 35%, rgba(0, 212, 255, 1) 100%);
+    color: white
+}

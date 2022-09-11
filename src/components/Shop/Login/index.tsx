@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import useLogin from "../../Hooks/useLogin";
-import useUserRegister from "../../Hooks/useUserRegister";
+import useLogin from "../../../Hooks/useLogin";
+import useUserRegister from "../../../Hooks/useUserRegister";
 import "./Login.scss";
 
 export default function Login() {

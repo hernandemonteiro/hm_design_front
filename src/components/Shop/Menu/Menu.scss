@@ -11,20 +11,6 @@ nav {
     background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(107, 9, 121, 0.9472163865546218) 35%, rgba(0, 212, 255, 1) 100%);
 }
 
-.btnMenu {
-    width: 90%;
-    padding: 3%;
-    text-transform: uppercase;
-    margin-bottom: 3%;
-    border-radius: 10px;
-    border: none;
-    font-weight: bold;
-}
-
-.btnMenu:hover {
-    background-color: aqua;
-}
-
 @media (min-width: 600px) {
 
     .btnMobile {
