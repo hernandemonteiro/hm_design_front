@@ -1,11 +1,9 @@
 import React from "react";
-import { useAuth } from "../../../providers/useAuth";
+import Template from "../../../components/Shop/Template";
 
 export default function User() {
-  const { user, setUser } = useAuth();
-  console.log(user.name)
-  if (user.isLogged == false) {
-    window.location.href = "/login";
-  }
-  return <h1>Perfil</h1>;
+
+  return (<Template>
+    Aqui vai infos sobre perfil
+  </Template>)
 }

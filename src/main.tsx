@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
 import "./styles/main.scss";
 import AppRouter from "./routes";
 interface MainProps {
@@ -12,11 +11,7 @@ export const Main = (props: MainProps) => {
 };
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
     <Main>
-      <BrowserRouter>
-        <AppRouter />
-      </BrowserRouter>
+      <AppRouter />
     </Main>
-  </React.StrictMode>
 );

@@ -7,10 +7,7 @@ import "./Admin.scss";
 
 export default function Admin() {
   const [view, setView] = useState(<Dashboard />);
-  // const { user, setUser } = useAuth();
-  // if (user.isLogged == false) {
-  //   window.location.href = "/login";
-  // }
+  const {logout} = useAuth();
 
   return (
     <section className="AdminPage">
@@ -58,7 +55,7 @@ export default function Admin() {
         <br />
         <br />
         <ButtonGradient
-          onClick={() => setView(<Products />)}
+          onClick={logout}
         >
           Sair
         </ButtonGradient>
