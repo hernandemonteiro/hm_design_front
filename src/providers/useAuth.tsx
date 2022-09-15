@@ -39,7 +39,6 @@ export const AuthProvider = (props: authProps) => {
               type: response.result.type,
             })
           );
-          document.location.reload();
 
         }
       })
