@@ -1,7 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 
-
-/* @description provide an global state context for user login status;
+/*
+ * @description provide an global state context for user login status;
  */
 
 export const AuthContext = createContext<any>("");
@@ -26,7 +26,6 @@ export const AuthProvider = (props: authProps) => {
   }, []);
 
   function login(email: string, password: string) {
-    
     fetch(`${import.meta.env.VITE_API_URL}/login/${email}/${password}`)
       .then((response) => response.json())
       .then((response) => {
@@ -39,7 +38,7 @@ export const AuthProvider = (props: authProps) => {
               type: response.result.type,
             })
           );
-
+          document.location.reload();
         }
       })
       .catch((error) => {
