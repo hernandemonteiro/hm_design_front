@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { Navigate } from "react-router-dom";
+
 
 /* @description provide an global state context for user login status;
  */
@@ -26,6 +26,7 @@ export const AuthProvider = (props: authProps) => {
   }, []);
 
   function login(email: string, password: string) {
+    
     fetch(`${import.meta.env.VITE_API_URL}/login/${email}/${password}`)
       .then((response) => response.json())
       .then((response) => {
@@ -38,7 +39,7 @@ export const AuthProvider = (props: authProps) => {
               type: response.result.type,
             })
           );
-          document.location.reload();
+          window.location.reload();
         }
       })
       .catch((error) => {
