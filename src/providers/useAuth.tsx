@@ -40,9 +40,9 @@ export const AuthProvider = (props: authProps) => {
             })
           );
           if (response.result.type === "0") {
-            window.location.href = "/admin";
+            document.location.href = "/admin";
           } else {
-            window.location.href = "/user";
+            document.location.href = "/user";
           }
         }
       })
