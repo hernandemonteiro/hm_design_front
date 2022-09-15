@@ -9,8 +9,8 @@ export default function Login() {
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
 
-  function handleSubmit() {
-
+  function handleSubmit(event: any) {
+    event.preventDefault();
     login(email, password);
   }
 
