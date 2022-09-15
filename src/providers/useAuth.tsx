@@ -1,6 +1,5 @@
-import { LocalConvenienceStoreOutlined } from "@mui/icons-material";
 import { createContext, useContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 /* @description provide an global state context for user login status;
  */
@@ -39,11 +38,7 @@ export const AuthProvider = (props: authProps) => {
               type: response.result.type,
             })
           );
-          if (response.result.type === "0") {
-            document.location.href = "/admin";
-          } else {
-            document.location.href = "/user";
-          }
+          document.location.reload();
         }
       })
       .catch((error) => {
