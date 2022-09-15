@@ -1,30 +1,53 @@
 import React, { useState } from "react";
+import "./FormProduct.scss";
 
 export default function FormProduct() {
-  const [option, setOption] = useState<any>();
-  let arrayOptions: any = [];
-  function addOption(){
-    arrayOptions.push(option);
-    setOption('');
-    console.log
+  const [category, setCategory] = useState("");
+  const [option, setOption] = useState<string>();
+
+  let options: any = [];
+  function addOption() {
+    options.push(option);
+    console.log(options);
+    setOption("");
   }
   return (
     <form>
-      <h1>Cadastrar Produto</h1>
-      <input required type="text" placeholder="Nome" />
-      <input required type="number" step="any" min="1" placeholder="Preço" />
-      <div className="options">
-        <input type="text" onChange={(event: any) => setOption(event.target.value)} placeholder="Opções" value={option} />
-        <div onClick={addOption}>ADICIONAR OPÇÂO</div>
-        {arrayOptions}
+      <div className="formHeader">
+      <h3>Cadastrar Produtos</h3>
+      <hr/>
       </div>
-      <select required>
-        <option selected>Selecione uma Categoria</option>
+      <br />
+      <label>Nome do produto*:</label>
+      <input required type="text" placeholder="Nome" />
+      <label>Preço*:</label>
+      <input required type="number" step="any" min="1" placeholder="Preço" />
+      <label>Opções:</label>
+      <div className="options">
+        <input
+          type="text"
+          onChange={(event: any) => setOption(event.target.value)}
+          placeholder="Opções"
+          value={option}
+        />
+        <button type="button" onClick={addOption}>
+          ADICIONAR OPÇÂO
+        </button>
+      </div>
+      <label>Categoria*:</label>
+      <select required onChange={(e) => setCategory(e.target.value)}>
+        <option selected value="">
+          Categorias...
+        </option>
+        <option>Opção</option>
       </select>
-      <input type="file" />
-      <textarea required placeholder="Descrição"></textarea>
+      <br />
+      <label>Fotos*:</label>
+      <input required type="file" />
+      <label>Descrição*:</label>
+      <textarea required placeholder="Descreva seu produto!"></textarea>
       <div className="actions">
-        <button>CANCELAR</button>
+        <button type="button">CANCELAR</button>
         <button type="submit">CADASTRAR</button>
       </div>
     </form>

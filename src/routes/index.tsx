@@ -14,17 +14,13 @@ import Ordens from "../pages/Admin/Ordens";
 import Categorias from "../pages/Admin/Categorias";
 import Producao from "../pages/Admin/Producao";
 import NotFoundError from "../components/NotFoundError";
-
-export interface privateProps {
-  children: any;
-}
-export interface redirectProps {
+export interface childrenProps {
   children: any;
 }
 export default function AppRoutes() {
-  const Private = (props: privateProps) => {
-    const { authenticated, loading } = useAuth();
 
+  const Private = (props: childrenProps) => {
+    const { authenticated, loading } = useAuth();
     if (loading) {
       return <div>Carregando</div>;
     }
@@ -34,8 +30,9 @@ export default function AppRoutes() {
     return props.children;
   };
 
-  function RedirectLogged(props: redirectProps) {
-    const { authenticated, user, loading } = useAuth();
+  function RedirectLogged(props: childrenProps) {
+    const { authenticated, loading, user } = useAuth();
+
     if (loading) {
       return <div>Carregando</div>;
     }
@@ -48,13 +45,12 @@ export default function AppRoutes() {
     }
     return props.children;
   }
-
   return (
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-           {/* error routes */}
-           <Route
+          {/* error routes */}
+          <Route
             path="*"
             element={
               <Private>
@@ -92,6 +88,7 @@ export default function AppRoutes() {
             }
           />
           {/* admin routes */}
+          
           <Route
             path="/admin"
             element={
@@ -140,7 +137,7 @@ export default function AppRoutes() {
               </Private>
             }
           />
-         
+          
         </Routes>
       </BrowserRouter>
     </AuthProvider>

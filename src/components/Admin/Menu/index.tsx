@@ -10,22 +10,23 @@ export default function Menu() {
         <ButtonGradient>Dashboard</ButtonGradient>
       </Link>
       <br />
+      <Link to="/admin/categorias">
+        <ButtonGradient>Categorias</ButtonGradient>
+      </Link>
+      <br />
       <Link to="/admin/produtos">
         <ButtonGradient>Produtos</ButtonGradient>
       </Link>
       <br />
       <Link to="/admin/clientes">
-        <ButtonGradient>Clientes</ButtonGradient>
+        <ButtonGradient>Usuários</ButtonGradient>
       </Link>
       <br />
       <Link to="/admin/ordens">
         <ButtonGradient>Ordens</ButtonGradient>
       </Link>
       <br />
-      <Link to="/admin/categorias">
-        <ButtonGradient>Categorias</ButtonGradient>
-      </Link>
-      <br />
+
       <Link to="/admin/producao">
         <ButtonGradient>Em produção</ButtonGradient>
       </Link>
