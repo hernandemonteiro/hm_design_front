@@ -39,7 +39,8 @@ export const AuthProvider = (props: authProps) => {
               type: response.result.type,
             })
           );
-          window.location.href = 'https://hm-design-5w4qjeyzw-hernandemonteiro.vercel.app/login';
+          document.location.reload();
+
         }
       })
       .catch((error) => {
