@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 /* @description the first page rendered, list products in sort order
  *  @route = "/"
  */
-
 export default function Home() {
   const [data, setData] = useState([]);
   useEffect(() => {
