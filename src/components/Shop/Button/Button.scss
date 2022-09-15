@@ -1,0 +1,25 @@
+.btn {
+    width: 90%;
+    padding: 3%;
+    text-transform: uppercase;
+    margin-bottom: 3%;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: black;
+    color: white;
+}
+
+.red {
+    background-color: red;
+    color: white;
+}
+
+.red:hover {
+    background-color: black;
+    color: white;
+}

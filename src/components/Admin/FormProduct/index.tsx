@@ -54,7 +54,7 @@ export default function FormProduct() {
       <label>Descrição*:</label>
       <textarea required placeholder="Descreva seu produto!"></textarea>
       <div className="actions">
-        <button type="button">CANCELAR</button>
+        <button type="button"onClick={() => document.location.reload()}>CANCELAR</button>
         <button type="submit">CADASTRAR</button>
       </div>
     </form>

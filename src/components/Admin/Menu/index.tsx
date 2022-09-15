@@ -1,37 +1,37 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../providers/useAuth";
-import ButtonGradient from "../../Shop/ButtonGradient";
+import Button from "../../Shop/Button";
 
 export default function Menu() {
   const { logout } = useAuth();
   return (
     <nav>
       <Link to="/admin">
-        <ButtonGradient>Dashboard</ButtonGradient>
+        <Button>Dashboard</Button>
       </Link>
       <br />
       <Link to="/admin/categorias">
-        <ButtonGradient>Categorias</ButtonGradient>
+        <Button>Categorias</Button>
       </Link>
       <br />
       <Link to="/admin/produtos">
-        <ButtonGradient>Produtos</ButtonGradient>
+        <Button>Produtos</Button>
       </Link>
       <br />
       <Link to="/admin/clientes">
-        <ButtonGradient>Usuários</ButtonGradient>
+        <Button>Usuários</Button>
       </Link>
       <br />
       <Link to="/admin/ordens">
-        <ButtonGradient>Ordens</ButtonGradient>
+        <Button>Ordens</Button>
       </Link>
       <br />
 
       <Link to="/admin/producao">
-        <ButtonGradient>Em produção</ButtonGradient>
+        <Button>Em produção</Button>
       </Link>
       <br />
-      <ButtonGradient onClick={logout}>Sair</ButtonGradient>
+      <Button className="red" onClick={logout}>Sair</Button>
     </nav>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Menu.scss";
 import { Link } from "react-router-dom";
-import ButtonGradient from "../ButtonGradient";
+import Button from "../Button";
 
 export default function Menu() {
   const [dropdown, setDropdown] = useState("menuMobile");
@@ -16,12 +16,12 @@ export default function Menu() {
 
   return (
     <nav>
-      <ButtonGradient className={`btnMobile btnMenu`} onClick={() => MenuDropdown()}>
+      <Button className={`btnMobile btnMenu`} onClick={() => MenuDropdown()}>
         MENU
-      </ButtonGradient>
+      </Button>
       <div className={`${dropdown} boxMenu`}>
         <Link to="/" onClick={() => MenuDropdown()}>
-          <ButtonGradient>Inicial</ButtonGradient>
+          <Button>Inicial</Button>
         </Link>
       </div>
     </nav>

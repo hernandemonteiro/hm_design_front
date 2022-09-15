@@ -1,10 +1,10 @@
-import Dashboard from "../../../components/Admin/Dashboard";
+import ClientList from "../../../components/Admin/ClientList";
 import Template from "../../../components/Admin/Template";
 
 export default function Clientes() {
   return (
     <Template>
-      <Dashboard />
+      <ClientList />
     </Template>
   );
 }
