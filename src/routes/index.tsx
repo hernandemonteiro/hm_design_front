@@ -18,18 +18,19 @@ export interface childrenProps {
   children: any;
 }
 export default function AppRoutes() {
-
+  // private method to user routes;
   const Private = (props: childrenProps) => {
-    const { authenticated, loading } = useAuth();
+    const { authenticated, loading, user } = useAuth();
     if (loading) {
       return <div>Carregando</div>;
     }
-    if (!authenticated) {
+    if (!authenticated|| user.type != "1") {
       return <Navigate to="/login" />;
     }
     return props.children;
   };
 
+  // redirect method case user is logged;
   function RedirectLogged(props: childrenProps) {
     const { authenticated, loading, user } = useAuth();
 
@@ -45,20 +46,22 @@ export default function AppRoutes() {
     }
     return props.children;
   }
+
+  // private method to admin routes;
+  function PrivateAdmin(props: childrenProps) {
+    const { authenticated, loading, user } = useAuth();
+    if (loading) {
+      return <div>Carregando</div>;
+    }
+    if (!authenticated || user.type != "0") {
+      return <Navigate to="/login" />;
+    }
+    return props.children;
+  }
   return (
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          {/* error routes */}
-          <Route
-            path="*"
-            element={
-              <Private>
-                <NotFoundError />
-              </Private>
-            }
-          />
-          {/* shop routes */}
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/details/:id" element={<Details />} />
@@ -78,7 +81,6 @@ export default function AppRoutes() {
               </RedirectLogged>
             }
           />
-          {/* user routes */}
           <Route
             path="/user"
             element={
@@ -87,57 +89,62 @@ export default function AppRoutes() {
               </Private>
             }
           />
-          {/* admin routes */}
-          
           <Route
             path="/admin"
             element={
-              <Private>
+              <PrivateAdmin>
                 <Dashboard />
-              </Private>
+              </PrivateAdmin>
             }
           />
           <Route
             path="/admin/produtos"
             element={
-              <Private>
+              <PrivateAdmin>
                 <Produtos />
-              </Private>
+              </PrivateAdmin>
             }
           />
           <Route
             path="/admin/clientes"
             element={
-              <Private>
+              <PrivateAdmin>
                 <Clientes />
-              </Private>
+              </PrivateAdmin>
             }
           />
           <Route
             path="/admin/ordens"
             element={
-              <Private>
+              <PrivateAdmin>
                 <Ordens />
-              </Private>
+              </PrivateAdmin>
             }
           />
           <Route
             path="/admin/categorias"
             element={
-              <Private>
+              <PrivateAdmin>
                 <Categorias />
-              </Private>
+              </PrivateAdmin>
             }
           />
           <Route
             path="/admin/producao"
             element={
-              <Private>
+              <PrivateAdmin>
                 <Producao />
+              </PrivateAdmin>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <Private>
+                <NotFoundError />
               </Private>
             }
           />
-          
         </Routes>
       </BrowserRouter>
     </AuthProvider>

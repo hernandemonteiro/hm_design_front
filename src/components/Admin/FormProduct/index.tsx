@@ -2,12 +2,19 @@ import React, { useState } from "react";
 import "./FormProduct.scss";
 
 export default function FormProduct() {
-  const [category, setCategory] = useState("");
-  const [option, setOption] = useState<string>();
+  const [name, setName] = useState<string>("");
+  const [price, setPrice] = useState<string | number>("");
+  const [options, setOptions] = useState<[] | string>();
+  const [category, setCategory] = useState<string>("");
+  const [pictures, setPictures] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  
+  const [option, setOption] = useState("");
 
-  let options: any = [];
+  let arrayOption: any = [];
   function addOption() {
-    options.push(option);
+    arrayOption.push(option);
+    setOptions(option);
     console.log(options);
     setOption("");
   }
