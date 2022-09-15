@@ -12,6 +12,7 @@ interface authProps {
 }
 
 export const AuthProvider = (props: authProps) => {
+  const [loginMessage, setLoginMessage] = useState<string>("");
   const [user, setUser] = useState<any>(null);
 
   const [loading, setLoading] = useState(true);
@@ -45,7 +46,10 @@ export const AuthProvider = (props: authProps) => {
           }
         }
       })
-      .catch((error) => console.log("email ou senha incorretos!"));
+      .catch((error) => {
+        setLoginMessage("Email ou senha Inválidos");
+        console.log("Login Error:" + error);
+      });
   }
 
   function logout() {
@@ -55,7 +59,14 @@ export const AuthProvider = (props: authProps) => {
 
   return (
     <AuthContext.Provider
-      value={{ authenticated: !!user, user, loading, login, logout }}
+      value={{
+        authenticated: !!user,
+        user,
+        loading,
+        loginMessage,
+        login,
+        logout,
+      }}
     >
       {props.children}
     </AuthContext.Provider>

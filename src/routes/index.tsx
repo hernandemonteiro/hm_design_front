@@ -1,13 +1,19 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "../pages/shop/Home";
-import Login from "../pages/shop/Login";
 import Cart from "../pages/shop/Cart";
 import User from "../pages/shop/User";
 import Details from "../pages/shop/Details";
 import Dashboard from "../pages/Admin/Dashboard";
 import { AuthProvider, useAuth } from "../providers/useAuth";
 import Register from "../components/Shop/Register";
+import Login from "../components/Shop/Login";
+import Produtos from "../pages/Admin/Produtos";
+import Clientes from "../pages/Admin/Clientes";
+import Ordens from "../pages/Admin/Ordens";
+import Categorias from "../pages/Admin/Categorias";
+import Producao from "../pages/Admin/Producao";
+import NotFoundError from "../components/NotFoundError";
 
 export interface privateProps {
   children: any;
@@ -47,6 +53,15 @@ export default function AppRoutes() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
+           {/* error routes */}
+           <Route
+            path="*"
+            element={
+              <Private>
+                <NotFoundError />
+              </Private>
+            }
+          />
           {/* shop routes */}
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
@@ -85,6 +100,47 @@ export default function AppRoutes() {
               </Private>
             }
           />
+          <Route
+            path="/admin/produtos"
+            element={
+              <Private>
+                <Produtos />
+              </Private>
+            }
+          />
+          <Route
+            path="/admin/clientes"
+            element={
+              <Private>
+                <Clientes />
+              </Private>
+            }
+          />
+          <Route
+            path="/admin/ordens"
+            element={
+              <Private>
+                <Ordens />
+              </Private>
+            }
+          />
+          <Route
+            path="/admin/categorias"
+            element={
+              <Private>
+                <Categorias />
+              </Private>
+            }
+          />
+          <Route
+            path="/admin/producao"
+            element={
+              <Private>
+                <Producao />
+              </Private>
+            }
+          />
+         
         </Routes>
       </BrowserRouter>
     </AuthProvider>

@@ -1,14 +1,13 @@
-import { WidthNormalSharp } from "@mui/icons-material";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import useUserRegister from "../../../Hooks/useUserRegister";
 import { useAuth } from "../../../providers/useAuth";
 import "./Login.scss";
 
 export default function Login() {
-  const { setEmail, setPassword, email, password, sucessMessage } =
-    useUserRegister();
+  const { login, loginMessage } = useAuth();
 
-  const { login } = useAuth();
+  const [email, setEmail] = useState<string>();
+  const [password, setPassword] = useState<string>();
 
   function handleSubmit(event: any) {
     event.preventDefault();
@@ -19,7 +18,7 @@ export default function Login() {
     <div className="LoginBox">
       <form onSubmit={handleSubmit}>
         <h1>HM Design</h1>
-        <h5>{sucessMessage}</h5>
+        <h4 className="loginMessage">{loginMessage}</h4>
         <label>Digite seu email!</label>
         <input
           required
@@ -35,10 +34,10 @@ export default function Login() {
           type="password"
         />
         <button type="submit">Login</button>
-        <Link className='Link' to="/register">
+        <Link className="Link" to="/register">
           <button>cadastrar-se</button>
         </Link>
-        <Link className='Link' to="/">
+        <Link className="Link" to="/">
           <button>Voltar ao site</button>
         </Link>
       </form>

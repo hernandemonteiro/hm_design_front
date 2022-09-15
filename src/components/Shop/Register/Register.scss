@@ -28,14 +28,13 @@ form>input {
     margin-bottom: 7%;
 }
 
-.notEqualPass {
-    outline-color: green;
+.NotEqualPass {
+    outline-color: red;
 }
 
-form>input:focus {
+.EqualPass {
     outline-color: green;
 }
-
 
 button {
     width: 100%;

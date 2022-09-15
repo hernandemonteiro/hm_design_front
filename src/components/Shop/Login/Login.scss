@@ -19,20 +19,12 @@ form {
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
-form>h1 {
-    margin-bottom: 10%;
-}
 
 form>input {
     width: 90%;
     padding: 3%;
     margin-bottom: 7%;
 }
-
-form>input:focus {
-    outline-color: green;
-}
-
 
 
 button {
@@ -45,4 +37,9 @@ button {
 label {
     width: 100%;
     margin-bottom: 1%;
+}
+
+.loginMessage {
+    color: red;
+    margin-bottom: 4%;
 }

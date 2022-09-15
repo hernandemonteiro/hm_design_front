@@ -1,7 +1,10 @@
 import React from "react";
+import "./Dashboard.scss";
 
 export default function Dashboard() {
   return (
-    <h1>Dashboard</h1>
+    <div className="Dashboard">
+      <h1>Dashboard</h1>
+    </div>
   );
 }
