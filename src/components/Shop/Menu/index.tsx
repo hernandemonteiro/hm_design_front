@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Menu.scss";
 import { Link } from "react-router-dom";
-import Button from "../Button";
+import Button from "../../UI/Button";
 
 export default function Menu() {
   const [dropdown, setDropdown] = useState("menuMobile");

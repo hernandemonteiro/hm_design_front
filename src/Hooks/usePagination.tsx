@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "../components/Shop/Button";
+import Button from "../components/UI/Button";
 
 export default function usePagination(initialQuantity: number) {
   const [pagination, setPagination] = useState<number>(initialQuantity);

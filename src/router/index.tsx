@@ -1,23 +1,26 @@
-import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Home from "../pages/shop/Home";
-import Cart from "../pages/shop/Cart";
-import User from "../pages/shop/User";
-import Details from "../pages/shop/Details";
+import Home from "../pages/Shop/Home";
+import Cart from "../pages/Shop/Cart";
+import User from "../pages/Shop/User";
+import Details from "../pages/Shop/Details";
 import Dashboard from "../pages/Admin/Dashboard";
-import { AuthProvider, useAuth } from "../providers/useAuth";
-import Register from "../components/Shop/Register";
-import Login from "../components/Shop/Login";
+import { AuthProvider, useAuth } from "../Hooks/useAuth";
+import Register from "../components/System/Register";
+import Login from "../components/System/Login";
 import Produtos from "../pages/Admin/Produtos";
 import Clientes from "../pages/Admin/Clientes";
 import Ordens from "../pages/Admin/Ordens";
 import Categorias from "../pages/Admin/Categorias";
 import Producao from "../pages/Admin/Producao";
-import NotFoundError from "../components/NotFoundError";
-import Loader from "../components/Loader";
+import NotFoundError from "../components/System/NotFoundError";
+import Loader from "../components/UI/Loader";
+import ForgotPassword from "../components/System/ForgotPassword";
+import RecoveryPassword from "../components/System/RecoveryPassword";
+
 export interface childrenProps {
   children: any;
 }
+
 export default function AppRoutes() {
   // private method to user routes;
   const Private = (props: childrenProps) => {
@@ -60,9 +63,12 @@ export default function AppRoutes() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
+          {/* Shop routes; */}
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/details/:id" element={<Details />} />
+
+          {/* login, register and recovery password routes; */}
           <Route
             path="/login"
             element={
@@ -79,6 +85,9 @@ export default function AppRoutes() {
               </RedirectLogged>
             }
           />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
+          <Route path="/recoverypassword/:email/:hash" element={<RecoveryPassword />} />
+          {/* user routes; */}
           <Route
             path="/user"
             element={
@@ -87,6 +96,7 @@ export default function AppRoutes() {
               </Private>
             }
           />
+          {/* admin routes; */}
           <Route
             path="/admin"
             element={
@@ -135,6 +145,7 @@ export default function AppRoutes() {
               </PrivateAdmin>
             }
           />
+          {/* not found routes; */}
           <Route
             path="*"
             element={

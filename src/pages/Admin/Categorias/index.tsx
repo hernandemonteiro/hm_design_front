@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import FormCategory from "../../../components/Admin/FormCategory";
 import Template from "../../../components/Admin/Template";
-import Button from "../../../components/Shop/Button";
+import Button from "../../../components/UI/Button";
 import ProductCard from "../../../components/Shop/ProductCard";
 
 export default function Categoria() {

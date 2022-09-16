@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../../Shop/Button";
+import Button from "../../UI/Button";
 
 export default function FormCategory() {
   return (

@@ -80,7 +80,7 @@ export default function ClientList() {
                       },
                     }}
                     onClick={() => {
-                      alert("implementar edição!");
+                      alert("Change the password to a default value!");
                     }}
                   />
                 </TableCell>

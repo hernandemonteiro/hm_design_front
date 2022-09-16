@@ -1,7 +1,6 @@
 import ReactDOM from "react-dom/client";
-import Loader from "./components/Loader";
-import Main from "./components/Main";
-import AppRouter from "./routes";
+import Main from "./components/UI/Main";
+import AppRouter from "./router";
 
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

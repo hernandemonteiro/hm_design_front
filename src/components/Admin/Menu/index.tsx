@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { useAuth } from "../../../providers/useAuth";
-import Button from "../../Shop/Button";
+import { useAuth } from "../../../Hooks/useAuth";
+import Button from "../../UI/Button";
 
 export default function Menu() {
   const { logout } = useAuth();

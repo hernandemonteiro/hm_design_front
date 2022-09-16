@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import FormProduct from "../../../components/Admin/FormProduct";
 import Template from "../../../components/Admin/Template";
-import Button from "../../../components/Shop/Button";
+import Button from "../../../components/UI/Button";
 import ProductCard from "../../../components/Shop/ProductCard";
 import usePagination from "../../../Hooks/usePagination";
 

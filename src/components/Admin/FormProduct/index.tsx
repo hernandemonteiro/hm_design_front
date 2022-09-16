@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "../../Shop/Button";
+import Button from "../../UI/Button";
 import "./FormProduct.scss";
 
 export default function FormProduct() {
