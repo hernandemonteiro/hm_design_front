@@ -1,23 +1,28 @@
 .card {
-    width: 200px;
+    width: 150px;
     background-color: whitesmoke;
     max-height: 330px;
-    margin: 2%;
+    margin: 1%;
     padding: 1%;
     border-radius: 23px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     text-align: center;
 }
-
+ 
 .imageCard {
-    height: 150px;
+    height: 100px;
     overflow: hidden;
 }
-
+img{
+    width: 100%;
+    object-fit: contain
+}
 .productName,
 .productPrice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 50px;
-    overflow: hidden;
 }
 
 .card>div {
