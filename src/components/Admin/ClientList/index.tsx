@@ -8,10 +8,20 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Delete, Edit } from "@mui/icons-material";
 import usePagination from "../../../Hooks/usePagination";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@mui/material";
+import Button from "../../Shop/Button";
 
 export default function ClientList() {
   const [users, setUsers] = useState([]);
   const { pagination, buttonPaginate } = usePagination(15);
+  const [open, setOpen] = React.useState(false);
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/users`)
       .then((response) => response.json())
@@ -64,10 +74,34 @@ export default function ClientList() {
                         color: "white",
                       },
                     }}
-                    onClick={() => {
-                      deleteUser(element._id);
-                    }}
+                    onClick={() => setOpen(true)}
                   />
+                  <Dialog
+                    open={open}
+                    onClose={() => setOpen(false)}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                  >
+                    <DialogTitle id="alert-dialog-title">
+                      {element.name}
+                    </DialogTitle>
+                    <DialogContent>
+                      <DialogContentText id="alert-dialog-description">
+                        Você está prestes a deletar um usuário, tem certeza?
+                      </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                      <Button className="red" onClick={() => setOpen(false)}>
+                        Cancelar
+                      </Button>
+                      <Button
+                        className="green"
+                        onClick={() => deleteUser(element._id)}
+                      >
+                        Deletar
+                      </Button>
+                    </DialogActions>
+                  </Dialog>
                   <Edit
                     color="success"
                     sx={{
