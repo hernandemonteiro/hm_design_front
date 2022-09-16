@@ -1,4 +1,4 @@
-import { Navigate, Route } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Loader from "../../components/UI/Loader";
 import { useAuth } from "../../Hooks/useAuth";
 import User from "../../pages/Shop/User";
@@ -15,13 +15,15 @@ export default function UserRoutes() {
     return props.children;
   };
   return (
-    <Route
-      path="/user"
-      element={
-        <Private>
-          <User />
-        </Private>
-      }
-    />
+    <Routes>
+      <Route
+        path="/user"
+        element={
+          <Private>
+            <User />
+          </Private>
+        }
+      />
+    </Routes>
   );
 }

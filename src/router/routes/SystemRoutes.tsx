@@ -1,4 +1,4 @@
-import { Navigate, Route } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import ForgotPassword from "../../components/System/ForgotPassword";
 import Login from "../../components/System/Login";
 import NotFoundError from "../../components/System/NotFoundError";
@@ -23,7 +23,7 @@ export default function SystemRoutes() {
     return props.children;
   }
   return (
-    <>
+    <Routes>
       <Route
         path="/login"
         element={
@@ -46,6 +46,6 @@ export default function SystemRoutes() {
         element={<RecoveryPassword />}
       />
       <Route path="*" element={<NotFoundError />} />
-    </>
+    </Routes>
   );
 }

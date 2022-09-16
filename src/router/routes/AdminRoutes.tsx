@@ -1,9 +1,9 @@
-import { Navigate, Route } from "react-router-dom";
-import Dashboard from "../../components/Admin/Dashboard";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Loader from "../../components/UI/Loader";
 import { useAuth } from "../../Hooks/useAuth";
 import Categorias from "../../pages/Admin/Categorias";
 import Clientes from "../../pages/Admin/Clientes";
+import Dashboard from "../../pages/Admin/Dashboard";
 import Ordens from "../../pages/Admin/Ordens";
 import Producao from "../../pages/Admin/Producao";
 import Produtos from "../../pages/Admin/Produtos";
@@ -18,7 +18,7 @@ export default function AdminRoutes() {
     return props.children;
   }
   return (
-    <>
+    <Routes>
       <Route
         path="/admin"
         element={
@@ -67,6 +67,6 @@ export default function AdminRoutes() {
           </Private>
         }
       />
-    </>
+    </Routes>
   );
 }

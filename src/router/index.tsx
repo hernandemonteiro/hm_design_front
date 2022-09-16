@@ -1,20 +1,19 @@
-import { BrowserRouter, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "../Hooks/useAuth";
 import UserRoutes from "./routes/UserRoutes";
 import AdminRoutes from "./routes/AdminRoutes";
 import SystemRoutes from "./routes/SystemRoutes";
 import ShopRoutes from "./routes/ShopRoutes";
+import NotFoundError from "../components/System/NotFoundError";
 
-export default function AppRoutes() {
+export default function Router() {
   return (
     <AuthProvider>
       <BrowserRouter>
-        <Routes>
-          <ShopRoutes />
-          <SystemRoutes />
-          <UserRoutes />
-          <AdminRoutes />
-        </Routes>
+        <ShopRoutes />
+        <UserRoutes />
+        <AdminRoutes />
+        <SystemRoutes />
       </BrowserRouter>
     </AuthProvider>
   );
