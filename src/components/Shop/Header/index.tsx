@@ -6,9 +6,10 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../providers/useAuth";
 import { ExitToApp } from "@mui/icons-material";
+import Badge from "@mui/material/Badge";
 
 export default function Header() {
-  const {user, logout} = useAuth();
+  const { user, logout } = useAuth();
   return (
     <header>
       <div className="HeaderLogo">
@@ -26,22 +27,31 @@ export default function Header() {
         </div>
       </div>
       <div className="UserCart">
-        { !user ?
+        {!user ? (
           <Link to="/login" style={{ color: "black" }}>
-          <PersonIcon className="Icon" sx={{ fontSize: 40, margin: 2 }} />
-        </Link>
-        :
-        <Link to="/user" style={{ color: "black" }}>
-          <PersonIcon className="Icon" sx={{ fontSize: 40, margin: 2 }} />
-        </Link>
-        }
-        
+            <PersonIcon className="Icon" sx={{ fontSize: 40, margin: 2 }} />
+          </Link>
+        ) : (
+          <Link to="/user" style={{ color: "black" }}>
+            <PersonIcon className="Icon" sx={{ fontSize: 40, margin: 2 }} />
+          </Link>
+        )}
+
         <Link to="/cart" style={{ color: "black" }}>
-          <ShoppingCartIcon className="Icon" sx={{ fontSize: 40, margin: 2 }} />
+          <Badge badgeContent={1} color="secondary" sx={{margin: 2}}>
+            <ShoppingCartIcon
+              className="Icon"
+              sx={{ fontSize: 40 }}
+            />
+          </Badge>
         </Link>
-        { user &&
-          <ExitToApp className="Icon" onClick={logout} sx={{ fontSize: 40, margin: 2 }} />
-        }
+        {user && (
+          <ExitToApp
+            className="Icon"
+            onClick={logout}
+            sx={{ fontSize: 40, margin: 2 }}
+          />
+        )}
       </div>
     </header>
   );

@@ -14,6 +14,7 @@ import Ordens from "../pages/Admin/Ordens";
 import Categorias from "../pages/Admin/Categorias";
 import Producao from "../pages/Admin/Producao";
 import NotFoundError from "../components/NotFoundError";
+import Loader from "../components/Loader";
 export interface childrenProps {
   children: any;
 }
@@ -21,10 +22,10 @@ export default function AppRoutes() {
   // private method to user routes;
   const Private = (props: childrenProps) => {
     const { authenticated, loading, user } = useAuth();
-    if (loading) {
-      return <div>Carregando</div>;
-    }
-    if (!authenticated|| user.type != "1") {
+
+    loading ?? <Loader />;
+
+    if (!authenticated || user.type != "1") {
       return <Navigate to="/login" />;
     }
     return props.children;
@@ -34,9 +35,8 @@ export default function AppRoutes() {
   function RedirectLogged(props: childrenProps) {
     const { authenticated, loading, user } = useAuth();
 
-    if (loading) {
-      return <div>Carregando</div>;
-    }
+    loading ?? <Loader />;
+
     if (authenticated) {
       if (user.type === "1") {
         return <Navigate to="/user" />;
@@ -50,9 +50,7 @@ export default function AppRoutes() {
   // private method to admin routes;
   function PrivateAdmin(props: childrenProps) {
     const { authenticated, loading, user } = useAuth();
-    if (loading) {
-      return <div>Carregando</div>;
-    }
+    loading ?? <Loader />;
     if (!authenticated || user.type != "0") {
       return <Navigate to="/login" />;
     }

@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../../providers/useAuth";
+import Button from "../Button";
 import "./ProductDetail.scss";
 
 interface ProductDetailProps {
@@ -11,10 +13,14 @@ interface ProductDetailProps {
 }
 
 export default function ProductDetail(props: ProductDetailProps) {
+  const { authenticated } = useAuth();
   return (
     <div className="Detail">
       <div className="imageDetail">
-        <img width="60%" src="https://www.datocms-assets.com/76860/1660532346-product_hm_design.png" />
+        <img
+          width="60%"
+          src="https://www.datocms-assets.com/76860/1660532346-product_hm_design.png"
+        />
       </div>
       <div className="productName">
         <h2>{props.name}</h2>
@@ -26,7 +32,13 @@ export default function ProductDetail(props: ProductDetailProps) {
         <h1>R${props.price}</h1>
       </div>
       <div className="buttonsAction">
-        <button>ADICIONAR AO CARRINHO</button>
+        {authenticated ? (
+          <Button>ADICIONAR AO CARRINHO</Button>
+        ) : (
+          <Link to="/login">
+            <Button className="green gradientHover">Fazer Login para comprar</Button>
+          </Link>
+        )}
       </div>
     </div>
   );

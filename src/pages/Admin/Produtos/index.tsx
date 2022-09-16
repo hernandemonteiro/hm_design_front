@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import FormProduct from "../../../components/Admin/FormProduct";
 import Template from "../../../components/Admin/Template";
+import Button from "../../../components/Shop/Button";
 import ProductCard from "../../../components/Shop/ProductCard";
+import usePagination from "../../../Hooks/usePagination";
 
 export default function Produtos() {
   const [products, setProducts] = useState([]);
   const [productsView, setProductsView] = useState("Products List");
+  const { pagination, buttonPaginate } = usePagination(15);
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/products`)
       .then((response) => response.json())
@@ -16,17 +19,28 @@ export default function Produtos() {
     <Template>
       {productsView === "Products List" ? (
         <>
-          <button onClick={() => setProductsView("Product Register")}>Cadastrar Produto</button>
-          {products.map((element: any) => (
+          <Button onClick={() => setProductsView("Product Register")}>
+            Cadastrar Produto
+          </Button>
+          {products.slice(0, pagination).map((element: any) => (
             <ProductCard
               name={element.name}
               price={element.price}
               id={element._id}
             />
           ))}
+          {buttonPaginate(products.length)}
         </>
       ) : (
-        <FormProduct />
+        <>
+          <FormProduct />
+          <Button
+            className="red"
+            onClick={() => setProductsView("Products List")}
+          >
+            Cancelar
+          </Button>
+        </>
       )}
     </Template>
   );

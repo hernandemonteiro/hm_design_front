@@ -14,22 +14,13 @@
     overflow: hidden;
 }
 
+.productName,
+.productPrice {
+    height: 50px;
+    overflow: hidden;
+}
+
 .card>div {
     margin: 4%;
     user-select: none;
-}
-
-.buttonsAction>button {
-    width: 70%;
-    padding: 3%;
-    text-transform: uppercase;
-    font-weight: bold;
-    border-radius: 10px;
-    border: solid thin gray;
-}
-
-.buttonsAction>button:hover {
-    background: rgb(2, 0, 36);
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(107, 9, 121, 0.9472163865546218) 35%, rgba(0, 212, 255, 1) 100%);
-    color: white
 }

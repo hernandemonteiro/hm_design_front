@@ -2,11 +2,12 @@
     width: 90%;
     padding: 3%;
     text-transform: uppercase;
-    margin-bottom: 3%;
+    margin: 4%;
     border-radius: 10px;
     border: none;
     font-weight: bold;
     cursor: pointer;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .btn:hover {
@@ -22,4 +23,19 @@
 .red:hover {
     background-color: black;
     color: white;
+}
+
+.green {
+    background-color: green;
+    color: white;
+}
+
+.green:hover {
+    background-color: rgb(4, 179, 4);
+}
+
+.gradientHover:hover {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(107, 9, 121, 0.9472163865546218) 35%, rgba(0, 212, 255, 1) 100%);
+    color: white
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "../../Shop/Button";
 import "./FormProduct.scss";
 
 export default function FormProduct() {
@@ -8,7 +9,7 @@ export default function FormProduct() {
   const [category, setCategory] = useState<string>("");
   const [pictures, setPictures] = useState<string>("");
   const [description, setDescription] = useState<string>("");
-  
+
   const [option, setOption] = useState("");
 
   let arrayOption: any = [];
@@ -21,8 +22,8 @@ export default function FormProduct() {
   return (
     <form>
       <div className="formHeader">
-      <h3>Cadastrar Produtos</h3>
-      <hr/>
+        <h3>Cadastrar Produtos</h3>
+        <hr />
       </div>
       <br />
       <label>Nome do produto*:</label>
@@ -37,9 +38,9 @@ export default function FormProduct() {
           placeholder="Opções"
           value={option}
         />
-        <button type="button" onClick={addOption}>
+        <Button type="button" onClick={addOption} className="green">
           ADICIONAR OPÇÂO
-        </button>
+        </Button>
       </div>
       <label>Categoria*:</label>
       <select required onChange={(e) => setCategory(e.target.value)}>
@@ -54,8 +55,9 @@ export default function FormProduct() {
       <label>Descrição*:</label>
       <textarea required placeholder="Descreva seu produto!"></textarea>
       <div className="actions">
-        <button type="button"onClick={() => document.location.reload()}>CANCELAR</button>
-        <button type="submit">CADASTRAR</button>
+        <Button type="submit" className="green">
+          CADASTRAR
+        </Button>
       </div>
     </form>
   );

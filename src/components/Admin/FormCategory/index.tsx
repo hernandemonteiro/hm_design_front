@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../../Shop/Button";
 
 export default function FormCategory() {
   return (
@@ -11,8 +12,9 @@ export default function FormCategory() {
       <label>Categoria:*</label>
       <input required type="text" placeholder="categoria" />
       <div className="actions">
-        <button type="button">CANCELAR</button>
-        <button type="submit">CADASTRAR</button>
+        <Button type="submit" className="green">
+          CADASTRAR
+        </Button>
       </div>
     </form>
   );
