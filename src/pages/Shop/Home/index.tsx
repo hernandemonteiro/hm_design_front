@@ -8,7 +8,7 @@ import usePagination from "../../../Hooks/usePagination";
  */
 export default function Home() {
   const [products, setProducts] = useState([]);
-  const {pagination, buttonPaginate} = usePagination(15);
+  const {pagination, buttonPaginate} = usePagination(9);
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/products`)
       .then((response) => response.json())
