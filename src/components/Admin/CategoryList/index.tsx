@@ -9,28 +9,28 @@ import Paper from "@mui/material/Paper";
 import { Delete, Edit } from "@mui/icons-material";
 import usePagination from "../../../Hooks/usePagination";
 
-export default function ClientList() {
-  const [users, setUsers] = useState([]);
+export default function CategoryList() {
+  const [categorys, setCategorys] = useState([]);
   const { pagination, buttonPaginate } = usePagination(15);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/users`)
+    fetch(`${import.meta.env.VITE_API_URL}/categorys`)
       .then((response) => response.json())
-      .then((response) => setUsers(response.result))
-      .catch((error: string) => console.log("Users Error Db:" + error));
-  }, [users]);
+      .then((response) => setCategorys(response.result))
+      .catch((error: string) => console.log("categorys Error Db:" + error));
+  }, [categorys]);
 
-  function deleteUser(id: string) {
-    fetch(`${import.meta.env.VITE_API_URL}/users/${id}`, { method: "DELETE" })
+  function deleteCategory(id: string) {
+    fetch(`${import.meta.env.VITE_API_URL}/category/${id}`, { method: "DELETE" })
       .then((response) => {
         console.log(response.status);
-        setUsers([]);
+        setCategorys([])
       })
-      .catch((error: string) => console.log("Users Error delete:" + error));
+      .catch((error: string) => console.log("categorys Error delete:" + error));
   }
   return (
-    <div className="clientListBox">
-      <h1>Users - {users.length}</h1>
+    <div className="categoryListBox">
+      <h1>Categorys - {categorys.length}</h1>
       <br />
       <div className="actions"></div>
       <TableContainer component={Paper}>
@@ -38,10 +38,7 @@ export default function ClientList() {
           <TableHead>
             <TableRow>
               <TableCell>
-                <h3>Type</h3>
-              </TableCell>
-              <TableCell>
-                <h3>Nome</h3>
+                <h3>Category</h3>
               </TableCell>
               <TableCell sx={{ textAlign: "center" }}>
                 <h3>Edit</h3>
@@ -49,10 +46,9 @@ export default function ClientList() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {users.slice(0, pagination).map((element: any) => (
+            {categorys.slice(0, pagination).map((element: any) => (
               <TableRow>
-                <TableCell>{element.type === "1" ? "User" : "Adm"}</TableCell>
-                <TableCell>{element.name}</TableCell>
+                <TableCell>{element.category}</TableCell>
                 <TableCell sx={{ textAlign: "center" }}>
                   <Delete
                     sx={{
@@ -65,7 +61,7 @@ export default function ClientList() {
                         color: "white",
                       },
                     }}
-                    onClick={() => deleteUser(element._id)}
+                    onClick={() => deleteCategory(element._id)}
                   />
                   <Edit
                     color="success"
@@ -88,7 +84,7 @@ export default function ClientList() {
             ))}
           </TableBody>
         </Table>
-        {buttonPaginate(users.length)}
+        {buttonPaginate(categorys.length)}
       </TableContainer>
     </div>
   );

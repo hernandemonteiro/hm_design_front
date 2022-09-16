@@ -14,7 +14,7 @@ export default function Produtos() {
       .then((response) => response.json())
       .then((response) => setProducts(response.result))
       .catch((error) => console.log("Error: " + error.message));
-  }, []);
+  }, [products]);
   return (
     <Template>
       {productsView === "Products List" ? (
