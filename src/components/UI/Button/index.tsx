@@ -5,10 +5,11 @@ interface ButtonProps {
   onClick?: any;
   className?: string;
   type?: any;
+  disabled?: any;
 }
 export default function Button(props: ButtonProps) {
   return (
-    <button type={props.type} className={`btn ${props.className}`}  onClick={props.onClick}>
+    <button disabled={props.disabled} type={props.type} className={`btn ${props.className}`}  onClick={props.onClick}>
       {props.children}
     </button>
   );

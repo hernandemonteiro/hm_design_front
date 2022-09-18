@@ -2,6 +2,8 @@ import { Delete } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import Button from "../../UI/Button";
 import "./FormProduct.scss";
+import CryptoJS from "crypto-js";
+
 
 export default function FormProduct() {
   const [name, setName] = useState<string>("");
@@ -119,7 +121,8 @@ export default function FormProduct() {
         type="file"
         onChange={(e) => {
           setPictures(e.target.files)
-          console.log(pictures[0].name)
+          let encryptedImage = CryptoJS.SHA256(pictures[0])
+          console.log(encryptedImage)
         }}
       />
       <label>Descrição*:</label>

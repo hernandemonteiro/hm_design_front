@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../Hooks/useAuth";
+import Button from "../../UI/Button";
 import "./Login.scss";
 
 export default function Login() {
@@ -33,12 +34,15 @@ export default function Login() {
           value={password}
           type="password"
         />
-        <button type="submit">Login</button>
+        <Button className='green' type="submit">Login</Button>
         <Link className="Link" to="/register">
-          <button>cadastrar-se</button>
+          <Button className="warning">cadastrar-se</Button>
         </Link>
         <Link className="Link" to="/">
-          <button>Voltar ao site</button>
+          <Button>Voltar ao site</Button>
+        </Link>
+        <Link to='/forgotPassword'>
+          Esqueceu sua senha?
         </Link>
       </form>
     </div>

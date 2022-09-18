@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../Hooks/useAuth";
+import Button from "../../UI/Button";
 import "./Register.scss";
 
 export default function Register() {
@@ -73,19 +74,19 @@ export default function Register() {
             placeholder="Confirmar Senha"
           />
           {password === confirmPassword ? (
-            <button className="btnWidth" type="submit">
+            <Button className="green btnWidth" type="submit">
               Cadastrar
-            </button>
+            </Button>
           ) : (
-            <button disabled className="btnWidth" type="submit">
+            <Button disabled className="btnWidth" type="submit">
               Cadastrar
-            </button>
+            </Button>
           )}
           <Link className="Link" to="/login">
-            <button className="btnWidth">Já tem conta?</button>
+            <Button className="warning">Já tem conta?</Button>
           </Link>
           <Link className="Link" to="/">
-            <button className="btnWidth">Voltar ao site</button>
+            <Button>Voltar ao site</Button>
           </Link>
         </form>
       )}
