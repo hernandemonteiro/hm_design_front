@@ -7,7 +7,7 @@ export default function Dashboard() {
   const [production, setProduction] = useState([]);
   const [products, setProducts] = useState([]);
   const [categorys, setCategorys] = useState([]);
-  const url = import.meta.env.VITE_API_URL;
+  const url = `${import.meta.env.VITE_API_URL}/${import.meta.env.VITE_HASH_SECRET}`;
   useEffect(() => {
     fetch(`${url}/users`)
       .then((response) => response.json())
