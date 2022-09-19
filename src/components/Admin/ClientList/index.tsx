@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -6,7 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Delete, Edit } from "@mui/icons-material";
+import { Delete } from "@mui/icons-material";
 import usePagination from "../../../Hooks/usePagination";
 
 export default function ClientList() {
@@ -66,22 +66,6 @@ export default function ClientList() {
                       },
                     }}
                     onClick={() => deleteUser(element._id)}
-                  />
-                  <Edit
-                    color="success"
-                    sx={{
-                      margin: "2%",
-                      padding: "2%",
-                      marginLeft: "15%",
-                      "&:hover": {
-                        borderRadius: "50%",
-                        backgroundColor: "black",
-                        color: "white",
-                      },
-                    }}
-                    onClick={() => {
-                      alert("Change the password to a default value!");
-                    }}
                   />
                 </TableCell>
               </TableRow>
