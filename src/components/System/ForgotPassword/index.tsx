@@ -12,7 +12,7 @@ export default function ForgotPassword() {
 
   function forgotPassword(event: any) {
     event.preventDefault();
-    fetch(`${import.meta.env.VITE_API_URL}/${import.meta.env.VITE_HASH_SECRET}/forgotPassword/${email}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/forgotPassword/${email}`, {
       method: "POST",
     })
       .then((response) => response.json())

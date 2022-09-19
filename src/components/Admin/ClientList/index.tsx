@@ -14,14 +14,14 @@ export default function ClientList() {
   const { pagination, buttonPaginate } = usePagination(15);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/${import.meta.env.VITE_HASH_SECRET}/users`)
+    fetch(`${import.meta.env.VITE_API_URL}/users`)
       .then((response) => response.json())
       .then((response) => setUsers(response.result))
       .catch((error: string) => console.log("Users Error Db:" + error));
   }, [users]);
 
   function deleteUser(id: string) {
-    fetch(`${import.meta.env.VITE_API_URL}/${import.meta.env.VITE_HASH_SECRET}/users/${id}`, { method: "DELETE" })
+    fetch(`${import.meta.env.VITE_API_URL}/users/${id}`, { method: "DELETE" })
       .then((response) => {
         console.log(response.status);
         setUsers([]);

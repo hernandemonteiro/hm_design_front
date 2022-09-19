@@ -14,14 +14,14 @@ export default function CategoryList() {
   const { pagination, buttonPaginate } = usePagination(15);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/${import.meta.env.VITE_HASH_SECRET}/categorys`)
+    fetch(`${import.meta.env.VITE_API_URL}/categorys`)
       .then((response) => response.json())
       .then((response) => setCategorys(response.result))
       .catch((error: string) => console.log("categorys Error Db:" + error));
   }, [categorys]);
 
   function deleteCategory(id: string) {
-    fetch(`${import.meta.env.VITE_API_URL}/${import.meta.env.VITE_HASH_SECRET}/category/${id}`, { method: "DELETE" })
+    fetch(`${import.meta.env.VITE_API_URL}/category/${id}`, { method: "DELETE" })
       .then((response) => {
         console.log(response.status);
         setCategorys([])

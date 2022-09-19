@@ -10,7 +10,7 @@ export default function Produtos() {
   const [productsView, setProductsView] = useState("Products List");
   const { pagination, buttonPaginate } = usePagination(15);
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/${import.meta.env.VITE_HASH_SECRET}/products`)
+    fetch(`${import.meta.env.VITE_API_URL}/products`)
       .then((response) => response.json())
       .then((response) => setProducts(response.result))
       .catch((error) => console.log("Error: " + error.message));

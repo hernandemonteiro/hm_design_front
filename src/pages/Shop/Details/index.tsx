@@ -8,7 +8,7 @@ export default function Details() {
   const route = useParams();
   const id = route.id;
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/${import.meta.env.VITE_HASH_SECRET}/product/${id}`)
+    fetch(`${import.meta.env.VITE_API_URL}/product/${id}`)
       .then((response) => response.json())
       .then((response) => setData(response.result))
       .catch((error) => console.log("Error: " + error.message));

@@ -27,7 +27,7 @@ export default function FormProduct() {
   }
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/${import.meta.env.VITE_HASH_SECRET}/categorys`)
+    fetch(`${import.meta.env.VITE_API_URL}/categorys`)
       .then((response) => response.json())
       .then((response) => setCategorys(response.result))
       .catch((error) => console.log("Error: " + error.message));
