@@ -12,7 +12,7 @@ export default function RecoveryPassword() {
   const hash = useParams().hash;
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/confirmHash/${hash}`)
+    fetch(`${import.meta.env.VITE_API_URL}/${import.meta.env.VITE_HASH_SECRET}/confirmHash/${hash}`)
       .then((response: any) => response.json())
       .then((response: any) => {
         if (response.result === 0) {
@@ -22,7 +22,7 @@ export default function RecoveryPassword() {
   }, []);
   function recoveryPassword(event: any) {
     event.preventDefault();
-    fetch(`${import.meta.env.VITE_API_URL}/updatePassword/${hash}/${password}`)
+    fetch(`${import.meta.env.VITE_API_URL}/${import.meta.env.VITE_HASH_SECRET}/updatePassword/${hash}/${password}`)
       .then((response: any) => {
         if (response.result === "Success") {
           window.location.href = "/login";

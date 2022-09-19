@@ -10,7 +10,7 @@ export default function Home() {
   const [products, setProducts] = useState([]);
   const {pagination, buttonPaginate} = usePagination(12);
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/products`)
+    fetch(`${import.meta.env.VITE_API_URL}/${import.meta.env.VITE_HASH_SECRET}/products`)
       .then((response) => response.json())
       .then((response) => setProducts(response.result))
       .catch((error) => console.log("Error: " + error.message));

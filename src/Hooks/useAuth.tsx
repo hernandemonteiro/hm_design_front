@@ -27,7 +27,7 @@ export const AuthProvider = (props: authProps) => {
   }, []);
 
   function login(email: string, password: string) {
-    fetch(`${import.meta.env.VITE_API_URL}/login/${email}/${password}`)
+    fetch(`${import.meta.env.VITE_API_URL}/${import.meta.env.VITE_HASH_SECRET}/login/${email}/${password}`)
       .then((response) => response.json())
       .then((response) => {
         const token = response.jwt;

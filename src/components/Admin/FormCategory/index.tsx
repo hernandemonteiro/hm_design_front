@@ -6,7 +6,7 @@ export default function FormCategory() {
   const [message, setMessage] = useState("");
   function registerCategory(event: any) {
     event.preventDefault();
-    fetch(`${import.meta.env.VITE_API_URL}/category/register/${category}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/${import.meta.env.VITE_HASH_SECRET}/category/register/${category}`, {
       method: "PUT",
     }).then(() => {
       setMessage("Cadastrado com sucesso!");

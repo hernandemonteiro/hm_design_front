@@ -13,7 +13,7 @@ export default function InProductionList() {
   const [orders, setOrders] = useState([]);
   const { pagination, buttonPaginate } = usePagination(15);
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/orders`)
+    fetch(`${import.meta.env.VITE_API_URL}/${import.meta.env.VITE_HASH_SECRET}/orders`)
       .then((response) => response.json())
       .then((response) => setOrders(response.result))
       .catch((error: string) => console.log("Orders Error Db:" + error));

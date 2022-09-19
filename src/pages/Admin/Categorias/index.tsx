@@ -9,7 +9,7 @@ export default function Categoria() {
   const [categorys, setCategorys] = useState([]);
   const [categoryView, setCategoryView] = useState("Categorys List");
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/categorys`)
+    fetch(`${import.meta.env.VITE_API_URL}/${import.meta.env.VITE_HASH_SECRET}/categorys`)
       .then((response) => response.json())
       .then((response) => setCategorys(response.result))
       .catch((error) => console.log("Error: " + error.message));
