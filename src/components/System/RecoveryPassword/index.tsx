@@ -34,8 +34,9 @@ export default function RecoveryPassword() {
         },
       }
     )
+      .then((response: any) => response.json())
       .then((response: any) => {
-        console.log(response)
+        console.log(response);
         if (response.result === "Success") {
           window.location.href = "/login";
         }
