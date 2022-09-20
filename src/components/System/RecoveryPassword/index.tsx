@@ -39,9 +39,10 @@ export default function RecoveryPassword() {
       .then((response: any) => {
         console.log(response);
         if (response.result === "Success") {
-          window.location.href = "/login";
+          return (window.location.href = "/login");
+        } else {
+          return setMessage("Erro ao mudar senha!");
         }
-        setMessage("Erro ao mudar senha!");
       })
       .catch((error: any) => {
         setMessage("Erro ao mudar senha!");
