@@ -21,14 +21,16 @@ export default function ForgotPassword() {
     })
       .then((response) => response.json())
       .then((response) => {
-        console.log(response.result);
         if (response.result === "Email enviado!") {
           setView("Success");
         }
         if (response.result === "Usuário não existe!") {
           setMessage("Usuário não encontrado em nosso sistema!");
         }
-      });
+      })
+      .catch((error) => {
+        setMessage("Erro em nosso servidor, tente novamente mais tarde!");
+        console.log(error)});
   }
   if (view === "Success") {
     setInterval(async function () {
