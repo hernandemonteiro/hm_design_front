@@ -40,7 +40,7 @@ export default function Register() {
   return (
     <div className="RegisterBox">
       {view === "Register" && (
-        <form onSubmit={userRegister}>
+        <form className='formRegister' onSubmit={userRegister}>
           <h1>Cadastro</h1>
           {message}
           <label>Digite seu nome!</label>

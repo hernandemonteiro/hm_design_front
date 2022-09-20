@@ -6,9 +6,16 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../../Hooks/useAuth";
 import { ExitToApp } from "@mui/icons-material";
 import Badge from "@mui/material/Badge";
+import { useState } from "react";
 
 export default function Header() {
   const { user, logout } = useAuth();
+  const [search, setSearch] = useState("");
+
+  function searchRedirect(event: any) {
+    event.preventDefault();
+    window.location.href = `/${search}`;
+  }
   return (
     <header>
       <div className="HeaderLogo">
@@ -16,15 +23,20 @@ export default function Header() {
           <h1>HM Design</h1>
         </Link>
       </div>
-
-      <div className="SearchBox">
-        <div className="SearchLayout">
-          <input type="search" placeholder="Buscar..." />
-          <button>
-            <SearchIcon className="Icon" sx={{ fontSize: 25 }} />
-          </button>
+      <form className='formSearch' onSubmit={searchRedirect}>
+        <div className="SearchBox">
+          <div className="SearchLayout">
+            <input
+              type="search"
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder="Buscar..."
+            />
+            <button type='submit'>
+              <SearchIcon className="Icon" sx={{ fontSize: 25 }} />
+            </button>
+          </div>
         </div>
-      </div>
+      </form>
       <div className="UserCart">
         {!user ? (
           <Link to="/login" style={{ color: "black" }}>
@@ -37,11 +49,8 @@ export default function Header() {
         )}
 
         <Link to="/cart" style={{ color: "black" }}>
-          <Badge badgeContent={2} color="secondary" sx={{margin: 2}}>
-            <ShoppingCartIcon
-              className="Icon"
-              sx={{ fontSize: 40 }}
-            />
+          <Badge badgeContent={2} color="secondary" sx={{ margin: 2 }}>
+            <ShoppingCartIcon className="Icon" sx={{ fontSize: 40 }} />
           </Badge>
         </Link>
         {user && (
