@@ -21,6 +21,7 @@ export default function ForgotPassword() {
     })
       .then((response) => response.json())
       .then((response) => {
+        console.log(response);
         if (response.result === "Email enviado!") {
           setView("Success");
         }
