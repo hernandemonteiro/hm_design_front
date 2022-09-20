@@ -59,6 +59,7 @@ export default function RecoveryPassword() {
           <input
             type="password"
             required
+            autoFocus
             onChange={(event) => setPassword(event.target.value)}
             placeholder="Nova Senha"
           />

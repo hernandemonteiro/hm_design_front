@@ -47,13 +47,16 @@ export default function Register() {
           <input
             required
             type="text"
+            autoFocus
             onChange={(e) => setName(e.target.value)}
+            autoComplete="off"
             placeholder="Nome"
           />
           <label>Digite seu email!</label>
           <input
             required
             type="email"
+            autoComplete="off"
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Email"
           />
@@ -61,12 +64,14 @@ export default function Register() {
           <input
             required
             type="password"
+            autoComplete="off"
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Senha"
           />
           <label>Confirme sua senha!</label>
           <input
             required
+            autoComplete="off"
             className={
               password != confirmPassword ? "NotEqualPass" : "EqualPass"
             }

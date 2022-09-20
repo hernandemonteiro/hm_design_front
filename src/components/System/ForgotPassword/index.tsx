@@ -52,6 +52,7 @@ export default function ForgotPassword() {
           <input
             type="email"
             required
+            autoFocus
             onChange={(event) => setEmail(event.target.value)}
             placeholder="Email registrado!"
           />
