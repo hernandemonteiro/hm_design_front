@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../../Hooks/useAuth";
 import Button from "../../UI/Button";
 import "./Register.scss";
+import CryptoJS from "crypto-js";
 
 export default function Register() {
   const { login } = useAuth();
