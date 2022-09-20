@@ -24,7 +24,6 @@ header {
 
 
 .SearchBox {
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,9 +44,9 @@ header {
 }
 
 .SearchLayout>input {
-
     width: 90%;
     border: none;
+    background: none;
     padding: 2%;
     outline: none;
 

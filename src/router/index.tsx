@@ -2,7 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { AuthProvider, useAuth } from "../Hooks/useAuth";
 import NotFoundError from "../components/System/NotFoundError";
 import Home from "../pages/Shop/Home";
-import Cart from "../pages/Shop/Cart";
+import CartPage from "../pages/Shop/Cart";
 import Details from "../pages/Shop/Details";
 import Login from "../components/System/Login";
 import Register from "../components/System/Register";
@@ -59,7 +59,9 @@ export default function Router() {
         <Routes>
           {/* shop; */}
           <Route path="/" element={<Home />} />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/:search" element={<Home />} />
+          <Route path="category/:category" element={<Home />} />
+          <Route path="/cart" element={<CartPage />} />
           <Route path="/details/:id" element={<Details />} />
           {/* user; */}
           <Route

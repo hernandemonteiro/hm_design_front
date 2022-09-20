@@ -1,4 +1,3 @@
-import React from "react";
 import "./Header.scss";
 import PersonIcon from "@mui/icons-material/Person";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -38,7 +37,7 @@ export default function Header() {
         )}
 
         <Link to="/cart" style={{ color: "black" }}>
-          <Badge badgeContent={1} color="secondary" sx={{margin: 2}}>
+          <Badge badgeContent={2} color="secondary" sx={{margin: 2}}>
             <ShoppingCartIcon
               className="Icon"
               sx={{ fontSize: 40 }}
