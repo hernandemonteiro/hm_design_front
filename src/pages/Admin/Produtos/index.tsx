@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import FormProduct from "../../../components/Admin/FormProduct";
 import Template from "../../../components/Admin/Template";
 import Button from "../../../components/UI/Button";
-import ProductCard from "../../../components/Shop/ProductCard";
+import ProductCard from "../../../components/UI/ProductCard";
 import usePagination from "../../../Hooks/usePagination";
 import useToken from "../../../Hooks/useToken";
 

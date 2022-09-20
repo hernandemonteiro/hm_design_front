@@ -1,4 +1,4 @@
-import ProductCard from "../../../components/Shop/ProductCard";
+import ProductCard from "../../../components/UI/ProductCard";
 import Template from "../../../components/Shop/Template";
 import { useEffect, useState } from "react";
 import usePagination from "../../../Hooks/usePagination";
