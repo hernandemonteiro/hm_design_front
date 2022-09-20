@@ -15,7 +15,7 @@ export default function CategoryList() {
   const { pagination, buttonPaginate } = usePagination(15);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/categorys`{
+    fetch(`${import.meta.env.VITE_API_URL}/categorys`, {
       headers: {
         "x-access-token": useToken(),
       },
