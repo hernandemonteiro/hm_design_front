@@ -8,20 +8,29 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Delete, Edit } from "@mui/icons-material";
 import usePagination from "../../../Hooks/usePagination";
+import useToken from "../../../Hooks/useToken";
 
 export default function CategoryList() {
   const [categorys, setCategorys] = useState([]);
   const { pagination, buttonPaginate } = usePagination(15);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/categorys`)
+    fetch(`${import.meta.env.VITE_API_URL}/categorys`{
+      headers: {
+        "x-access-token": useToken(),
+      },
+    })
       .then((response) => response.json())
       .then((response) => setCategorys(response.result))
       .catch((error: string) => console.log("categorys Error Db:" + error));
   }, []);
 
   function deleteCategory(id: string) {
-    fetch(`${import.meta.env.VITE_API_URL}/category/${id}`, { method: "DELETE" })
+    fetch(`${import.meta.env.VITE_API_URL}/category/${id}`, { method: "DELETE",
+      headers: {
+        "x-access-token": useToken(),
+      },
+    })
       .then((response) => {
         console.log(response.status);
         setCategorys([])

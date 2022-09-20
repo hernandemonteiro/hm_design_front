@@ -1,23 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import FormCategory from "../../../components/Admin/FormCategory";
 import Template from "../../../components/Admin/Template";
 import Button from "../../../components/UI/Button";
 import CategoryList from "../../../components/Admin/CategoryList";
-import useToken from "../../../Hooks/useToken";
 
 export default function Categoria() {
-  const [categorys, setCategorys] = useState([]);
   const [categoryView, setCategoryView] = useState("Categorys List");
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/categorys`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => setCategorys(response.result))
-      .catch((error) => console.log("Error: " + error.message));
-  }, []);
   return (
     <Template>
       {categoryView === "Categorys List" ? (

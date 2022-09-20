@@ -1,4 +1,3 @@
-import { Streetview } from "@mui/icons-material";
 import { useState } from "react";
 import Button from "../../UI/Button";
 import "./ForgotPassword.scss";
