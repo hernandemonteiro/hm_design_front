@@ -98,7 +98,7 @@ export default function Register() {
           <h1>Registrado com sucesso!</h1>
           <br />
           <Link className="Link" to="/login">
-            <button className="btnWidth">Ir para login</button>
+            <Button className="green">Ir para login</Button>
           </Link>
         </div>
       )}
