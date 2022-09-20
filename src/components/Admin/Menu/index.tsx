@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../Hooks/useAuth";
 import Button from "../../UI/Button";
+import Nav from "../../UI/Nav";
 
 export default function Menu() {
   const { logout } = useAuth();
   return (
-    <nav>
+    <Nav>
       <Link to="/admin">
         <Button>Dashboard</Button>
       </Link>
@@ -24,7 +25,9 @@ export default function Menu() {
       <Link to="/admin/producao">
         <Button>Em produção</Button>
       </Link>
-      <Button className="red" onClick={logout}>Sair</Button>
-    </nav>
+      <Button className="red" onClick={logout}>
+        Sair
+      </Button>
+    </Nav>
   );
 }

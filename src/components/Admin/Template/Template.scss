@@ -7,3 +7,9 @@
     max-width: 70%;
     margin: 3%;
 }
+
+@media (max-width: 800px) {
+    .mainAdmin {
+        width: 100%
+    }
+}
