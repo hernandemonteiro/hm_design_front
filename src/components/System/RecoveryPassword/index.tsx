@@ -11,7 +11,6 @@ export default function RecoveryPassword() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [view, setView] = useState(true);
   const hash = useParams().hash;
-console.log(hash)
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/confirmHash/${hash}`, {
       headers: {
