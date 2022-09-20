@@ -28,7 +28,7 @@ export default function RecoveryPassword() {
   function recoveryPassword(event: any) {
     event.preventDefault();
     fetch(
-      `${import.meta.env.VITE_API_URL}/updatePassword/${hash}/${password}`,
+      `${import.meta.env.VITE_API_URL}/updatePassword/${password}?hash=${hash}`,
       {
         headers: {
           "x-access-token": useToken(),
