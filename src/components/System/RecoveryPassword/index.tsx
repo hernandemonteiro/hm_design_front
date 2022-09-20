@@ -24,11 +24,12 @@ export default function RecoveryPassword() {
         }
       });
   }, []);
-  function recoveryPassword(event: any) {
+  function updatePassword(event: any) {
     event.preventDefault();
     fetch(
       `${import.meta.env.VITE_API_URL}/updatePassword/${hash}/${password}`,
       {
+        method: "PUT",
         headers: {
           "x-access-token": useToken(),
         },
@@ -50,7 +51,7 @@ export default function RecoveryPassword() {
   return (
     <div className="RecoveryBox">
       {view ? (
-        <form onSubmit={recoveryPassword}>
+        <form onSubmit={updatePassword}>
           <p>Digite sua nova senha!</p>
           <h3 className="MessageSystem">{message}</h3>
           <br />
