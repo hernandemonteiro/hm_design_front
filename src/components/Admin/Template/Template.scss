@@ -5,12 +5,15 @@
 }
 
 .mainAdmin {
-    max-width: 70%;
+    width: 70%;
     margin: 3%;
 }
 
 @media (max-width: 800px) {
     .mainAdmin {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         width: 100%
     }
 }
