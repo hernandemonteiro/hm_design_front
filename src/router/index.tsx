@@ -138,7 +138,7 @@ export default function Router() {
           />
           <Route path="/forgotpassword" element={<ForgotPassword />} />
           <Route
-            path="/recoverypassword"
+            path="/recoverypassword/:hash"
             element={<RecoveryPassword />}
           />
           <Route path="*" element={<NotFoundError />} />

@@ -13,7 +13,7 @@ export default function RecoveryPassword() {
   const hash = useParams().hash;
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/confirmHash?hash=${hash}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/confirmHash/${hash}`, {
       headers: {
         "x-access-token": useToken(),
       },
@@ -28,7 +28,7 @@ export default function RecoveryPassword() {
   function recoveryPassword(event: any) {
     event.preventDefault();
     fetch(
-      `${import.meta.env.VITE_API_URL}/updatePassword/${password}?hash=${hash}`,
+      `${import.meta.env.VITE_API_URL}/updatePassword/${hash}/${password}`,
       {
         headers: {
           "x-access-token": useToken(),
