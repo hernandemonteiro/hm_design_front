@@ -4,13 +4,18 @@ import Template from "../../../components/Admin/Template";
 import Button from "../../../components/UI/Button";
 import ProductCard from "../../../components/Shop/ProductCard";
 import usePagination from "../../../Hooks/usePagination";
+import useToken from "../../../Hooks/useToken";
 
 export default function Produtos() {
   const [products, setProducts] = useState([]);
   const [productsView, setProductsView] = useState("Products List");
   const { pagination, buttonPaginate } = usePagination(15);
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/products`)
+    fetch(`${import.meta.env.VITE_API_URL}/products`, {
+      headers: {
+        "x-access-token": useToken(),
+      },
+    })
       .then((response) => response.json())
       .then((response) => setProducts(response.result))
       .catch((error) => console.log("Error: " + error.message));

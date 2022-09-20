@@ -3,6 +3,7 @@ import { useState } from "react";
 import Button from "../../UI/Button";
 import "./ForgotPassword.scss";
 import forgotSuccess from "../../../assets/images/forgotsuccess.svg";
+import useToken from "../../../Hooks/useToken";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -14,6 +15,9 @@ export default function ForgotPassword() {
     event.preventDefault();
     fetch(`${import.meta.env.VITE_API_URL}/forgotPassword/${email}`, {
       method: "POST",
+        headers: {
+          "x-access-token": useToken(),
+        }
     })
       .then((response) => response.json())
       .then((response) => {

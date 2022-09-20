@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import CryptoJS from "crypto-js";
+import useToken from "./useToken";
 
 /*
  * @description provide an global state context for user login status;
@@ -27,7 +28,11 @@ export const AuthProvider = (props: authProps) => {
   }, []);
 
   function login(email: string, password: string) {
-    fetch(`${import.meta.env.VITE_API_URL}/login/${email}/${password}`)
+    fetch(`${import.meta.env.VITE_API_URL}/login/${email}/${password}`, {
+      headers: {
+        "x-access-token": useToken(),
+      },
+    })
       .then((response) => response.json())
       .then((response) => {
         const token = response.jwt;

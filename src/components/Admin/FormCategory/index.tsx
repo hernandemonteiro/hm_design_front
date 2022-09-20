@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useToken from "../../../Hooks/useToken";
 import Button from "../../UI/Button";
 
 export default function FormCategory() {
@@ -8,6 +9,10 @@ export default function FormCategory() {
     event.preventDefault();
     fetch(`${import.meta.env.VITE_API_URL}/category/register/${category}`, {
       method: "PUT",
+        headers: {
+          "x-access-token": useToken(),
+        },
+    
     }).then(() => {
       setMessage("Cadastrado com sucesso!");
       setCategory("");

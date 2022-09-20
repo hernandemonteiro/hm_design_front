@@ -2,6 +2,7 @@ import ProductCard from "../../../components/Shop/ProductCard";
 import Template from "../../../components/Shop/Template";
 import { useEffect, useState } from "react";
 import usePagination from "../../../Hooks/usePagination";
+import useToken from "../../../Hooks/useToken";
 
 /* @description the first page rendered, list products in sort order
  *  @route = "/"
@@ -10,10 +11,14 @@ export default function Home() {
   const [products, setProducts] = useState([]);
   const { pagination, buttonPaginate } = usePagination(12);
   useEffect(() => {   
-    fetch(`${import.meta.env.VITE_API_URL}/products`)
+    fetch(`${import.meta.env.VITE_API_URL}/products`, {
+      headers: {
+        "x-access-token": useToken(),
+      },
+    })
       .then((response) => response.json())
       .then((response) => setProducts(response.result))
-      .catch((error) => console.log("Error: " + error));
+      .catch((error) => console.log("Error: " + error.message));
   }, []);
 
   return (

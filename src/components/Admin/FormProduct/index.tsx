@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import Button from "../../UI/Button";
 import "./FormProduct.scss";
 import CryptoJS from "crypto-js";
-
+import useToken from "../../../Hooks/useToken";
 
 export default function FormProduct() {
   const [name, setName] = useState<string>("");
@@ -27,7 +27,11 @@ export default function FormProduct() {
   }
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/categorys`)
+    fetch(`${import.meta.env.VITE_API_URL}/categorys`, {
+      headers: {
+        "x-access-token": useToken(),
+      },
+    })
       .then((response) => response.json())
       .then((response) => setCategorys(response.result))
       .catch((error) => console.log("Error: " + error.message));
@@ -37,9 +41,14 @@ export default function FormProduct() {
     fetch(
       `${
         import.meta.env.VITE_API_URL
-      }/product/${name}/${price}/${pictures}/${description}/${category}/${JSON.stringify(options)}`,
+      }/product/${name}/${price}/${pictures}/${description}/${category}/${JSON.stringify(
+        options
+      )}`,
       {
         method: "PUT",
+        headers: {
+          "x-access-token": useToken(),
+        },
       }
     ).then((response) => {
       console.log(response);
@@ -120,9 +129,9 @@ export default function FormProduct() {
         required
         type="file"
         onChange={(e) => {
-          setPictures(e.target.files)
-          let encryptedImage = CryptoJS.SHA256(pictures[0])
-          console.log(encryptedImage)
+          setPictures(e.target.files);
+          let encryptedImage = CryptoJS.SHA256(pictures[0]);
+          console.log(encryptedImage);
         }}
       />
       <label>Descrição*:</label>

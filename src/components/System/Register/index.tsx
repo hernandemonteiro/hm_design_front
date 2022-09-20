@@ -1,13 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../../Hooks/useAuth";
+import useToken from "../../../Hooks/useToken";
 import Button from "../../UI/Button";
 import "./Register.scss";
-import CryptoJS from "crypto-js";
 
 export default function Register() {
-  const { login } = useAuth();
-
   const [name, setName] = useState<string>();
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
@@ -20,18 +17,13 @@ export default function Register() {
     let url = `${
       import.meta.env.VITE_API_URL
     }/users/${name}/${email}/${password}/1`;
-    const hash = import.meta.env.VITE_HASH_SECRET;
-    var iv = CryptoJS.enc.Base64.parse(import.meta.env.VITE_HASH_SECRET);
-    const secret = CryptoJS.SHA256(import.meta.env.VITE_HASH_SECRET);
-    const token = CryptoJS.AES.encrypt(hash, secret, {
-      iv: iv,
-      mode: CryptoJS.mode.CBC,
-      padding: CryptoJS.pad.Pkcs7,
-    }).toString();
-    const body = JSON.stringify({
-      authorization: token,
-    });
-    fetch(url, { method: "PUT", body: body })
+
+    fetch(url, {
+      method: "POST",
+      headers: {
+        "x-access-token": useToken(),
+      },
+    })
       .then((response) => response.json())
       .then((response) => {
         if (response.result != "user registered") {

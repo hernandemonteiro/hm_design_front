@@ -8,20 +8,30 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Delete } from "@mui/icons-material";
 import usePagination from "../../../Hooks/usePagination";
+import useToken from "../../../Hooks/useToken";
 
 export default function ClientList() {
   const [users, setUsers] = useState([]);
   const { pagination, buttonPaginate } = usePagination(15);
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/users`)
+    fetch(`${import.meta.env.VITE_API_URL}/users`, {
+      headers: {
+        "x-access-token": useToken(),
+      },
+    })
       .then((response) => response.json())
       .then((response) => setUsers(response.result))
       .catch((error: string) => console.log("Users Error Db:" + error));
   }, [users]);
 
   function deleteUser(id: string) {
-    fetch(`${import.meta.env.VITE_API_URL}/users/${id}`, { method: "DELETE" })
+    fetch(`${import.meta.env.VITE_API_URL}/users/${id}`, {
+      method: "DELETE",
+      headers: {
+        "x-access-token": useToken(),
+      },
+    })
       .then((response) => {
         console.log(response.status);
         setUsers([]);

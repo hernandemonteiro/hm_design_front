@@ -8,12 +8,17 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Check, Delete, Edit } from "@mui/icons-material";
 import usePagination from "../../../Hooks/usePagination";
+import useToken from "../../../Hooks/useToken";
 
 export default function InProductionList() {
   const [orders, setOrders] = useState([]);
   const { pagination, buttonPaginate } = usePagination(15);
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/orders`)
+    fetch(`${import.meta.env.VITE_API_URL}/orders`, {
+      headers: {
+        "x-access-token": useToken(),
+      },
+    })
       .then((response) => response.json())
       .then((response) => setOrders(response.result))
       .catch((error: string) => console.log("Orders Error Db:" + error));
