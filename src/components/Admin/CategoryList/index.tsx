@@ -18,7 +18,7 @@ export default function CategoryList() {
       .then((response) => response.json())
       .then((response) => setCategorys(response.result))
       .catch((error: string) => console.log("categorys Error Db:" + error));
-  }, [categorys]);
+  }, []);
 
   function deleteCategory(id: string) {
     fetch(`${import.meta.env.VITE_API_URL}/category/${id}`, { method: "DELETE" })

@@ -23,7 +23,7 @@ export default function ClientList() {
       .then((response) => response.json())
       .then((response) => setUsers(response.result))
       .catch((error: string) => console.log("Users Error Db:" + error));
-  }, [users]);
+  }, []);
 
   function deleteUser(id: string) {
     fetch(`${import.meta.env.VITE_API_URL}/users/${id}`, {
