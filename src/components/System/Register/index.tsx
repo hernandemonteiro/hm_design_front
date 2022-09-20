@@ -19,8 +19,18 @@ export default function Register() {
     let url = `${
       import.meta.env.VITE_API_URL
     }/users/${name}/${email}/${password}/1`;
-
-    fetch(url, { method: "PUT" })
+    const hash = import.meta.env.VITE_HASH_SECRET;
+    var iv = CryptoJS.enc.Base64.parse(import.meta.env.VITE_HASH_SECRET);
+    const secret = CryptoJS.SHA256(import.meta.env.VITE_HASH_SECRET);
+    const token = CryptoJS.AES.encrypt(hash, secret, {
+      iv: iv,
+      mode: CryptoJS.mode.CBC,
+      padding: CryptoJS.pad.Pkcs7,
+    }).toString();
+    const body = JSON.stringify({
+      authorization: token,
+    });
+    fetch(url, { method: "PUT", body: body })
       .then((response) => response.json())
       .then((response) => {
         if (response.result != "user registered") {
