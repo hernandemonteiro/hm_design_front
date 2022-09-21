@@ -50,7 +50,7 @@ export default function Header() {
         )}
 
         <Link to="/cart" style={{ color: "black" }}>
-          <Badge badgeContent={2} color="secondary" sx={{ margin: 2 }}>
+          <Badge badgeContent={2} color="warning" sx={{ margin: 2 }}>
             <ShoppingCartIcon className="Icon" sx={{ fontSize: 40 }} />
           </Badge>
         </Link>

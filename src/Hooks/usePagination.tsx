@@ -7,9 +7,10 @@ export default function usePagination(initialQuantity: number) {
   function buttonPaginate(arrayLength: any) {
     if (pagination < arrayLength) {
       return (
-        <Button onClick={() => setPagination(pagination + 5)}>
-          Mostrar Mais
-        </Button>
+        <Button
+          children="Mostrar Mais"
+          onClick={() => setPagination(pagination + 5)}
+        />
       );
     }
   }
