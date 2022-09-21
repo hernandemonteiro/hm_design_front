@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../../Hooks/useAuth";
 import Button from "../../UI/Button";
+import ButtonLink from "../../UI/ButtonLink";
+import Form from "../../UI/Form";
 import "./Login.scss";
 
 export default function Login() {
@@ -10,19 +12,19 @@ export default function Login() {
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
 
-  function handleSubmit(event: any) {
+  function handleLogin(event: any) {
     event.preventDefault();
     login(email, password);
   }
 
   return (
     <div className="LoginBox">
-      <form className='formLogin' onSubmit={handleSubmit}>
+      <Form onSubmit={handleLogin}>
         <h1>HM Design</h1>
         <h4 className="loginMessage">{loginMessage}</h4>
         <label>Digite seu email!</label>
         <input
-          required
+          required={true}
           onChange={(event) => setEmail(event.target.value)}
           value={email}
           type="email"
@@ -35,17 +37,11 @@ export default function Login() {
           value={password}
           type="password"
         />
-        <Button className='green' type="submit">Login</Button>
-        <Link className="Link" to="/register">
-          <Button className="warning">cadastrar-se</Button>
-        </Link>
-        <Link className="Link" to="/">
-          <Button>Voltar ao site</Button>
-        </Link>
-        <Link to='/forgotPassword'>
-          Esqueceu sua senha?
-        </Link>
-      </form>
+        <Button className="green" children="Login" type="submit" />
+        <ButtonLink className="warning" to="/register" children="cadastrar-se"/>
+        <ButtonLink to="/" children="Voltar ao site" />
+        <Link to="/forgotPassword">Esqueceu sua senha?</Link>
+      </Form>
     </div>
   );
 }

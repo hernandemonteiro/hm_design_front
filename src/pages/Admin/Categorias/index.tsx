@@ -10,17 +10,20 @@ export default function Categoria() {
     <Template>
       {categoryView === "Categorys List" ? (
         <>
-          <Button onClick={() => setCategoryView("Category Register")}>
-            Cadastrar Categoria
-          </Button>
+          <Button
+            children="Cadastrar Categoria"
+            onClick={() => setCategoryView("Category Register")}
+          />
           <CategoryList />
         </>
       ) : (
         <>
           <FormCategory />
-          <Button className="red" onClick={() => setCategoryView("Categorys List")}>
-            voltar
-          </Button>
+          <Button
+            className="red"
+            children="voltar"
+            onClick={() => setCategoryView("Categorys List")}
+          />
         </>
       )}
     </Template>

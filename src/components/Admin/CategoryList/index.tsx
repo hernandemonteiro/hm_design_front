@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,35 +8,12 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Delete, Edit } from "@mui/icons-material";
 import usePagination from "../../../Hooks/usePagination";
-import useToken from "../../../Hooks/useToken";
+import useCategory from "../../../Hooks/useCategory";
 
 export default function CategoryList() {
-  const [categorys, setCategorys] = useState([]);
   const { pagination, buttonPaginate } = usePagination(15);
-
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/categorys`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => setCategorys(response.result))
-      .catch((error: string) => console.log("categorys Error Db:" + error));
-  }, []);
-
-  function deleteCategory(id: string) {
-    fetch(`${import.meta.env.VITE_API_URL}/category/${id}`, { method: "DELETE",
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => {
-        console.log(response.status);
-        setCategorys([])
-      })
-      .catch((error: string) => console.log("categorys Error delete:" + error));
-  }
+  const { categorys, categoryFetch, deleteCategory } = useCategory();
+  useEffect(categoryFetch, []);
   return (
     <div className="categoryListBox">
       <h1>Categorys - {categorys.length}</h1>

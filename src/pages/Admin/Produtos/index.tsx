@@ -1,32 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import FormProduct from "../../../components/Admin/FormProduct";
 import Template from "../../../components/Admin/Template";
 import Button from "../../../components/UI/Button";
 import ProductCard from "../../../components/UI/ProductCard";
 import usePagination from "../../../Hooks/usePagination";
-import useToken from "../../../Hooks/useToken";
+import useProducts from "../../../Hooks/useProducts";
 
 export default function Produtos() {
-  const [products, setProducts] = useState([]);
-  const [productsView, setProductsView] = useState("Products List");
+  const { productsFetch, productsView, setProductsView, products } =
+    useProducts();
   const { pagination, buttonPaginate } = usePagination(15);
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/products`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => setProducts(response.result))
-      .catch((error) => console.log("Error: " + error.message));
-  }, []);
+  useEffect(productsFetch, []);
   return (
     <Template>
       {productsView === "Products List" ? (
         <>
-          <Button onClick={() => setProductsView("Product Register")}>
-            Cadastrar Produto
-          </Button>
+          <Button
+            children="Cadastrar Produto"
+            onClick={() => setProductsView("Product Register")}
+          />
           {products.slice(0, pagination).map((element: any) => (
             <ProductCard
               name={element.name}
@@ -41,10 +33,9 @@ export default function Produtos() {
           <FormProduct />
           <Button
             className="red"
+            children="Cancelar"
             onClick={() => setProductsView("Products List")}
-          >
-            Cancelar
-          </Button>
+          />
         </>
       )}
     </Template>

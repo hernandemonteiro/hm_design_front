@@ -1,7 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
 import { useAuth } from "../../../Hooks/useAuth";
 import Button from "../../UI/Button";
+import ButtonLink from "../../UI/ButtonLink";
 import "./ProductDetail.scss";
 
 interface ProductDetailProps {
@@ -33,11 +32,13 @@ export default function ProductDetail(props: ProductDetailProps) {
       </div>
       <div className="buttonsAction">
         {authenticated ? (
-          <Button>ADICIONAR AO CARRINHO</Button>
+          <Button children="ADICIONAR AO CARRINHO" />
         ) : (
-          <Link to="/login">
-            <Button className="green gradientHover">Fazer Login para comprar</Button>
-          </Link>
+          <ButtonLink
+            to="/login"
+            className="green gradientHover"
+            children="Fazer Login para comprar"
+          />
         )}
       </div>
     </div>

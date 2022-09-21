@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,22 +8,12 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Delete, Edit } from "@mui/icons-material";
 import usePagination from "../../../Hooks/usePagination";
-import useToken from "../../../Hooks/useToken";
+import useOrders from "../../../Hooks/useOrders";
 
 export default function OrdersList() {
-  const [orders, setOrders] = useState([]);
+  const {orders, orderFetch} = useOrders();
   const { pagination, buttonPaginate } = usePagination(15);
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/orders`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => setOrders(response.result))
-      .catch((error: string) => console.log("Orders Error Db:" + error));
-  }, []);
-
+  useEffect(orderFetch, []);
   return (
     <div className="ordersListBox">
       <h1>Orders - {orders.length}</h1>

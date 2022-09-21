@@ -4,26 +4,17 @@ import { useEffect, useState } from "react";
 import usePagination from "../../../Hooks/usePagination";
 import useToken from "../../../Hooks/useToken";
 import { useParams } from "react-router-dom";
+import useProducts from "../../../Hooks/useProducts";
 
 /* @description the first page rendered, list products in sort order
  *  @route = "/"
  */
 export default function Home() {
-  const [products, setProducts] = useState([]);
+  const {products, productsFetch} = useProducts();
   const { pagination, buttonPaginate } = usePagination(12);
   const search = useParams().search;
   const category = useParams().category;
-  useEffect(() => { 
-    // usar search aqui para definir buscas e no back-end mudar buscas;  
-    fetch(`${import.meta.env.VITE_API_URL}/products`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => setProducts(response.result))
-      .catch((error) => console.log("Error: " + error.message));
-  }, []);
+  useEffect(productsFetch, []);
 
   return (
     <Template>

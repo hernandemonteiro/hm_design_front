@@ -1,8 +1,6 @@
-import React from "react";
 import "./NotFoundError.scss";
 import notFound from "../../../assets/images/404.svg";
-import Button from "../../UI/Button";
-import { Link } from "react-router-dom";
+import ButtonLink from "../../UI/ButtonLink";
 
 export default function NotFoundError() {
   return (
@@ -11,9 +9,7 @@ export default function NotFoundError() {
         <img src={notFound} className='img404' />
         <br />
         <h1>404: Not Found</h1>
-        <Link to="/">
-          <Button>Voltar ao Inicio</Button>
-        </Link>
+          <ButtonLink to="/" children="Voltar ao Inicio"/>
       </div>
     </div>
   );

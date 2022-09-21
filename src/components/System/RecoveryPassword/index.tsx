@@ -4,56 +4,34 @@ import "./RecoveryPassword.scss";
 import forgotFailure from "../../../assets/images/forgotsuccess.svg";
 import { useParams } from "react-router-dom";
 import useToken from "../../../Hooks/useToken";
+import Form from "../../UI/Form";
+import usePassword from "../../../Hooks/usePassword";
 
 export default function RecoveryPassword() {
-  const [message, setMessage] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [view, setView] = useState(true);
-  const hash = useParams().hash;
+  const {
+    confirmHash,
+    view,
+    updatePassword,
+    message,
+    setPassword,
+    password,
+    setConfirmPassword,
+    confirmPassword,
+    setHash,
+    hash,
+  } = usePassword();
+
+  const hashUrl = useParams().hash;
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/confirmHash/${hash}`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response: any) => response.json())
-      .then((response: any) => {
-        if (response.result === 0) {
-          setView(false);
-        }
-      });
+    setHash(hashUrl);
+    confirmHash;
   }, []);
-  function updatePassword(event: any) {
-    event.preventDefault();
-    fetch(
-      `${import.meta.env.VITE_API_URL}/updatePassword/${hash}/${password}`,
-      {
-        method: "PUT",
-        headers: {
-          "x-access-token": useToken(),
-        },
-      }
-    )
-      .then((response: any) => response.json())
-      .then((response: any) => {
-        console.log(response);
-        if (response.result === "Success") {
-          return (window.location.href = "/login");
-        } else {
-          return setMessage("Erro ao mudar senha!");
-        }
-      })
-      .catch((error: any) => {
-        setMessage("Erro ao mudar senha!");
-        console.log(error);
-      });
-  }
+
   return (
     <div className="RecoveryBox">
       {view ? (
-        <form onSubmit={updatePassword}>
-          <p>Digite sua nova senha!</p>
+        <Form onSubmit={updatePassword}>
+          <p>Recuperação de senha!</p>
           <h3 className="MessageSystem">{message}</h3>
           <br />
           <input
@@ -73,9 +51,7 @@ export default function RecoveryPassword() {
           {password != "" &&
           password === confirmPassword &&
           confirmPassword != "" ? (
-            <Button type={"submit"} className="green">
-              RECUPERAR
-            </Button>
+            <Button type={"submit"} className="green" children="RECUPERAR" />
           ) : (
             "Senha e confirmação devem ser iguais!"
           )}
@@ -83,19 +59,19 @@ export default function RecoveryPassword() {
           <Button
             type={"button"}
             onClick={() => (window.location.href = "/login")}
-          >
-            IR AO LOGIN
-          </Button>
-        </form>
+            children="IR AO LOGIN"
+          />
+        </Form>
       ) : (
         <div className="forgotFailure">
           <img src={forgotFailure} />
           <br />
           <h1>Não foi encontrada solicitação para esse email!</h1>
           <br />
-          <Button onClick={() => (window.location.href = "/forgotpassword")}>
-            Tentar Novamente!
-          </Button>
+          <Button
+            onClick={() => (window.location.href = "/forgotpassword")}
+            children="Tentar Novamente!"
+          />
         </div>
       )}
     </div>

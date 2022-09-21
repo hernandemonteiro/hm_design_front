@@ -1,25 +1,13 @@
 import React, { useState } from "react";
+import useCategory from "../../../Hooks/useCategory";
 import useToken from "../../../Hooks/useToken";
 import Button from "../../UI/Button";
+import Form from "../../UI/Form";
 
 export default function FormCategory() {
-  const [category, setCategory] = useState("");
-  const [message, setMessage] = useState("");
-  function registerCategory(event: any) {
-    event.preventDefault();
-    fetch(`${import.meta.env.VITE_API_URL}/category/register/${category}`, {
-      method: "PUT",
-        headers: {
-          "x-access-token": useToken(),
-        },
-    
-    }).then(() => {
-      setMessage("Cadastrado com sucesso!");
-      setCategory("");
-    });
-  }
+  const { registerCategory, setCategory, message } = useCategory();
   return (
-    <form onSubmit={registerCategory}>
+    <Form onSubmit={registerCategory}>
       <div className="formHeader">
         <h3>Cadastrar Categoria</h3>
         <hr />
@@ -34,10 +22,8 @@ export default function FormCategory() {
         placeholder="categoria"
       />
       <div className="actions">
-        <Button type="submit" className="green">
-          CADASTRAR
-        </Button>
+        <Button type="submit" className="green" children="CADASTRAR" />
       </div>
-    </form>
+    </Form>
   );
 }

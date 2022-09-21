@@ -1,16 +1,11 @@
-import { Link, useParams } from "react-router-dom";
-import Button from "../../UI/Button";
+import ButtonLink from "../../UI/ButtonLink";
 import Nav from "../../UI/Nav";
 
 export default function Menu() {
   return (
     <Nav>
-      <Link to="/">
-        <Button>Inicio</Button>
-      </Link>
-      <Link to="/category/Cartão de visita">
-        <Button>Cartão de visita</Button>
-      </Link>
+      <ButtonLink to="/" children="Inicio" />
+      <ButtonLink to="/category/Cartão de visita" children="Cartão de visita" />
     </Nav>
   );
 }

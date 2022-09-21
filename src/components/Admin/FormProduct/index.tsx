@@ -1,62 +1,34 @@
 import { Delete } from "@mui/icons-material";
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Button from "../../UI/Button";
 import "./FormProduct.scss";
 import CryptoJS from "crypto-js";
-import useToken from "../../../Hooks/useToken";
+import Form from "../../UI/Form";
+import useCategory from "../../../Hooks/useCategory";
+import useProducts from "../../../Hooks/useProducts";
 
 export default function FormProduct() {
-  const [name, setName] = useState<string>("");
-  const [price, setPrice] = useState<string | number>("");
-  const [options, setOptions] = useState([]);
-  const [category, setCategory] = useState<string>("");
-  const [pictures, setPictures] = useState<any>("");
-  const [description, setDescription] = useState<string>("");
+  const { categorys, message, categoryFetch} = useCategory();
+  const {
+    registerProduct,
+    setName,
+    name,
+    setPrice,
+    price,
+    setOption,
+    option,
+    addOption,
+    options,
+    setCategory,
+    setPictures,
+    setDescription
+  } = useProducts();
 
-  const [option, setOption] = useState("");
-  const [priceOption, setPriceOption] = useState(0.0);
-  const [categorys, setCategorys] = useState([]);
-  const [arrayOption, setArrayOption] = useState<any>([]);
-  const [message, setMessage] = useState("");
-
-  function addOption() {
-    arrayOption.push({ option, priceOption });
-    setOptions(arrayOption);
-    console.table(options);
-    setOption("");
-  }
-
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/categorys`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => setCategorys(response.result))
-      .catch((error) => console.log("Error: " + error.message));
-  }, []);
-  function registerProduct(event: any) {
-    event.preventDefault();
-    fetch(
-      `${
-        import.meta.env.VITE_API_URL
-      }/product/${name}/${price}/${pictures}/${description}/${category}/${JSON.stringify(
-        options
-      )}`,
-      {
-        method: "PUT",
-        headers: {
-          "x-access-token": useToken(),
-        },
-      }
-    ).then((response) => {
-      console.log(response);
-      setMessage("Cadastrado com sucesso!");
-    });
-  }
+  useEffect(() =>{
+    categoryFetch;
+  },[]);
   return (
-    <form onSubmit={registerProduct}>
+    <Form onSubmit={registerProduct}>
       <div className="formHeader">
         <h3>Cadastrar Produtos</h3>
         <hr />
@@ -67,6 +39,7 @@ export default function FormProduct() {
         required
         type="text"
         onChange={(e) => setName(e.target.value)}
+        value={name}
         placeholder="Nome"
       />
       <label>Preço*:</label>
@@ -74,6 +47,7 @@ export default function FormProduct() {
         required
         type="number"
         onChange={(e) => setPrice(e.target.value)}
+        value={price}
         step="any"
         min="1"
         placeholder="Preço"
@@ -86,9 +60,12 @@ export default function FormProduct() {
           placeholder="Opções"
           value={option}
         />
-        <Button type="button" onClick={() => addOption()} className="green">
-          ADICIONAR OPÇÂO
-        </Button>
+        <Button
+          type="button"
+          className="green"
+          children="ADICIONAR OPÇÂO"
+          onClick={() => addOption()}
+        />
         {options.length > 0 && (
           <table className="tableOptions">
             <thead>
@@ -128,11 +105,7 @@ export default function FormProduct() {
       <input
         required
         type="file"
-        onChange={(e) => {
-          setPictures(e.target.files);
-          let encryptedImage = CryptoJS.SHA256(pictures[0]);
-          console.log(encryptedImage);
-        }}
+        onChange={(event) => setPictures(event.target.files)}
       />
       <label>Descrição*:</label>
       <textarea
@@ -141,10 +114,8 @@ export default function FormProduct() {
         onChange={(e) => setDescription(e.target.value)}
       ></textarea>
       <div className="actions">
-        <Button type="submit" className="green">
-          CADASTRAR
-        </Button>
+        <Button type="submit" className="green" children="CADASTRAR" />
       </div>
-    </form>
+    </Form>
   );
 }

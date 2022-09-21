@@ -27,7 +27,7 @@ export default function Cart() {
         />
       </div>
       <div className="actions">
-        <Button className="green">Ir Para Frete</Button>
+        <Button className="green" children="Ir Para Frete" />
       </div>
     </div>
   );

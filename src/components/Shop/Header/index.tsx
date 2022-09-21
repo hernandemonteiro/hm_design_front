@@ -28,6 +28,7 @@ export default function Header() {
           <div className="SearchLayout">
             <input
               type="search"
+              required
               onChange={(event) => setSearch(event.target.value)}
               placeholder="Buscar..."
             />
