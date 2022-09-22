@@ -1,0 +1,13 @@
+.productList {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+}
+
+@media (max-width: 600px) {
+    .productList {
+        justify-content: center;
+        margin-top: 4%;
+    }
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import TitleHome from "../../UI/TitleHome";
 import Footer from "../Footer";
 import Header from "../Header";
 import Menu from "../Menu";

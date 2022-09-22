@@ -1,7 +1,7 @@
 .card {
     width: 150px;
     background-color: whitesmoke;
-    max-height: 260px;
+    height: 260px;
     margin: 1%;
     padding: 1%;
     border-radius: 23px;
@@ -28,4 +28,14 @@ img{
 .card>div {
     margin: 4%;
     user-select: none;
+}
+
+@media (max-width: 600px) {
+    .imageCard {
+        height: 210px;
+    }
+    .card {
+        width: 90%;
+        height: 450px;
+    }
 }
