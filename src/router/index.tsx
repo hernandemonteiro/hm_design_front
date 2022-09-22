@@ -143,10 +143,6 @@ export default function Router() {
             path="/recoverypassword/:hash"
             element={<RecoveryPassword />}
           />
-          <Route
-            path="/loaderio-cb969fd5e2adae5b96bbd04876b872b4"
-            element="loaderio-cb969fd5e2adae5b96bbd04876b872b4"
-          />
           <Route path="*" element={<NotFoundError />} />
         </Routes>
       </BrowserRouter>
