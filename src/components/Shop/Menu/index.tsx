@@ -8,7 +8,7 @@ export default function Menu() {
       <Button onClick={() => (window.location.href = "/")} children="Inicio" />
       <Button
         onClick={() => (window.location.href = "/category/Cartão de visita")}
-        children={"Cartão de visita"}
+        children={"Cartões de visita"}
       />
     </Nav>
   );
