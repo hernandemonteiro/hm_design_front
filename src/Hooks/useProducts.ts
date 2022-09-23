@@ -15,6 +15,19 @@ export default function useProducts() {
   const [products, setProducts] = useState<any>([]);
   const [productsView, setProductsView] = useState("Products List");
 
+ 
+
+  function productsCategoryFetch(category: string | undefined) {
+    fetch(`${import.meta.env.VITE_API_URL}/productspercategory/${category}`, {
+      headers: {
+        "x-access-token": useToken(),
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => setProducts(response.result))
+      .catch((error) => console.log("Error: " + error.message));
+  }
+
   function productsFetch() {
     fetch(`${import.meta.env.VITE_API_URL}/products`, {
       headers: {
@@ -25,7 +38,7 @@ export default function useProducts() {
       .then((response) => setProducts(response.result))
       .catch((error) => console.log("Error: " + error.message));
   }
-
+  
   function addOption() {
     arrayOption.push({ option, priceOption });
     setOptions(arrayOption);
@@ -52,7 +65,7 @@ export default function useProducts() {
       setMessage("Cadastrado com sucesso!");
     });
   }
-  function productID(id: string | undefined){
+  function productID(id: string | undefined) {
     fetch(`${import.meta.env.VITE_API_URL}/product/${id}`, {
       headers: {
         "x-access-token": useToken(),
@@ -62,7 +75,7 @@ export default function useProducts() {
       .then((response) => setProducts(response.result))
       .catch((error) => console.log("Error: " + error.message));
   }
-  
+
   return {
     registerProduct,
     setName,
@@ -81,5 +94,6 @@ export default function useProducts() {
     setProductsView,
     products,
     productID,
+    productsCategoryFetch
   };
 }
