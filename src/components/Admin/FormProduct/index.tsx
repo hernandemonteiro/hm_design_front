@@ -24,9 +24,7 @@ export default function FormProduct() {
     setDescription
   } = useProducts();
 
-  useEffect(() =>{
-    categoryFetch;
-  },[]);
+  useEffect(categoryFetch,[]);
   return (
     <Form onSubmit={registerProduct}>
       <div className="formHeader">
