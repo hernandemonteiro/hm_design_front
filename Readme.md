@@ -17,6 +17,6 @@ print shop e-commerce.
 ## Deployed in:
 [![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://hm-design.vercel.app/)
 
-## test Deploy in:
+## Test Deploy in:
 [![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)](https://hm-design-front-test.vercel.app/)
 
