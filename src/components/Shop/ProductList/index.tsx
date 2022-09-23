@@ -7,7 +7,7 @@ import "./ProductList.scss";
 
 export default function ProductList() {
   const { products, productsFetch, productsCategoryFetch } = useProducts();
-  const { pagination, buttonPaginate } = usePagination(12);
+  const { pagination, buttonPaginate } = usePagination(9);
   const category = useParams().category;
   const search = useParams().search;
 
