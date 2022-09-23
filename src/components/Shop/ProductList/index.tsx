@@ -6,15 +6,22 @@ import ProductCard from "../../UI/ProductCard";
 import "./ProductList.scss";
 
 export default function ProductList() {
-  const { products, productsFetch, productsCategoryFetch } = useProducts();
   const { pagination, buttonPaginate } = usePagination(9);
+  const {
+    products,
+    productsFetch,
+    productsCategoryFetch,
+    productsSearchFetch,
+  } = useProducts();
   const category = useParams().category;
   const search = useParams().search;
 
   useEffect(() => {
-    category ? productsCategoryFetch(category):
-    search ? alert(search):
-    productsFetch();
+    category
+      ? productsCategoryFetch(category)
+      : search
+      ? productsSearchFetch(search)
+      : productsFetch();
   }, []);
 
   return (

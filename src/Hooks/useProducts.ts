@@ -18,7 +18,18 @@ export default function useProducts() {
  
 
   function productsCategoryFetch(category: string | undefined) {
-    fetch(`${import.meta.env.VITE_API_URL}/productspercategory/${category}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/products/category/${category}`, {
+      headers: {
+        "x-access-token": useToken(),
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => setProducts(response.result))
+      .catch((error) => console.log("Error: " + error.message));
+  }
+
+  function productsSearchFetch(search: string | undefined){
+    fetch(`${import.meta.env.VITE_API_URL}/products/search/${search}`, {
       headers: {
         "x-access-token": useToken(),
       },
@@ -51,7 +62,7 @@ export default function useProducts() {
     fetch(
       `${
         import.meta.env.VITE_API_URL
-      }/product/${name}/${price}/${pictures}/${description}/${category}/${JSON.stringify(
+      }/product/register/${name}/${price}/${pictures}/${description}/${category}/${JSON.stringify(
         options
       )}`,
       {
@@ -94,6 +105,7 @@ export default function useProducts() {
     setProductsView,
     products,
     productID,
-    productsCategoryFetch
+    productsCategoryFetch,
+    productsSearchFetch
   };
 }
