@@ -26,6 +26,7 @@ export default function ProductList() {
 
   return (
     <div className="productList">
+      {products.length == 0 && <h1 className="NotFoundHere">Nada encontrado por aqui!</h1>}
       {products.slice(0, pagination).map((element: any) => (
         <ProductCard
           name={element.name}
