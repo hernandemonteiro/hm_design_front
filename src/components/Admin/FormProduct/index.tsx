@@ -1,14 +1,13 @@
 import { Delete } from "@mui/icons-material";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Button from "../../UI/Button";
 import "./FormProduct.scss";
-import CryptoJS from "crypto-js";
 import Form from "../../UI/Form";
 import useCategory from "../../../Hooks/useCategory";
 import useProducts from "../../../Hooks/useProducts";
 
 export default function FormProduct() {
-  const { categorys, message, categoryFetch} = useCategory();
+  const { categorys, message, categoryFetch } = useCategory();
   const {
     registerProduct,
     setName,
@@ -20,11 +19,18 @@ export default function FormProduct() {
     addOption,
     options,
     setCategory,
-    setPictures,
-    setDescription
+    handleOpenPicker,
+    getTokenGoogleAPI,
+    pictures,
+    setDescription,
   } = useProducts();
-
-  useEffect(categoryFetch,[]);
+  function initialConfig(){
+    categoryFetch();
+    return getTokenGoogleAPI();
+     
+  }
+  
+  useEffect(initialConfig, []);
   return (
     <Form onSubmit={registerProduct}>
       <div className="formHeader">
@@ -99,11 +105,9 @@ export default function FormProduct() {
         ))}
       </select>
       <br />
-      <label>Fotos*:</label>
-      <input
-        required
-        type="file"
-        onChange={(event) => setPictures(event.target.files)}
+      <Button
+        onClick={() => handleOpenPicker(initialConfig())}
+        children="ADICIONAR FOTOS"
       />
       <label>Descrição*:</label>
       <textarea

@@ -60,7 +60,7 @@ export default function Router() {
           {/* shop; */}
           <Route path="/" element={<Home />} />
           <Route path="/:search" element={<Home />} />
-          <Route path="category/:category" element={<Home />} />
+          <Route path="/category/:category" element={<Home />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/details/:id" element={<Details />} />
           {/* user; */}

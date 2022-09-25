@@ -1,7 +1,9 @@
 import { useState } from "react";
 import useToken from "./useToken";
+import useDrivePicker from "react-google-drive-picker";
 
 export default function useProducts() {
+  const [openPicker, authResponse] = useDrivePicker();
   const [name, setName] = useState<string>("");
   const [price, setPrice] = useState<string | number>("");
   const [options, setOptions] = useState([]);
@@ -14,8 +16,44 @@ export default function useProducts() {
   const [message, setMessage] = useState("");
   const [products, setProducts] = useState<any>([]);
   const [productsView, setProductsView] = useState("Products List");
+  const [token, setToken ] = useState<any>("");
 
- 
+
+  function getTokenGoogleAPI(){
+  fetch(import.meta.env.VITE_REFRESH_TOKEN, {
+    method: "POST",
+  })
+    .then((response: any) => response.json())
+    .then((response: any) => {
+      setToken(response.access_token)
+    })
+    .catch((error: any) => console.log(error));
+    return token
+  }
+
+  const handleOpenPicker = (token: any) => {
+    
+    openPicker({
+      clientId: import.meta.env.VITE_CLIENT_ID,
+      developerKey: import.meta.env.VITE_DEVELOPER_ID,
+      viewId: "DOCS",
+      disableDefaultView: true,
+      viewMimeTypes: "image/jpeg",
+      token: token,
+      showUploadView: true,
+      setParentFolder: import.meta.env.VITE_FOLDER_DRIVE,
+      showUploadFolders: true,
+      supportDrives: false,
+      multiselect: true,
+      callbackFunction: (data) => {
+        if (data.action === "cancel") {
+          setPictures("User clicked cancel/close button");
+        }
+        setPictures(data);
+        console.log(data.docs)
+      },
+    });
+  };
 
   function productsCategoryFetch(category: string | undefined) {
     fetch(`${import.meta.env.VITE_API_URL}/products/category/${category}`, {
@@ -28,7 +66,7 @@ export default function useProducts() {
       .catch((error) => console.log("Error: " + error.message));
   }
 
-  function productsSearchFetch(search: string | undefined){
+  function productsSearchFetch(search: string | undefined) {
     fetch(`${import.meta.env.VITE_API_URL}/products/search/${search}`, {
       headers: {
         "x-access-token": useToken(),
@@ -49,7 +87,7 @@ export default function useProducts() {
       .then((response) => setProducts(response.result))
       .catch((error) => console.log("Error: " + error.message));
   }
-  
+
   function addOption() {
     arrayOption.push({ option, priceOption });
     setOptions(arrayOption);
@@ -66,7 +104,7 @@ export default function useProducts() {
         options
       )}`,
       {
-        method: "PUT",
+        method: "POST",
         headers: {
           "x-access-token": useToken(),
         },
@@ -99,6 +137,9 @@ export default function useProducts() {
     options,
     setCategory,
     setPictures,
+    pictures,
+    handleOpenPicker,
+    getTokenGoogleAPI,
     setDescription,
     productsFetch,
     productsView,
@@ -106,6 +147,6 @@ export default function useProducts() {
     products,
     productID,
     productsCategoryFetch,
-    productsSearchFetch
+    productsSearchFetch,
   };
 }
