@@ -1,4 +1,10 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useParams,
+} from "react-router-dom";
 import { AuthProvider, useAuth } from "../Hooks/useAuth";
 import NotFoundError from "../components/System/NotFoundError";
 import Home from "../pages/Shop/Home";
@@ -16,6 +22,8 @@ import Clientes from "../pages/Admin/Clientes";
 import Produtos from "../pages/Admin/Produtos";
 import Dashboard from "../pages/Admin/Dashboard";
 import User from "../pages/Shop/User";
+import ProductRegister from "../pages/Admin/ProductRegister";
+import useProducts from "../Hooks/useProducts";
 
 export default function Router() {
   function RedirectLogged(props: any) {
@@ -46,10 +54,22 @@ export default function Router() {
 
   function PrivateAdmin(props: any) {
     const { authenticated, loading, user } = useAuth();
+    const { getTokenGoogleAPI, deleteCloudImageCanceled } = useProducts();
     loading ?? <Loader />;
     if (!authenticated || user.type != "0") {
       return <Navigate to="/login" />;
     }
+    // cloudStorage leak fix;
+    const photos: any = localStorage.getItem("pic")
+      ? localStorage.getItem("pic")
+      : "[]";
+    if (useParams().register != "true" && JSON.parse(photos).length > 0) {
+      const token = getTokenGoogleAPI();
+      const removeLeak = JSON.parse(photos).map((element: any) => {
+        deleteCloudImageCanceled(token, element.id);
+      });
+    }
+
     return props.children;
   }
 
@@ -86,6 +106,14 @@ export default function Router() {
             element={
               <PrivateAdmin>
                 <Produtos />
+              </PrivateAdmin>
+            }
+          />
+          <Route
+            path="/admin/produto/register/:register"
+            element={
+              <PrivateAdmin>
+                <ProductRegister />
               </PrivateAdmin>
             }
           />

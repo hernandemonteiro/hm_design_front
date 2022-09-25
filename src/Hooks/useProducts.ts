@@ -8,7 +8,7 @@ export default function useProducts() {
   const [price, setPrice] = useState<string | number>("");
   const [options, setOptions] = useState([]);
   const [category, setCategory] = useState<string>("");
-  const [pictures, setPictures] = useState<any>("");
+  const [pictures, setPictures] = useState<any>([]);
   const [description, setDescription] = useState<string>("");
   const [option, setOption] = useState("");
   const [priceOption, setPriceOption] = useState(0.0);
@@ -16,23 +16,43 @@ export default function useProducts() {
   const [message, setMessage] = useState("");
   const [products, setProducts] = useState<any>([]);
   const [productsView, setProductsView] = useState("Products List");
-  const [token, setToken ] = useState<any>("");
+  const [token, setToken] = useState<any>("");
 
-
-  function getTokenGoogleAPI(){
-  fetch(import.meta.env.VITE_REFRESH_TOKEN, {
-    method: "POST",
-  })
-    .then((response: any) => response.json())
-    .then((response: any) => {
-      setToken(response.access_token)
+  function deleteCloudImageCanceled(token: any, file: any) {
+    fetch(
+      `https://www.googleapis.com/drive/v3/files/${file}?key=${
+        import.meta.env.VITE_DEVELOPER_ID
+      }`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        console.log("removed");
+        if (response.error) {
+          localStorage.removeItem("pic");
+        }
+      })
+      .catch((error) => console.log(error));
+  }
+  function getTokenGoogleAPI() {
+    fetch(import.meta.env.VITE_REFRESH_TOKEN, {
+      method: "POST",
     })
-    .catch((error: any) => console.log(error));
-    return token
+      .then((response: any) => response.json())
+      .then((response: any) => {
+        setToken(response.access_token);
+      })
+      .catch((error: any) => console.log(error));
+    return token;
   }
 
   const handleOpenPicker = (token: any) => {
-    
     openPicker({
       clientId: import.meta.env.VITE_CLIENT_ID,
       developerKey: import.meta.env.VITE_DEVELOPER_ID,
@@ -47,10 +67,13 @@ export default function useProducts() {
       multiselect: true,
       callbackFunction: (data) => {
         if (data.action === "cancel") {
-          setPictures("User clicked cancel/close button");
+          console.log("User clicked cancel/close button");
         }
-        setPictures(data);
-        console.log(data.docs)
+
+        if (data.docs != undefined) {
+          data.docs.map((element: any) => pictures.push({ id: element.id }));
+          localStorage.setItem("pic", JSON.stringify(pictures));
+        }
       },
     });
   };
@@ -97,20 +120,26 @@ export default function useProducts() {
 
   function registerProduct(event: any) {
     event.preventDefault();
+    const photos = localStorage.getItem("pic")
+      ? localStorage.getItem("pic")
+      : [];
+    setPictures(photos);
     fetch(
       `${
         import.meta.env.VITE_API_URL
-      }/product/register/${name}/${price}/${pictures}/${description}/${category}/${JSON.stringify(
-        options
-      )}`,
+      }/product/register/${name}/${price}/${JSON.stringify(
+        pictures
+      )}/${description}/${category}/${JSON.stringify(options)}`,
       {
-        method: "POST",
+        method: "PUT",
         headers: {
           "x-access-token": useToken(),
         },
       }
     ).then((response) => {
       console.log(response);
+      localStorage.removeItem("pic");
+      window.location.href = "/admin";
       setMessage("Cadastrado com sucesso!");
     });
   }
@@ -140,6 +169,7 @@ export default function useProducts() {
     pictures,
     handleOpenPicker,
     getTokenGoogleAPI,
+    deleteCloudImageCanceled,
     setDescription,
     productsFetch,
     productsView,

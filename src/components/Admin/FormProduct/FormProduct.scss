@@ -1,9 +1,25 @@
 .formHeader {
     width: 100%;
 }
-.formHeader > h3 {
+.formBox {
+    padding: 5% 15% 5% 15%;
+}
+.formHeader > h2 {
     text-align: center;
-    padding: 2%
+    text-transform: uppercase;
+    margin: 2%
+}
+.imgBox {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.imgView {
+    width: 20%;
+    margin: 2%;
 }
 
 .options {
@@ -42,7 +58,8 @@ label {
 .actions {
     width: 90%;
     display: flex;
-    margin-top: 1%;
+    flex-direction: row;
+    margin-top: 5%;
 }
 
 .tableOptions {
