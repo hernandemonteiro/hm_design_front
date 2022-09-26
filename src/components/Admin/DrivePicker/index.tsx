@@ -4,6 +4,7 @@ import useProducts from "../../../Hooks/useProducts";
 import "./DrivePicker.scss";
 import { useEffect } from "react";
 import { Delete } from "@mui/icons-material";
+import ButtonLink from "../../UI/ButtonLink";
 
 export default function DrivePicker() {
   const { view, setView } = useAuth();
@@ -36,11 +37,11 @@ export default function DrivePicker() {
           children="ADICIONAR FOTOS"
           onClick={() => handleOpenPicker(initialConfig())}
         />
-        <Button
+        <ButtonLink
           type="button"
           className="red"
           children="CANCELAR"
-          onClick={() => (window.location.href = "/admin/produtos")}
+          to="/admin/produtos"
         />
       </div>
       {pictures.length > 0 && (

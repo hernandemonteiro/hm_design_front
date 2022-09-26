@@ -177,7 +177,7 @@ export default function useProducts() {
     ).then((response) => {
       console.log(response);
       localStorage.removeItem("pic");
-      window.location.href = "/admin";
+      window.location.href = "/admin/produtos";
       setMessage("Cadastrado com sucesso!");
     });
   }
