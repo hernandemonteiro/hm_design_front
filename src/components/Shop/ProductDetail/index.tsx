@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useAuth } from "../../../Hooks/useAuth";
 import Button from "../../UI/Button";
 import ButtonLink from "../../UI/ButtonLink";
+import Carroussel from "../../UI/Carrousell";
 import "./ProductDetail.scss";
 
 interface ProductDetailProps {
@@ -14,20 +15,9 @@ interface ProductDetailProps {
 
 export default function ProductDetail(props: ProductDetailProps) {
   const { authenticated } = useAuth();
-  const images: any = props.image;
   return (
     <div className="Detail">
-      <div className="imageDetail">
-        {images ?
-        JSON.parse(images).map((element: any) => {
-          return (
-            <img
-              width="60%"
-              src={"https://drive.google.com/uc?export=view&id=" + element.id}
-            />
-          );
-        }) : ""}
-      </div>
+      <Carroussel data={props.image}/>
       <div className="productName">
         <h2>{props.name}</h2>
       </div>
