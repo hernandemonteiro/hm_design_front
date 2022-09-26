@@ -11,12 +11,21 @@ export default function useProducts() {
   const [pictures, setPictures] = useState<any>([]);
   const [description, setDescription] = useState<string>("");
   const [option, setOption] = useState("");
-  const [priceOption, setPriceOption] = useState(0.0);
+  const [priceOption, setPriceOption] = useState<number>(0);
   const [arrayOption, setArrayOption] = useState<any>([]);
   const [message, setMessage] = useState("");
   const [products, setProducts] = useState<any>([]);
   const [productsView, setProductsView] = useState("Products List");
   const [token, setToken] = useState<any>("");
+
+  function deletePhotoOnRegister(index: number, id: string, token: string) {
+    const photos = localStorage.getItem("pic");
+    setPictures(photos);
+    pictures.splice(index, 1);
+    deleteCloudImageCanceled(token, id);
+    localStorage.setItem("pic", JSON.stringify(pictures));
+    window.location.reload()
+  }
 
   function deleteCloudImageCanceled(token: any, file: any) {
     fetch(
@@ -73,6 +82,8 @@ export default function useProducts() {
         if (data.docs != undefined) {
           data.docs.map((element: any) => pictures.push({ id: element.id }));
           localStorage.setItem("pic", JSON.stringify(pictures));
+          setPictures(pictures);
+          window.location.reload();
         }
       },
     });
@@ -112,24 +123,35 @@ export default function useProducts() {
   }
 
   function addOption() {
-    arrayOption.push({ option, priceOption });
+    if (option != "") {
+      arrayOption.push({ option, priceOption });
+      setOptions(arrayOption);
+      setOption("");
+      setPriceOption(0);
+    } else {
+      setMessage("Em caso de Opção preencher com nome!");
+    }
+  }
+
+  function dropOption(index: number, option: string, price: number) {
+    arrayOption.splice(index, 1);
     setOptions(arrayOption);
-    console.table(options);
-    setOption("");
+    setOption(option);
+    setPriceOption(price);
   }
 
   function registerProduct(event: any) {
     event.preventDefault();
     const photos = localStorage.getItem("pic")
       ? localStorage.getItem("pic")
-      : [];
+      : "[{'id': 'undefined'}]";
     setPictures(photos);
     fetch(
       `${
         import.meta.env.VITE_API_URL
-      }/product/register/${name}/${price}/${JSON.stringify(
-        pictures
-      )}/${description}/${category}/${JSON.stringify(options)}`,
+      }/product/register/${name}/${price}/${photos}/${description}/${category}/${JSON.stringify(
+        options
+      )}`,
       {
         method: "PUT",
         headers: {
@@ -161,12 +183,17 @@ export default function useProducts() {
     setPrice,
     price,
     setOption,
+    setPriceOption,
+    priceOption,
     option,
     addOption,
+    dropOption,
     options,
+    message,
     setCategory,
     setPictures,
     pictures,
+    deletePhotoOnRegister,
     handleOpenPicker,
     getTokenGoogleAPI,
     deleteCloudImageCanceled,

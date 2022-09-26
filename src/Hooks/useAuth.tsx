@@ -15,6 +15,7 @@ interface authProps {
 export const AuthProvider = (props: authProps) => {
   const [loginMessage, setLoginMessage] = useState<string>("");
   const [user, setUser] = useState<any>(null);
+  const [view, setView] = useState("");
 
   const [loading, setLoading] = useState(true);
 
@@ -77,6 +78,8 @@ export const AuthProvider = (props: authProps) => {
         loginMessage,
         login,
         logout,
+        view,
+        setView
       }}
     >
       {props.children}

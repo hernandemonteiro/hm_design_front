@@ -9,17 +9,9 @@
     text-transform: uppercase;
     margin: 2%
 }
-.imgBox {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-}
-
-.imgView {
-    width: 20%;
-    margin: 2%;
+.ErrorMessage {
+    color: red;
+    padding: 2%;
 }
 
 .options {

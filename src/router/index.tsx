@@ -55,17 +55,19 @@ export default function Router() {
   function PrivateAdmin(props: any) {
     const { authenticated, loading, user } = useAuth();
     const { getTokenGoogleAPI, deleteCloudImageCanceled } = useProducts();
-    loading ?? <Loader />;
-    if (!authenticated || user.type != "0") {
+    if (loading) {
+      return <Loader />;
+    } else if (!authenticated || user.type != "0") {
       return <Navigate to="/login" />;
     }
+
     // cloudStorage leak fix;
     const photos: any = localStorage.getItem("pic")
       ? localStorage.getItem("pic")
       : "[]";
     if (useParams().register != "true" && JSON.parse(photos).length > 0) {
       const token = getTokenGoogleAPI();
-      const removeLeak = JSON.parse(photos).map((element: any) => {
+      JSON.parse(photos).map((element: any) => {
         deleteCloudImageCanceled(token, element.id);
       });
     }
