@@ -65,6 +65,7 @@ export const AuthProvider = (props: authProps) => {
   function logout() {
     setUser(null);
     localStorage.removeItem("user");
+    window.location.reload();
   }
 
   return (
