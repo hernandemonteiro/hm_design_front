@@ -162,7 +162,7 @@ export default function useProducts() {
       ? localStorage.getItem("pic")
       : "[{'id': 'undefined'}]";
     setPictures(photos);
-    const priceFormat = parseInt(price).toFixed(2).toString();
+    const priceFormat = parseFloat(price).toFixed(2).toString();
     fetch(
       `${
         import.meta.env.VITE_API_URL
