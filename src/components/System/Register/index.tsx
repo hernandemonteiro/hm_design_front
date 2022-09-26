@@ -71,10 +71,10 @@ export default function Register() {
             className="warning"
             children="Já tem conta?"
           />
-          <ButtonLink to="/" children="Voltar ao site" />
+          <ButtonLink className="red" to="/" children="Voltar ao site" />
         </Form>
       ) : (
-        <div>
+        <div className="sucessRegister">
           <h1>Registrado com sucesso!</h1>
           <br />
           <ButtonLink to="/login" className="green" children="Ir para login" />

@@ -39,7 +39,7 @@ export default function ProductDetail(props: ProductDetailProps) {
       </div>
       <div className="buttonsAction">
         {authenticated ? (
-          <Button children="ADICIONAR AO CARRINHO" />
+          <Button className="green" children="ADICIONAR AO CARRINHO" />
         ) : (
           <ButtonLink
             to="/login"

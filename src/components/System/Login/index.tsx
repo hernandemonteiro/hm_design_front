@@ -39,7 +39,7 @@ export default function Login() {
         />
         <Button className="green" children="Login" type="submit" />
         <ButtonLink className="warning" to="/register" children="cadastrar-se"/>
-        <ButtonLink to="/" children="Voltar ao site" />
+        <ButtonLink className="red" to="/" children="Voltar ao site" />
         <Link to="/forgotPassword">Esqueceu sua senha?</Link>
       </Form>
     </div>

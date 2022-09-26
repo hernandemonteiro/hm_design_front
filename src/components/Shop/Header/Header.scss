@@ -20,7 +20,9 @@ header {
     user-select: none;
     color: white;
 }
-
+.HeaderLogo > a > h1:hover {
+    color: yellow;
+}
 
 
 .SearchBox {
@@ -78,7 +80,7 @@ header {
 }
 
 .Icon:hover {
-    color: gray;
+    color: yellow;
 }
 
 @media (max-width: 885px) {

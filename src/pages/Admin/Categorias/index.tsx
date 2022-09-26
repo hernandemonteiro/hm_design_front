@@ -11,6 +11,7 @@ export default function Categoria() {
       {categoryView === "Categorys List" ? (
         <>
           <Button
+            className="green"
             children="Cadastrar Categoria"
             onClick={() => setCategoryView("Category Register")}
           />

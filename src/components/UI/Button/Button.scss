@@ -8,11 +8,18 @@
     font-weight: bold;
     cursor: pointer;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
 }
 
-.btn:hover {
-    background-color: black;
-    color: white;
+.btn:hover{
+    background: none;
+    color: yellow;
+}
+
+.transparent:hover {
+    background: none;
+    padding: 2%;
+    color: yellow;
 }
 
 .red {
@@ -32,6 +39,7 @@
 
 .warning:hover {
     background-color: rgb(245, 84, 26);
+    color: white
 }
 
 .green {
@@ -41,6 +49,7 @@
 
 .green:hover {
     background-color: rgb(4, 179, 4);
+    color: white
 }
 
 .gradientHover:hover {
