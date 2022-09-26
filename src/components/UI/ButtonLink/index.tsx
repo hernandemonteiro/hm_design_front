@@ -13,7 +13,7 @@ interface buttonLinkProps {
 export default function ButtonLink(props: buttonLinkProps) {
   return (
     <Link className="link" to={props.to}>
-    <button disabled={props.disabled} type={props.type} className={`btn ${props.className}`}  onClick={props.onClick}>
+    <button className={`btn ${props.className}`} disabled={props.disabled} type={props.type}  onClick={props.onClick}>
       {props.children}
     </button>
     </Link>

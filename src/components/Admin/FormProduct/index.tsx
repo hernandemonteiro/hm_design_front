@@ -7,7 +7,6 @@ import useCategory from "../../../Hooks/useCategory";
 import useProducts from "../../../Hooks/useProducts";
 import { useAuth } from "../../../Hooks/useAuth";
 import DrivePicker from "../DrivePicker";
-import ButtonLink from "../../UI/ButtonLink";
 
 export default function FormProduct() {
   const { view, setView } = useAuth();
@@ -141,11 +140,11 @@ export default function FormProduct() {
             ></textarea>
             <div className="actions">
               <Button type="submit" className="green" children="CADASTRAR" />
-              <ButtonLink
+              <Button
                 type="button"
                 className="red"
                 children="CANCELAR"
-                to="/admin/produtos"
+                onClick={() => (window.location.href = "/admin/produtos")}
               />
             </div>
           </>
