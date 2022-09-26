@@ -4,22 +4,17 @@
 .formBox {
     padding: 5% 15% 5% 15%;
 }
+
 .formHeader > h2 {
     text-align: center;
     text-transform: uppercase;
-    margin: 2%
+    margin: 2%;
+    color: rgb(58, 0, 58)
 }
+
 .ErrorMessage {
     color: red;
     padding: 2%;
-}
-
-.options {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
-    padding: 3%;
 }
 
 input {

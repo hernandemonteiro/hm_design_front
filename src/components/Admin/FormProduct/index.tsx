@@ -33,22 +33,19 @@ export default function FormProduct() {
   return (
     <div className="formBox">
       <Form onSubmit={registerProduct}>
+        <div className="formHeader">
+          <h2>Cadastro de Produto</h2>
+          <hr />
+        </div>
         {view === "" && <DrivePicker />}
         {view === "Finally" && (
           <>
-            <div className="actions">
-              <Button
-                className="warning"
-                type="button"
-                children="VOLTAR PARA FOTOS"
-                onClick={() => setView("")}
-              />
-            </div>
-            <div className="formHeader">
-              <h2>Cadastrar Produto</h2>
-              <hr />
-            </div>
-            <br />
+            <Button
+              className="warning"
+              type="button"
+              children="VOLTAR PARA FOTOS"
+              onClick={() => setView("")}
+            />
             <label>Nome do produto*:</label>
             <input
               required
@@ -67,15 +64,16 @@ export default function FormProduct() {
               min="1"
               placeholder="Preço"
             />
-            <label>Opções:</label>
-            <div className="options">
+              <h2>OPÇÕES:</h2>
               <h3 className="ErrorMessage">{message}</h3>
+              <label>Titulo da Opção:</label>
               <input
                 type="text"
                 onChange={(event: any) => setOption(event.target.value)}
-                placeholder="Opções"
+                placeholder="Titulo da Opção"
                 value={option}
               />
+              <label>Valor da opção:</label>
               <input
                 type="number"
                 min={0}
@@ -121,7 +119,6 @@ export default function FormProduct() {
                   </tbody>
                 </table>
               )}
-            </div>
             <label>Categoria*:</label>
             <select required onChange={(e) => setCategory(e.target.value)}>
               <option selected value="">
