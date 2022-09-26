@@ -5,7 +5,7 @@ import useDrivePicker from "react-google-drive-picker";
 export default function useProducts() {
   const [openPicker, authResponse] = useDrivePicker();
   const [name, setName] = useState<string>("");
-  const [price, setPrice] = useState<string | number>("");
+  const [price, setPrice] = useState<any>("");
   const [options, setOptions] = useState([]);
   const [category, setCategory] = useState<string>("");
   const [pictures, setPictures] = useState<any>([]);
@@ -162,10 +162,11 @@ export default function useProducts() {
       ? localStorage.getItem("pic")
       : "[{'id': 'undefined'}]";
     setPictures(photos);
+    const priceFormat = parseInt(price).toFixed(2).toString();
     fetch(
       `${
         import.meta.env.VITE_API_URL
-      }/product/register/${name}/${price}/${photos}/${description}/${category}/${JSON.stringify(
+      }/product/register/${name}/${priceFormat}/${photos}/${description}/${category}/${JSON.stringify(
         options
       )}`,
       {

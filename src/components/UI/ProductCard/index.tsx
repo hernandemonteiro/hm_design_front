@@ -21,7 +21,7 @@ export default function ProductCard(props: ProductCardProps) {
         <h3>{props.name}</h3>
       </div>
       <div className="productPrice">
-        <h2>R${props.price.toFixed(2)}</h2>
+        <h2>R${props.price}</h2>
       </div>
         <Link to={`/details/${props.id}`}>
           <Button className="green gradientHover">Detalhes</Button>
