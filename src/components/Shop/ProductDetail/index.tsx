@@ -1,10 +1,11 @@
+import { useEffect } from "react";
 import { useAuth } from "../../../Hooks/useAuth";
 import Button from "../../UI/Button";
 import ButtonLink from "../../UI/ButtonLink";
 import "./ProductDetail.scss";
 
 interface ProductDetailProps {
-  image?: string;
+  image?: any;
   name: string;
   price: number;
   description: string;
@@ -13,13 +14,19 @@ interface ProductDetailProps {
 
 export default function ProductDetail(props: ProductDetailProps) {
   const { authenticated } = useAuth();
+  const images: any = props.image;
   return (
     <div className="Detail">
       <div className="imageDetail">
-        <img
-          width="60%"
-          src="https://www.datocms-assets.com/76860/1660532346-product_hm_design.png"
-        />
+        {images ?
+        JSON.parse(images).map((element: any) => {
+          return (
+            <img
+              width="60%"
+              src={"https://drive.google.com/uc?export=view&id=" + element.id}
+            />
+          );
+        }) : ""}
       </div>
       <div className="productName">
         <h2>{props.name}</h2>

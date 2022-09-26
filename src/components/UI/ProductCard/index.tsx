@@ -8,13 +8,14 @@ interface ProductCardProps {
   name: string;
   price: number;
   id: string;
+  img: string;
 }
 
 export default function ProductCard(props: ProductCardProps) {
   return (
     <div className="card">
       <div className="imageCard">
-        <img src="https://www.datocms-assets.com/76860/1660532346-product_hm_design.png" />
+        <img src={"https://drive.google.com/uc?export=view&id=" + props.img} />
       </div>
       <div className="productName">
         <h3>{props.name}</h3>

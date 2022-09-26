@@ -29,6 +29,7 @@ export default function ProductList() {
       {products.length == 0 && <h1 className="NotFoundHere">Nada encontrado por aqui!</h1>}
       {products.slice(0, pagination).map((element: any) => (
         <ProductCard
+          img={JSON.parse(element.images)[0].id}
           name={element.name}
           price={element.price}
           id={element._id}
