@@ -83,7 +83,7 @@ export default function useProducts() {
       developerKey: import.meta.env.VITE_DEVELOPER_ID,
       viewId: "DOCS",
       disableDefaultView: true,
-      viewMimeTypes: "image/jpeg",
+      viewMimeTypes: "image/png",
       token: token,
       showUploadView: true,
       setParentFolder: import.meta.env.VITE_FOLDER_DRIVE,
