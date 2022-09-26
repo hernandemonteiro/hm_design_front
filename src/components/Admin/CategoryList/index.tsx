@@ -16,18 +16,14 @@ export default function CategoryList() {
   useEffect(categoryFetch, []);
   return (
     <div className="categoryListBox">
-      <h1>Categorys - {categorys.length}</h1>
-      <br />
-      <div className="actions"></div>
       <TableContainer component={Paper}>
         <Table sx={{ Width: "100%" }} size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
               <TableCell>
-                <h3>Category</h3>
+                <h3>Categorys - {categorys.length}</h3>
               </TableCell>
               <TableCell sx={{ textAlign: "center" }}>
-                <h3>Edit</h3>
               </TableCell>
             </TableRow>
           </TableHead>

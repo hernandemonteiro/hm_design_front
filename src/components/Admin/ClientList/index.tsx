@@ -16,12 +16,12 @@ export default function ClientList() {
   useEffect(usersFetch, []);
   return (
     <div className="clientListBox">
-      <h1>Users - {users.length}</h1>
-      <br />
-      <div className="actions"></div>
       <TableContainer component={Paper}>
         <Table sx={{ Width: "100%" }} size="small" aria-label="a dense table">
           <TableHead>
+            <TableRow>
+              <TableCell> <h3>Users - {users.length}</h3></TableCell>
+            </TableRow>
             <TableRow>
               <TableCell>
                 <h3>Type</h3>
