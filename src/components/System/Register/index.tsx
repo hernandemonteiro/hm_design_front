@@ -27,7 +27,6 @@ export default function Register() {
           <input
             required
             type="text"
-            autoFocus
             onChange={(e) => setName(e.target.value)}
             autoComplete="off"
             placeholder="Nome"

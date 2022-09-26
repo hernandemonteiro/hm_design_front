@@ -28,7 +28,6 @@ export default function Login() {
           onChange={(event) => setEmail(event.target.value)}
           value={email}
           type="email"
-          autoFocus
         />
         <label>Digite sua senha!</label>
         <input
