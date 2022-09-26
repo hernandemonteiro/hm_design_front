@@ -18,15 +18,6 @@ export default function useProducts() {
   const [productsView, setProductsView] = useState("Products List");
   const [token, setToken] = useState<any>("");
 
-  function deletePhotoOnRegister(index: number, id: string, token: string) {
-    const photos = localStorage.getItem("pic");
-    setPictures(photos);
-    pictures.splice(index, 1);
-    deleteCloudImageCanceled(token, id);
-    localStorage.setItem("pic", JSON.stringify(pictures));
-    window.location.reload()
-  }
-
   function deleteCloudImageCanceled(token: any, file: any) {
     fetch(
       `https://www.googleapis.com/drive/v3/files/${file}?key=${
@@ -49,6 +40,31 @@ export default function useProducts() {
       })
       .catch((error) => console.log(error));
   }
+
+  function deletePhotoOnRegister(token: string, index: number, id: string) {
+    fetch(
+      `https://www.googleapis.com/drive/v3/files/${id}?key=${
+        import.meta.env.VITE_DEVELOPER_ID
+      }`,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+        },
+      }
+    )
+      .then((response) => console.log(response))
+      .then(() => {
+        const photos = localStorage.getItem("pic");
+        setPictures(photos);
+        pictures.splice(index, 1);
+        localStorage.setItem("pic", JSON.stringify(pictures));
+        window.location.reload();
+      })
+      .catch((error) => console.log("ErrorDelete: " + error));
+  }
+
   function getTokenGoogleAPI() {
     fetch(import.meta.env.VITE_REFRESH_TOKEN, {
       method: "POST",

@@ -55,7 +55,7 @@ export default function DrivePicker() {
                   />
                   <Delete
                     onClick={() =>
-                      deletePhotoOnRegister(index, element.id, initialConfig())
+                      deletePhotoOnRegister(initialConfig(), index, element.id)
                     }
                     sx={{ color: "red" }}
                   />
