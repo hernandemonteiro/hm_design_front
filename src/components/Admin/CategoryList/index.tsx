@@ -49,22 +49,6 @@ export default function CategoryList() {
                     }}
                     onClick={() => deleteCategory(element._id)}
                   />
-                  <Edit
-                    color="success"
-                    sx={{
-                      margin: "2%",
-                      padding: "2%",
-                      marginLeft: "15%",
-                      "&:hover": {
-                        borderRadius: "50%",
-                        backgroundColor: "black",
-                        color: "white",
-                      },
-                    }}
-                    onClick={() => {
-                      alert("Change the password to a default value!");
-                    }}
-                  />
                 </TableCell>
               </TableRow>
             ))}
