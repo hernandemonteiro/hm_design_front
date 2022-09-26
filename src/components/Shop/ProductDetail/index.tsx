@@ -25,7 +25,7 @@ export default function ProductDetail(props: ProductDetailProps) {
         <p>{props.description}</p>
       </div>
       <div className="productPrice">
-        <h1>R${props.price}</h1>
+        <h1>R${props.price.toFixed(2)}</h1>
       </div>
       <div className="buttonsAction">
         {authenticated ? (
