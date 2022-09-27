@@ -1,6 +1,4 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Button from "../Button";
+import ButtonLink from "../ButtonLink";
 import "./ProductCard.scss";
 
 interface ProductCardProps {
@@ -23,9 +21,11 @@ export default function ProductCard(props: ProductCardProps) {
       <div className="productPrice">
         <h2>R${props.price}</h2>
       </div>
-        <Link to={`/details/${props.id}`}>
-          <Button className="green">Detalhes</Button>
-        </Link>
+      <ButtonLink
+        to={`/details/${props.id}`}
+        className="green"
+        children="Detalhes"
+      />
     </div>
   );
 }
