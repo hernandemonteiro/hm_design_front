@@ -12,42 +12,7 @@
     color: rgb(58, 0, 58)
 }
 
-.ErrorMessage {
-    color: red;
-    padding: 2%;
-}
 
-input {
-    width: 90%;
-    padding: 3%;
-}
-
-select,
-option {
-    width: 90%;
-    padding: 3%;
-}
-
-textarea {
-    width: 90%;
-    padding: 2%;
-    height: 300px;
-    resize: none;
-    overflow: auto;
-
-}
-
-label {
-    margin-left: 3%;
-    margin-top: 0.5%;
-}
-
-.actions {
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    margin-top: 5%;
-}
 
 .tableOptions {
     width: 100%;

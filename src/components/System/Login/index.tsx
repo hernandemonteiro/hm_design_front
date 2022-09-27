@@ -21,7 +21,7 @@ export default function Login() {
     <div className="LoginBox">
       <Form onSubmit={handleLogin}>
         <h1>HM Design</h1>
-        <h4 className="loginMessage">{loginMessage}</h4>
+        <h4 className="ErrorMessage">{loginMessage}</h4>
         <label>Digite seu email!</label>
         <input
           required={true}

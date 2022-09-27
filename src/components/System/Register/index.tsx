@@ -63,7 +63,7 @@ export default function Register() {
           {password === confirmPassword ? (
             <Button type="submit" className="green" children="Cadastrar" />
           ) : (
-            "Preencha os campos para cadastrar"
+            "Preencha todos os campos para cadastrar"
           )}
           <ButtonLink
             to="/login"
