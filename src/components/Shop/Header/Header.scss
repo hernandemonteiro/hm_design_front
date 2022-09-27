@@ -1,3 +1,4 @@
+$primeBlueColor: rgba(0, 212, 255, 1);
 header {
   display: flex;
   flex-wrap: wrap;
@@ -42,15 +43,15 @@ header {
   align-items: center;
   justify-content: center;
   background-color: white;
-  border-color: rgba(0, 212, 255, 1);
+  border-color: $primeBlueColor;
   border-style: solid;
   border-width: 1px;
   border-radius: 15px;
 
   .Icon {
-    color: rgba(0, 212, 255, 1);
+    color: rgba(107, 9, 121, 0.9472163865546218);
     &:hover {
-      color: gray;
+      color: $primeBlueColor;
     }
   }
 }
@@ -61,6 +62,9 @@ header {
   background: none;
   padding: 2%;
   outline: none;
+  &::placeholder {
+    color: rgba(107, 9, 121, 0.9472163865546218);
+  }
 }
 
 .SearchLayout > button {
