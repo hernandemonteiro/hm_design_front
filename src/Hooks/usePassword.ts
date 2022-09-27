@@ -5,7 +5,7 @@ export default function usePassword() {
   const [email, setEmail] = useState("");
   const [view, setView] = useState<any>("");
   const [message, setMessage] = useState("");
-  const [seconds, setSeconds] = useState(4);
+  const [seconds, setSeconds] = useState(5);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [hash, setHash] = useState<string | undefined>("");

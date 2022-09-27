@@ -1,8 +1,6 @@
-import { useState } from "react";
 import Button from "../../UI/Button";
 import "./ForgotPassword.scss";
 import forgotSuccess from "../../../assets/images/forgotsuccess.svg";
-import useToken from "../../../Hooks/useToken";
 import Form from "../../UI/Form";
 import usePassword from "../../../Hooks/usePassword";
 
