@@ -1,4 +1,5 @@
 $comonWidth: 90%;
+$errorColor: red;
 
 .form {
   display: flex;
@@ -43,12 +44,12 @@ $comonWidth: 90%;
   }
 
   .ErrorMessage {
-    color: red;
+    color: $errorColor;
     padding: 2%;
   }
 
   .NotEqualPass {
-    outline-color: red;
+    outline-color: $errorColor;
   }
 
   .EqualPass {
