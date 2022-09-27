@@ -23,7 +23,7 @@ export default function Header() {
           <h1>HM Design</h1>
         </Link>
       </div>
-      <form className='formSearch' onSubmit={searchRedirect}>
+      <form className="formSearch" onSubmit={searchRedirect}>
         <div className="SearchBox">
           <div className="SearchLayout">
             <input
@@ -32,7 +32,7 @@ export default function Header() {
               onChange={(event) => setSearch(event.target.value)}
               placeholder="Buscar..."
             />
-            <button type='submit'>
+            <button type="submit">
               <SearchIcon className="Icon" sx={{ fontSize: 25 }} />
             </button>
           </div>
@@ -48,18 +48,19 @@ export default function Header() {
             <PersonIcon className="Icon" sx={{ fontSize: 40, margin: 2 }} />
           </Link>
         )}
-
-        <Link to="/cart" style={{ color: "black" }}>
-          <Badge badgeContent={2} color="warning" sx={{ margin: 2 }}>
-            <ShoppingCartIcon className="Icon" sx={{ fontSize: 40 }} />
-          </Badge>
-        </Link>
         {user && (
-          <ExitToApp
-            className="Icon"
-            onClick={logout}
-            sx={{ fontSize: 40, margin: 2 }}
-          />
+          <>
+            <Link to="/cart" style={{ color: "black" }}>
+              <Badge badgeContent={2} color="warning" sx={{ margin: 2 }}>
+                <ShoppingCartIcon className="Icon" sx={{ fontSize: 40 }} />
+              </Badge>
+            </Link>
+            <ExitToApp
+              className="Icon"
+              onClick={logout}
+              sx={{ fontSize: 40, margin: 2 }}
+            />
+          </>
         )}
       </div>
     </header>

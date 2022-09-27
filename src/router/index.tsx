@@ -5,7 +5,10 @@ import {
   Routes,
   useParams,
 } from "react-router-dom";
-import { GlobalStatesProvider, useGlobalStates } from "../Hooks/useGlobalStates";
+import {
+  GlobalStatesProvider,
+  useGlobalStates,
+} from "../Hooks/useGlobalStates";
 import NotFoundError from "../components/System/NotFoundError";
 import Home from "../pages/Shop/Home";
 import CartPage from "../pages/Shop/Cart";
@@ -83,7 +86,14 @@ export default function Router() {
           <Route path="/" element={<Home />} />
           <Route path="/:search" element={<Home />} />
           <Route path="/category/:category" element={<Home />} />
-          <Route path="/cart" element={<CartPage />} />
+          <Route
+            path="/cart"
+            element={
+              <PrivateUser>
+                <CartPage />
+              </PrivateUser>
+            }
+          />
           <Route path="/details/:id" element={<Details />} />
           {/* user; */}
           <Route
