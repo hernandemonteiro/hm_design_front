@@ -49,7 +49,7 @@ export default function ForgotPassword() {
         <div className="forgotSuccess">
           <img src={forgotSuccess} />
           <br />
-          <h1>Dentro de alguns minutos você receberá nosso email!</h1>
+          <h2>Em alguns minutos você receberá nosso email!</h2>
           <br />
           <p>Redirecionando em {seconds}s</p>
         </div>
