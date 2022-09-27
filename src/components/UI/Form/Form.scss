@@ -1,3 +1,5 @@
+$comonWidth: 90%;
+
 .form {
   display: flex;
   min-width: 40%;
@@ -10,19 +12,19 @@
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 
   input {
-    width: 90%;
+    width: $comonWidth;
     padding: 3%;
     margin-bottom: 7%;
   }
 
   select,
   option {
-    width: 90%;
+    width: $comonWidth;
     padding: 3%;
   }
 
   textarea {
-    width: 90%;
+    width: $comonWidth;
     padding: 2%;
     height: 300px;
     resize: none;
@@ -34,7 +36,7 @@
   }
 
   .actions {
-    width: 90%;
+    width: $comonWidth;
     display: flex;
     flex-direction: row;
     margin-top: 5%;
