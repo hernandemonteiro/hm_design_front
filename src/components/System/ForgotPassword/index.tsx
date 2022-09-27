@@ -51,7 +51,7 @@ export default function ForgotPassword() {
         <div className="forgotSuccess">
           <img src={forgotSuccess} />
           <br />
-          <h1>Enviado com sucesso!</h1>
+          <h1>Dentro de alguns minutos você receberá nosso email!</h1>
           <br />
           <p>Redirecionando em {seconds}s</p>
         </div>
