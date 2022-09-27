@@ -44,9 +44,11 @@ export const GlobalStatesProvider = (props: GlobalStatesProps) => {
       .then((response) => response.json())
       .then((response) => {
         // implementing jwt method;
-        if (response.jwt != "") {
+        if (response.jwt.length > 1) {
           localStorage.setItem("user", response.jwt);
           window.location.reload();
+        } else {
+          setLoginMessage("Email ou senha Inválidos");
         }
       })
       .catch((error) => {
