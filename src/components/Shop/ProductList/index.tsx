@@ -23,7 +23,7 @@ export default function ProductList() {
       : search
       ? productsSearchFetch(search)
       : productsFetch();
-    setMessage("Nada encontrado por aqui!");
+    setTimeout(() => setMessage("Nada encontrado por aqui!"), 1000);
   }, []);
 
   return (
