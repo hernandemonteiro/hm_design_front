@@ -22,9 +22,16 @@ export const GlobalStatesProvider = (props: GlobalStatesProps) => {
   useEffect(() => {
     const recoveredUser = localStorage.getItem("user");
     if (recoveredUser) {
-      setUser(JSON.parse(recoveredUser));
+      var iv = CryptoJS.enc.Base64.parse(import.meta.env.VITE_HASH_SECRET);
+      const secret = CryptoJS.SHA256(import.meta.env.VITE_HASH_SECRET);
+      const user = CryptoJS.AES.decrypt(recoveredUser, secret, {
+        iv: iv,
+        mode: CryptoJS.mode.CBC,
+        padding: CryptoJS.pad.Pkcs7,
+      }).toString(CryptoJS.enc.Utf8);
+      const userJson = JSON.parse(user);
+      setUser(userJson);
     }
-
     setLoading(false);
   }, []);
 
@@ -36,24 +43,9 @@ export const GlobalStatesProvider = (props: GlobalStatesProps) => {
     })
       .then((response) => response.json())
       .then((response) => {
-        const token = response.jwt;
-        var iv = CryptoJS.enc.Base64.parse(import.meta.env.VITE_HASH_SECRET);
-        const secret = CryptoJS.SHA256(import.meta.env.VITE_HASH_SECRET);
-        const user = CryptoJS.AES.decrypt(token, secret, {
-          iv: iv,
-          mode: CryptoJS.mode.CBC,
-          padding: CryptoJS.pad.Pkcs7,
-        }).toString(CryptoJS.enc.Utf8);
-        const userJson = JSON.parse(user);
         // implementing jwt method;
-        if (userJson.id != "") {
-          localStorage.setItem(
-            "user",
-            JSON.stringify({
-              id: userJson.id,
-              type: userJson.type,
-            })
-          );
+        if (response.jwt != "") {
+          localStorage.setItem("user", response.jwt);
           window.location.reload();
         }
       })
@@ -79,7 +71,7 @@ export const GlobalStatesProvider = (props: GlobalStatesProps) => {
         login,
         logout,
         view,
-        setView
+        setView,
       }}
     >
       {props.children}

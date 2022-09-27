@@ -48,19 +48,21 @@ export default function Header() {
             <PersonIcon className="Icon" sx={{ fontSize: 40, margin: 2 }} />
           </Link>
         )}
+        {user && user.type == "1" ? (
+          <Link to="/cart" style={{ color: "black" }}>
+            <Badge badgeContent={2} color="warning" sx={{ margin: 2 }}>
+              <ShoppingCartIcon className="Icon" sx={{ fontSize: 40 }} />
+            </Badge>
+          </Link>
+        ) : (
+          ""
+        )}
         {user && (
-          <>
-            <Link to="/cart" style={{ color: "black" }}>
-              <Badge badgeContent={2} color="warning" sx={{ margin: 2 }}>
-                <ShoppingCartIcon className="Icon" sx={{ fontSize: 40 }} />
-              </Badge>
-            </Link>
-            <ExitToApp
-              className="Icon"
-              onClick={logout}
-              sx={{ fontSize: 40, margin: 2 }}
-            />
-          </>
+          <ExitToApp
+            className="Icon"
+            onClick={logout}
+            sx={{ fontSize: 40, margin: 2 }}
+          />
         )}
       </div>
     </header>

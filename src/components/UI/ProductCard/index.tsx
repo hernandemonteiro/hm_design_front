@@ -24,7 +24,7 @@ export default function ProductCard(props: ProductCardProps) {
         <h2>R${props.price}</h2>
       </div>
         <Link to={`/details/${props.id}`}>
-          <Button className="green gradientHover">Detalhes</Button>
+          <Button className="green">Detalhes</Button>
         </Link>
     </div>
   );
