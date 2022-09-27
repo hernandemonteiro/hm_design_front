@@ -5,7 +5,7 @@ import {
   Routes,
   useParams,
 } from "react-router-dom";
-import { AuthProvider, useGlobalStates } from "../Hooks/useGlobalStates";
+import { GlobalStatesProvider, useGlobalStates } from "../Hooks/useGlobalStates";
 import NotFoundError from "../components/System/NotFoundError";
 import Home from "../pages/Shop/Home";
 import CartPage from "../pages/Shop/Cart";
@@ -76,7 +76,7 @@ export default function Router() {
   }
 
   return (
-    <AuthProvider>
+    <GlobalStatesProvider>
       <BrowserRouter>
         <Routes>
           {/* shop; */}
@@ -176,6 +176,6 @@ export default function Router() {
           <Route path="*" element={<NotFoundError />} />
         </Routes>
       </BrowserRouter>
-    </AuthProvider>
+    </GlobalStatesProvider>
   );
 }
