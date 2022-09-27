@@ -6,13 +6,13 @@ import useToken from "./useToken";
  * @description provide an global state context for user login status;
  */
 
-export const AuthContext = createContext<any>("");
+export const GlobalStatesContext = createContext<any>("");
 
-interface authProps {
+interface GlobalStatesProps {
   children: any;
 }
 
-export const AuthProvider = (props: authProps) => {
+export const GlobalStatesProvider = (props: GlobalStatesProps) => {
   const [loginMessage, setLoginMessage] = useState<string>("");
   const [user, setUser] = useState<any>(null);
   const [view, setView] = useState("");
@@ -70,7 +70,7 @@ export const AuthProvider = (props: authProps) => {
   }
 
   return (
-    <AuthContext.Provider
+    <GlobalStatesContext.Provider
       value={{
         authenticated: !!user,
         user,
@@ -83,8 +83,8 @@ export const AuthProvider = (props: authProps) => {
       }}
     >
       {props.children}
-    </AuthContext.Provider>
+    </GlobalStatesContext.Provider>
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
+export const useGlobalStates = () => useContext(GlobalStatesContext);

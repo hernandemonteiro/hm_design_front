@@ -3,13 +3,13 @@ import PersonIcon from "@mui/icons-material/Person";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../../Hooks/useAuth";
+import { useGlobalStates } from "../../../Hooks/useGlobalStates";
 import { ExitToApp } from "@mui/icons-material";
 import Badge from "@mui/material/Badge";
 import { useState } from "react";
 
 export default function Header() {
-  const { user, logout } = useAuth();
+  const { user, logout } = useGlobalStates();
   const [search, setSearch] = useState("");
 
   function searchRedirect(event: any) {

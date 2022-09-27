@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../../Hooks/useAuth";
+import { useGlobalStates } from "../../../Hooks/useGlobalStates";
 import Button from "../../UI/Button";
 import ButtonLink from "../../UI/ButtonLink";
 import Form from "../../UI/Form";
 import "./Login.scss";
 
 export default function Login() {
-  const { login, loginMessage } = useAuth();
+  const { login, loginMessage } = useGlobalStates();
 
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useAuth } from "../../../Hooks/useAuth";
+import { useGlobalStates } from "../../../Hooks/useGlobalStates";
 import Button from "../../UI/Button";
 import ButtonLink from "../../UI/ButtonLink";
 import Carroussel from "../../UI/Carrousell";
@@ -14,7 +14,7 @@ interface ProductDetailProps {
 }
 
 export default function ProductDetail(props: ProductDetailProps) {
-  const { authenticated } = useAuth();
+  const { authenticated } = useGlobalStates();
   return (
     <div className="Detail">
       <Carroussel data={props.image}/>

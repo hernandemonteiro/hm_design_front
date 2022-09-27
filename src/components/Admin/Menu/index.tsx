@@ -1,10 +1,10 @@
-import { useAuth } from "../../../Hooks/useAuth";
+import { useGlobalStates } from "../../../Hooks/useGlobalStates";
 import Button from "../../UI/Button";
 import ButtonLink from "../../UI/ButtonLink";
 import Nav from "../../UI/Nav";
 
 export default function Menu() {
-  const { logout } = useAuth();
+  const { logout } = useGlobalStates();
   return (
     <Nav>
       <ButtonLink to="/admin" children="Dashboard" />

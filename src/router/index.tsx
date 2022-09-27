@@ -5,7 +5,7 @@ import {
   Routes,
   useParams,
 } from "react-router-dom";
-import { AuthProvider, useAuth } from "../Hooks/useAuth";
+import { AuthProvider, useGlobalStates } from "../Hooks/useGlobalStates";
 import NotFoundError from "../components/System/NotFoundError";
 import Home from "../pages/Shop/Home";
 import CartPage from "../pages/Shop/Cart";
@@ -27,7 +27,7 @@ import useProducts from "../Hooks/useProducts";
 
 export default function Router() {
   function RedirectLogged(props: any) {
-    const { authenticated, loading, user } = useAuth();
+    const { authenticated, loading, user } = useGlobalStates();
 
     loading ?? <Loader />;
 
@@ -42,7 +42,7 @@ export default function Router() {
   }
 
   function PrivateUser(props: any) {
-    const { authenticated, loading, user } = useAuth();
+    const { authenticated, loading, user } = useGlobalStates();
 
     loading ?? <Loader />;
 
@@ -53,7 +53,7 @@ export default function Router() {
   }
 
   function PrivateAdmin(props: any) {
-    const { authenticated, loading, user } = useAuth();
+    const { authenticated, loading, user } = useGlobalStates();
     const { getTokenGoogleAPI, deleteCloudImageCanceled } = useProducts();
     if (loading) {
       return <Loader />;

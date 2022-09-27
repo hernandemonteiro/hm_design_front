@@ -1,4 +1,4 @@
-import { useAuth } from "../../../Hooks/useAuth";
+import { useGlobalStates } from "../../../Hooks/useGlobalStates";
 import Button from "../../UI/Button";
 import useProducts from "../../../Hooks/useProducts";
 import "./DrivePicker.scss";
@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { Delete } from "@mui/icons-material";
 
 export default function DrivePicker() {
-  const { setView } = useAuth();
+  const { setView } = useGlobalStates();
   const {
     handleOpenPicker,
     getTokenGoogleAPI,

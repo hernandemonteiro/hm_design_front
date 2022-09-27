@@ -5,11 +5,11 @@ import "./FormProduct.scss";
 import Form from "../../UI/Form";
 import useCategory from "../../../Hooks/useCategory";
 import useProducts from "../../../Hooks/useProducts";
-import { useAuth } from "../../../Hooks/useAuth";
+import { useGlobalStates } from "../../../Hooks/useGlobalStates";
 import DrivePicker from "../DrivePicker";
 
 export default function FormProduct() {
-  const { view, setView } = useAuth();
+  const { view, setView } = useGlobalStates();
   const { categorys, categoryFetch } = useCategory();
   const {
     registerProduct,
