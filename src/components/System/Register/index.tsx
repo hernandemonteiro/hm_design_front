@@ -60,7 +60,7 @@ export default function Register() {
             type="password"
             placeholder="Confirmar Senha"
           />
-          {password === confirmPassword ? (
+          {password === confirmPassword && password != "" ? (
             <Button type="submit" className="green" children="Cadastrar" />
           ) : (
             "Preencha todos os campos para cadastrar"

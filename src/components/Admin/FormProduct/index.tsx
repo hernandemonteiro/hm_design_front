@@ -5,7 +5,7 @@ import "./FormProduct.scss";
 import Form from "../../UI/Form";
 import useCategory from "../../../Hooks/useCategory";
 import useProducts from "../../../Hooks/useProducts";
-import { useGlobalStates } from "../../../Hooks/useGlobalStates";
+import { useGlobalStates } from "../../../providers/useGlobalStates";
 import DrivePicker from "../DrivePicker";
 
 export default function FormProduct() {

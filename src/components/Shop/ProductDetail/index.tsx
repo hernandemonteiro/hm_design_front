@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useGlobalStates } from "../../../Hooks/useGlobalStates";
+import { useGlobalStates } from "../../../providers/useGlobalStates";
 import Button from "../../UI/Button";
 import ButtonLink from "../../UI/ButtonLink";
 import Carroussel from "../../UI/Carrousell";

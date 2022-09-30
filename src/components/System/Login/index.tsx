@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useGlobalStates } from "../../../Hooks/useGlobalStates";
+import { useGlobalStates } from "../../../providers/useGlobalStates";
 import Button from "../../UI/Button";
 import ButtonLink from "../../UI/ButtonLink";
 import Form from "../../UI/Form";

@@ -8,7 +8,7 @@ import {
 import {
   GlobalStatesProvider,
   useGlobalStates,
-} from "../Hooks/useGlobalStates";
+} from "../providers/useGlobalStates";
 import NotFoundError from "../components/System/NotFoundError";
 import Home from "../pages/Shop/Home";
 import CartPage from "../pages/Shop/Cart";
