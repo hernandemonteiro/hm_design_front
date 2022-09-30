@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -6,7 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Delete, Edit } from "@mui/icons-material";
+import { Delete } from "@mui/icons-material";
 import usePagination from "../../../Hooks/usePagination";
 import useCategory from "../../../Hooks/useCategory";
 
@@ -23,31 +23,32 @@ export default function CategoryList() {
               <TableCell>
                 <h3>Categorys - {categorys.length}</h3>
               </TableCell>
-              <TableCell sx={{ textAlign: "center" }}>
-              </TableCell>
+              <TableCell sx={{ textAlign: "center" }}></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {categorys.slice(0, pagination).map((element: any) => (
-              <TableRow>
-                <TableCell>{element.category}</TableCell>
-                <TableCell sx={{ textAlign: "center" }}>
-                  <Delete
-                    sx={{
-                      color: "red",
-                      margin: "2%",
-                      padding: "2%",
-                      "&:hover": {
-                        borderRadius: "50%",
-                        backgroundColor: "black",
-                        color: "white",
-                      },
-                    }}
-                    onClick={() => deleteCategory(element._id)}
-                  />
-                </TableCell>
-              </TableRow>
-            ))}
+            {categorys
+              .slice(0, pagination)
+              .map((element: { _id: string; category: string }) => (
+                <TableRow key={element._id}>
+                  <TableCell>{element.category}</TableCell>
+                  <TableCell sx={{ textAlign: "center" }}>
+                    <Delete
+                      sx={{
+                        color: "red",
+                        margin: "2%",
+                        padding: "2%",
+                        "&:hover": {
+                          borderRadius: "50%",
+                          backgroundColor: "black",
+                          color: "white",
+                        },
+                      }}
+                      onClick={() => deleteCategory(element._id)}
+                    />
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
         {buttonPaginate(categorys.length)}

@@ -1,5 +1,5 @@
 import CardDashboard from "../../UI/CardDashboard";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import "./Dashboard.scss";
 import useDashboard from "../../../Hooks/useDashboard";
 

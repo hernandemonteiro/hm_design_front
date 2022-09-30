@@ -1,3 +1,4 @@
+import React from "react";
 import useClient from "../../../Hooks/useClient";
 import Button from "../../UI/Button";
 import ButtonLink from "../../UI/ButtonLink";
@@ -61,22 +62,26 @@ export default function Register() {
             placeholder="Confirmar Senha"
           />
           {password === confirmPassword && password != "" ? (
-            <Button type="submit" className="green" children="Cadastrar" />
+            <Button type="submit" className="green">
+              Cadastrar
+            </Button>
           ) : (
             "Preencha todos os campos para cadastrar"
           )}
-          <ButtonLink
-            to="/login"
-            className="warning"
-            children="Já tem conta?"
-          />
-          <ButtonLink className="red" to="/" children="Voltar ao site" />
+          <ButtonLink to="/login" className="warning">
+            Já tem conta?
+          </ButtonLink>
+          <ButtonLink className="red" to="/">
+            Voltar ao site
+          </ButtonLink>
         </Form>
       ) : (
         <div className="sucessRegister">
           <h1>Registrado com sucesso!</h1>
           <br />
-          <ButtonLink to="/login" className="green" children="Ir para login" />
+          <ButtonLink to="/login" className="green">
+            Ir para login
+          </ButtonLink>
         </div>
       )}
     </div>

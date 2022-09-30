@@ -1,3 +1,4 @@
+import React from "react";
 import { useGlobalStates } from "../../../providers/useGlobalStates";
 import Button from "../../UI/Button";
 import ButtonLink from "../../UI/ButtonLink";
@@ -7,13 +8,13 @@ export default function Menu() {
   const { logout } = useGlobalStates();
   return (
     <Nav>
-      <ButtonLink to="/admin" children="Dashboard" />
-      <ButtonLink to="/admin/categorias" children="Categorias" />
-      <ButtonLink to="/admin/produtos" children="Produtos" />
-      <ButtonLink to="/admin/clientes" children="Usuários" />
-      <ButtonLink to="/admin/ordens" children="Ordens" />
-      <ButtonLink to="/admin/producao" children="Em produção" />
-      <Button className="red" children="Sair" onClick={logout} />
+      <ButtonLink to="/admin">Dashboard</ButtonLink>
+      <ButtonLink to="/admin/categorias">Categorias</ButtonLink>
+      <ButtonLink to="/admin/produtos">Produtos</ButtonLink>
+      <ButtonLink to="/admin/clientes">Usuários</ButtonLink>
+      <ButtonLink to="/admin/ordens">Ordens</ButtonLink>
+      <ButtonLink to="/admin/producao">Em produção</ButtonLink>
+      <Button className="red" onClick={logout}>Sair</Button>
     </Nav>
   );
 }

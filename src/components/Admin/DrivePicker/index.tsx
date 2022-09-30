@@ -2,7 +2,7 @@ import { useGlobalStates } from "../../../providers/useGlobalStates";
 import Button from "../../UI/Button";
 import useProducts from "../../../Hooks/useProducts";
 import "./DrivePicker.scss";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { Delete } from "@mui/icons-material";
 
 export default function DrivePicker() {
@@ -19,7 +19,7 @@ export default function DrivePicker() {
   }
   useEffect(() => {
     initialConfig();
-    const imgs: any = localStorage.getItem("pic")
+    const imgs: unknown | string = localStorage.getItem("pic")
       ? localStorage.getItem("pic")
       : "[]";
     setPictures(JSON.parse(imgs));
@@ -29,25 +29,26 @@ export default function DrivePicker() {
   }, []);
   return (
     <>
-
       <div className="actions">
         <Button
           type="button"
           className="green"
-          children="ADICIONAR FOTOS"
           onClick={() => handleOpenPicker(initialConfig())}
-        />
+        >
+          ADICIONAR FOTOS
+        </Button>
         <Button
           type="button"
           className="red"
-          children="CANCELAR"
-          onClick={() => window.location.href = "/admin/produtos"}
-        />
+          onClick={() => (window.location.href = "/admin/produtos")}
+        >
+          CANCELAR
+        </Button>
       </div>
       {pictures.length > 0 && (
         <>
           <div className="imgBox">
-            {pictures.map((element: any, index: number) => {
+            {pictures.map((element: string, index: number) => {
               return (
                 <>
                   <img
@@ -64,11 +65,9 @@ export default function DrivePicker() {
               );
             })}
           </div>
-          <Button
-            className="green"
-            children="IR PARA OPÇÕES"
-            onClick={() => setView("Finally")}
-          />
+          <Button className="green" onClick={() => setView("Finally")}>
+            IR PARA OPÇÕES
+          </Button>
         </>
       )}
     </>

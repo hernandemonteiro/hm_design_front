@@ -4,13 +4,12 @@ import Button from "../components/UI/Button";
 export default function usePagination(initialQuantity: number) {
   const [pagination, setPagination] = useState<number>(initialQuantity);
 
-  function buttonPaginate(arrayLength: any) {
+  function buttonPaginate(arrayLength: number) {
     if (pagination < arrayLength) {
       return (
-        <Button
-          children="Mostrar Mais"
-          onClick={() => setPagination(pagination + 5)}
-        />
+        <Button onClick={() => setPagination(pagination + 5)}>
+          Mostrar Mais
+        </Button>
       );
     }
   }

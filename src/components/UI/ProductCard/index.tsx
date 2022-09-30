@@ -1,3 +1,4 @@
+import React from "react";
 import ButtonLink from "../ButtonLink";
 import "./ProductCard.scss";
 
@@ -21,11 +22,9 @@ export default function ProductCard(props: ProductCardProps) {
       <div className="productPrice">
         <h2>R${props.price}</h2>
       </div>
-      <ButtonLink
-        to={`/details/${props.id}`}
-        className="green"
-        children="Detalhes"
-      />
+      <ButtonLink to={`/details/${props.id}`} className="green">
+        Detalhes
+      </ButtonLink>
     </div>
   );
 }

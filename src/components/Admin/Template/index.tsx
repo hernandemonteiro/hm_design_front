@@ -1,8 +1,9 @@
+import React from "react";
 import Menu from "../Menu";
 import "./Template.scss";
 
 interface TemplateProps {
-  children: any;
+  children: React.ReactNode;
 }
 
 export default function Template(props: TemplateProps) {

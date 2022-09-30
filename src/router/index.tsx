@@ -1,3 +1,4 @@
+import React from "react";
 import {
   BrowserRouter,
   Navigate,
@@ -29,7 +30,10 @@ import ProductRegister from "../pages/Admin/ProductRegister";
 import useProducts from "../Hooks/useProducts";
 
 export default function Router() {
-  function RedirectLogged(props: any) {
+  interface propsChildren {
+    children: JSX.Element;
+  }
+  function RedirectLogged(props: propsChildren) {
     const { authenticated, loading, user } = useGlobalStates();
 
     loading ?? <Loader />;
@@ -44,7 +48,7 @@ export default function Router() {
     return props.children;
   }
 
-  function PrivateUser(props: any) {
+  function PrivateUser(props: propsChildren) {
     const { authenticated, loading, user } = useGlobalStates();
 
     loading ?? <Loader />;
@@ -55,7 +59,7 @@ export default function Router() {
     return props.children;
   }
 
-  function PrivateAdmin(props: any) {
+  function PrivateAdmin(props: propsChildren) {
     const { authenticated, loading, user } = useGlobalStates();
     const { getTokenGoogleAPI, deleteCloudImageCanceled } = useProducts();
     if (loading) {
@@ -65,12 +69,10 @@ export default function Router() {
     }
 
     // cloudStorage leak fix;
-    const photos: any = localStorage.getItem("pic")
-      ? localStorage.getItem("pic")
-      : "[]";
+    const photos: string  = localStorage.getItem("pic") || "[]";
     if (useParams().register != "true" && JSON.parse(photos).length > 0) {
       const token = getTokenGoogleAPI();
-      JSON.parse(photos).map((element: any) => {
+      JSON.parse(photos).map((element: { id: string }) => {
         deleteCloudImageCanceled(token, element.id);
       });
     }

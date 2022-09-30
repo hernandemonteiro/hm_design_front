@@ -1,3 +1,4 @@
+import React from "react";
 import { SummarizeOutlined } from "@mui/icons-material";
 import Button from "../../UI/Button";
 import CardCart from "../../UI/CardCart";
@@ -10,24 +11,28 @@ export default function Cart() {
         <CardCart
           photo={"photo"}
           description={"description"}
-          actions={<div>
-            <SummarizeOutlined/>
-            <SummarizeOutlined/>
-          </div>}
+          actions={
+            <div>
+              <SummarizeOutlined />
+              <SummarizeOutlined />
+            </div>
+          }
           price={"R$25.00"}
         />
         <CardCart
           photo={"photo"}
           description={"description"}
-          actions={<div>
-            <SummarizeOutlined/>
-            <SummarizeOutlined/>
-          </div>}
+          actions={
+            <div>
+              <SummarizeOutlined />
+              <SummarizeOutlined />
+            </div>
+          }
           price={"R$25.00"}
         />
       </div>
       <div className="actions">
-        <Button className="green" children="Ir Para Frete" />
+        <Button className="green">Ir Para Frete</Button>
       </div>
     </div>
   );

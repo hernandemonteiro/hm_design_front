@@ -1,9 +1,9 @@
 import { SkipNextOutlined, SkipPreviousOutlined } from "@mui/icons-material";
-import { useState } from "react";
+import React, { useState } from "react";
 import "./Carroussel.scss";
 
 interface carrousselProps {
-  data: any;
+  data: string;
 }
 
 export default function Carroussel(props: carrousselProps) {

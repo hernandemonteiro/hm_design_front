@@ -1,3 +1,4 @@
+import React from "react";
 import Button from "../../UI/Button";
 import "./ForgotPassword.scss";
 import forgotSuccess from "../../../assets/images/forgotsuccess.svg";
@@ -38,12 +39,15 @@ export default function ForgotPassword() {
             value={email}
             placeholder="Email registrado!"
           />
-          <Button type={"submit"} className="green" children="RECUPERAR" />
+          <Button type={"submit"} className="green">
+            RECUPERAR
+          </Button>
           <Button
             type={"button"}
             onClick={() => (window.location.href = "/login")}
-            children="VOLTAR"
-          />
+          >
+            VOLTAR
+          </Button>
         </Form>
       ) : (
         <div className="forgotSuccess">

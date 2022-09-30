@@ -1,24 +1,28 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import useToken from "./useToken";
 import useDrivePicker from "react-google-drive-picker";
 
 export default function useProducts() {
-  const [openPicker, authResponse] = useDrivePicker();
-  const [name, setName] = useState<string>("");
-  const [price, setPrice] = useState<any>("");
-  const [options, setOptions] = useState([]);
-  const [category, setCategory] = useState<string>("");
-  const [pictures, setPictures] = useState<any>([]);
-  const [description, setDescription] = useState<string>("");
+  const [openPicker] = useDrivePicker();
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [options, setOptions] = useState<
+    Array<{ option: string; priceOption: string | number }>
+  >([]);
+  const [category, setCategory] = useState("");
+  const [pictures, setPictures] = useState<Array<{ id: string }>>([]);
+  const [description, setDescription] = useState("");
   const [option, setOption] = useState("");
-  const [priceOption, setPriceOption] = useState<number>(0);
-  const [arrayOption, setArrayOption] = useState<any>([]);
+  const [priceOption, setPriceOption] = useState<string | number>(0);
+  const [arrayOption] = useState<
+    Array<{ option: string; priceOption: string | number }>
+  >([]);
   const [message, setMessage] = useState("");
-  const [products, setProducts] = useState<any>([]);
+  const [products, setProducts] = useState([]);
   const [productsView, setProductsView] = useState("Products List");
-  const [token, setToken] = useState<any>("");
+  const [token, setToken] = useState("");
 
-  function deleteCloudImageCanceled(token: any, file: any) {
+  function deleteCloudImageCanceled(token: string, file: string) {
     fetch(
       `https://www.googleapis.com/drive/v3/files/${file}?key=${
         import.meta.env.VITE_DEVELOPER_ID
@@ -56,8 +60,8 @@ export default function useProducts() {
     )
       .then((response) => console.log(response))
       .then(() => {
-        const photos = localStorage.getItem("pic");
-        setPictures(photos);
+        const photos = localStorage.getItem("pic") || "[]";
+        setPictures(JSON.parse(photos));
         pictures.splice(index, 1);
         localStorage.setItem("pic", JSON.stringify(pictures));
         window.location.reload();
@@ -69,15 +73,15 @@ export default function useProducts() {
     fetch(import.meta.env.VITE_REFRESH_TOKEN, {
       method: "POST",
     })
-      .then((response: any) => response.json())
-      .then((response: any) => {
+      .then((response) => response.json())
+      .then((response) => {
         setToken(response.access_token);
       })
-      .catch((error: any) => console.log(error));
+      .catch((error) => console.log(error));
     return token;
   }
 
-  const handleOpenPicker = (token: any) => {
+  const handleOpenPicker = (token: string) => {
     openPicker({
       clientId: import.meta.env.VITE_CLIENT_ID,
       developerKey: import.meta.env.VITE_DEVELOPER_ID,
@@ -96,7 +100,7 @@ export default function useProducts() {
         }
 
         if (data.docs != undefined) {
-          data.docs.map((element: any) => pictures.push({ id: element.id }));
+          data.docs.map((element) => pictures.push({ id: element.id }));
           localStorage.setItem("pic", JSON.stringify(pictures));
           setPictures(pictures);
           window.location.reload();
@@ -156,19 +160,17 @@ export default function useProducts() {
     setPriceOption(price);
   }
 
-  function registerProduct(event: any) {
+  function registerProduct(event: FormEvent) {
     event.preventDefault();
-    const photos = localStorage.getItem("pic")
-      ? localStorage.getItem("pic")
-      : "[{'id': 'undefined'}]";
-    setPictures(photos);
+    const photos = localStorage.getItem("pic") || "[{'id': 'undefined'}]";
+    setPictures(JSON.parse(photos));
     const priceFormat = parseFloat(price).toFixed(2).toString();
     fetch(
       `${
         import.meta.env.VITE_API_URL
-      }/product/register/${name}/${priceFormat}/${photos}/${description}/${category}/${JSON.stringify(
-        options
-      )}`,
+      }/product/register/${name}/${priceFormat}/${JSON.stringify(
+        photos
+      )}/${description}/${category}/${JSON.stringify(options)}`,
       {
         method: "PUT",
         headers: {

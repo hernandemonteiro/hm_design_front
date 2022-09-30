@@ -1,12 +1,13 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import "../Button/Button.scss";
 import "./ButtonLink.scss";
 
 interface buttonLinkProps {
   children: string;
-  onClick?: any;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
-  type?: any;
+  type?: 'submit' | 'reset' | 'button';
   disabled?: boolean;
   to: string
 }

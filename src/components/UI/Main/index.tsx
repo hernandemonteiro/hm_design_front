@@ -1,7 +1,8 @@
+import React from "react";
 import "./Main.scss";
 
 interface MainProps {
-    children?: any;
+    children?: JSX.Element;
   }
   
 export default function Main(props: MainProps) {

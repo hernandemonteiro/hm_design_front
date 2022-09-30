@@ -6,6 +6,7 @@
   "scripts": {
     "start": "vite",
     "build": "tsc && vite build",
+    "lint": "npx eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -26,8 +27,12 @@
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
     "@vitejs/plugin-react": "^2.0.1",
     "babel-loader": "^8.2.5",
+    "eslint": "^8.24.0",
+    "eslint-plugin-react": "^7.31.8",
     "typescript": "^4.6.4",
     "vite": "^3.0.6"
   }

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -20,7 +20,10 @@ export default function ClientList() {
         <Table sx={{ Width: "100%" }} size="small" aria-label="a dense table">
           <TableHead>
             <TableRow>
-              <TableCell> <h3>Users - {users.length}</h3></TableCell>
+              <TableCell>
+                {" "}
+                <h3>Users - {users.length}</h3>
+              </TableCell>
             </TableRow>
             <TableRow>
               <TableCell>
@@ -35,27 +38,29 @@ export default function ClientList() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {users.slice(0, pagination).map((element: any) => (
-              <TableRow>
-                <TableCell>{element.type === "1" ? "User" : "Adm"}</TableCell>
-                <TableCell>{element.name}</TableCell>
-                <TableCell sx={{ textAlign: "center" }}>
-                  <Delete
-                    sx={{
-                      color: "red",
-                      margin: "2%",
-                      padding: "2%",
-                      "&:hover": {
-                        borderRadius: "50%",
-                        backgroundColor: "black",
-                        color: "white",
-                      },
-                    }}
-                    onClick={() => deleteUser(element._id)}
-                  />
-                </TableCell>
-              </TableRow>
-            ))}
+            {users
+              .slice(0, pagination)
+              .map((element: { _id: string; type: string; name: string }) => (
+                <TableRow key={element._id}>
+                  <TableCell>{element.type === "1" ? "User" : "Adm"}</TableCell>
+                  <TableCell>{element.name}</TableCell>
+                  <TableCell sx={{ textAlign: "center" }}>
+                    <Delete
+                      sx={{
+                        color: "red",
+                        margin: "2%",
+                        padding: "2%",
+                        "&:hover": {
+                          borderRadius: "50%",
+                          backgroundColor: "black",
+                          color: "white",
+                        },
+                      }}
+                      onClick={() => deleteUser(element._id)}
+                    />
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
         {buttonPaginate(users.length)}

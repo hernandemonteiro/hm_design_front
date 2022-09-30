@@ -1,16 +1,16 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import useToken from "./useToken";
 
 export default function usePassword() {
   const [email, setEmail] = useState("");
-  const [view, setView] = useState<any>("");
+  const [view, setView] = useState<string | boolean>("");
   const [message, setMessage] = useState("");
   const [seconds, setSeconds] = useState(5);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [hash, setHash] = useState<string | undefined>("");
 
-  function forgotPassword(event: any) {
+  function forgotPassword(event: FormEvent) {
     event.preventDefault();
     fetch(`${import.meta.env.VITE_API_URL}/forgotPassword/${email}`, {
       method: "POST",
@@ -35,7 +35,7 @@ export default function usePassword() {
       });
   }
 
-  function updatePassword(event: Event) {
+  function updatePassword(event: FormEvent) {
     event.preventDefault();
     fetch(
       `${import.meta.env.VITE_API_URL}/updatePassword/${hash}/${password}`,
@@ -46,8 +46,8 @@ export default function usePassword() {
         },
       }
     )
-      .then((response: any) => response.json())
-      .then((response: any) => {
+      .then((response) => response.json())
+      .then((response) => {
         console.log(response);
         if (response.result === "Success") {
           return (window.location.href = "/login");
@@ -55,7 +55,7 @@ export default function usePassword() {
           return setMessage("Erro ao mudar senha!");
         }
       })
-      .catch((error: any) => {
+      .catch((error) => {
         setMessage("Erro ao mudar senha!");
         console.log(error);
       });
@@ -67,8 +67,8 @@ export default function usePassword() {
         "x-access-token": useToken(),
       },
     })
-      .then((response: any) => response.json())
-      .then((response: any) => {
+      .then((response) => response.json())
+      .then((response) => {
         if (response.result === 0) {
           setView(false);
         }

@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Button from "../../UI/Button";
 import "./RecoveryPassword.scss";
 import forgotFailure from "../../../assets/images/forgotsuccess.svg";
 import { useParams } from "react-router-dom";
-import useToken from "../../../Hooks/useToken";
 import Form from "../../UI/Form";
 import usePassword from "../../../Hooks/usePassword";
 
@@ -18,7 +17,6 @@ export default function RecoveryPassword() {
     setConfirmPassword,
     confirmPassword,
     setHash,
-    hash,
   } = usePassword();
 
   const hashUrl = useParams().hash;
@@ -51,7 +49,9 @@ export default function RecoveryPassword() {
           {password != "" &&
           password === confirmPassword &&
           confirmPassword != "" ? (
-            <Button type={"submit"} className="green" children="RECUPERAR" />
+            <Button type={"submit"} className="green">
+              RECUPERAR
+            </Button>
           ) : (
             "Senha e confirmação devem ser iguais!"
           )}
@@ -59,8 +59,9 @@ export default function RecoveryPassword() {
           <Button
             type={"button"}
             onClick={() => (window.location.href = "/login")}
-            children="IR AO LOGIN"
-          />
+          >
+            IR AO LOGIN
+          </Button>
         </Form>
       ) : (
         <div className="forgotFailure">
@@ -68,10 +69,9 @@ export default function RecoveryPassword() {
           <br />
           <h1>Não foi encontrada solicitação para esse email!</h1>
           <br />
-          <Button
-            onClick={() => (window.location.href = "/forgotpassword")}
-            children="Tentar Novamente!"
-          />
+          <Button onClick={() => (window.location.href = "/forgotpassword")}>
+            Tentar Novamente!
+          </Button>
         </div>
       )}
     </div>

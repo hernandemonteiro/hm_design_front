@@ -1,5 +1,5 @@
 import { Delete } from "@mui/icons-material";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import Button from "../../UI/Button";
 import "./FormProduct.scss";
 import Form from "../../UI/Form";
@@ -43,9 +43,10 @@ export default function FormProduct() {
             <Button
               className="warning"
               type="button"
-              children="VOLTAR PARA FOTOS"
               onClick={() => setView("")}
-            />
+            >
+              VOLTAR PARA FOTOS
+            </Button>
             <label>Nome do produto*:</label>
             <input
               required
@@ -64,68 +65,67 @@ export default function FormProduct() {
               min="1"
               placeholder="Preço"
             />
-              <h2>OPÇÕES:</h2>
-              <h3 className="ErrorMessage">{message}</h3>
-              <label>Titulo da Opção:</label>
-              <input
-                type="text"
-                onChange={(event: any) => setOption(event.target.value)}
-                placeholder="Titulo da Opção"
-                value={option}
-              />
-              <label>Valor da opção:</label>
-              <input
-                type="number"
-                min={0}
-                onChange={(event: any) => setPriceOption(event.target.value)}
-                value={priceOption}
-                placeholder="Valor da opção"
-              />
-              <Button
-                type="button"
-                className="green"
-                children="ADICIONAR OPÇÂO"
-                onClick={() => addOption()}
-              />
-              {options.length > 0 && (
-                <table className="tableOptions">
-                  <thead>
-                    <tr>
-                      <th>Option</th>
-                      <th>Price</th>
-                      <th>Delete</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {options.map((element: any, index: number) => {
+            <h2>OPÇÕES:</h2>
+            <h3 className="ErrorMessage">{message}</h3>
+            <label>Titulo da Opção:</label>
+            <input
+              type="text"
+              onChange={(event) => setOption(event.target.value)}
+              placeholder="Titulo da Opção"
+              value={option}
+            />
+            <label>Valor da opção:</label>
+            <input
+              type="number"
+              min={0}
+              onChange={(event) => setPriceOption(event.target.value)}
+              value={priceOption}
+              placeholder="Valor da opção"
+            />
+            <Button type="button" className="green" onClick={() => addOption()}>
+              ADICIONAR OPÇÂO
+            </Button>
+            {options.length > 0 && (
+              <table className="tableOptions">
+                <thead>
+                  <tr>
+                    <th>Option</th>
+                    <th>Price</th>
+                    <th>Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {options.map(
+                    (element, index: number) => {
                       return (
-                        <tr>
+                        <tr key={element.option}>
                           <td>{element.option}</td>
-                          <td>R${parseInt(element.priceOption).toFixed(2)}</td>
+                          <td>R${element.priceOption}</td>
                           <td>
                             <Delete
                               onClick={() =>
                                 dropOption(
                                   index,
                                   element.option,
-                                  element.priceOption
+                                  0.00
                                 )
                               }
                             />
                           </td>
                         </tr>
                       );
-                    })}
-                  </tbody>
-                </table>
-              )}
+                    }
+                  )}
+                </tbody>
+              </table>
+            )}
             <label>Categoria*:</label>
             <select required onChange={(e) => setCategory(e.target.value)}>
               <option selected value="">
                 Categorias...
               </option>
-              {categorys.map((element: any) => (
-                <option>{element.category}</option>
+              {categorys.map((element: { category: string }) => (
+                <option key={element.category}>{element.category}</option>
               ))}
             </select>
             <br />
@@ -136,13 +136,16 @@ export default function FormProduct() {
               onChange={(e) => setDescription(e.target.value)}
             ></textarea>
             <div className="actions">
-              <Button type="submit" className="green" children="CADASTRAR" />
+              <Button type="submit" className="green">
+                CADASTRAR
+              </Button>
               <Button
                 type="button"
                 className="red"
-                children="CANCELAR"
                 onClick={() => (window.location.href = "/admin/produtos")}
-              />
+              >
+                CANCELAR
+              </Button>
             </div>
           </>
         )}

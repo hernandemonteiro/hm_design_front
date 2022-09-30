@@ -1,6 +1,10 @@
+import React from "react";
 import "./TitleHome.scss";
 
-export default function TitleHome(props: any) {
+interface titleHomeProps {
+  title: string;
+}
+export default function TitleHome(props: titleHomeProps) {
   return (
     <div className="Title">
       <h1>{props.title}</h1>

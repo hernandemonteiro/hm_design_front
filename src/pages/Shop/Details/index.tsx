@@ -1,6 +1,6 @@
 import ProductDetail from "../../../components/Shop/ProductDetail";
 import Template from "../../../components/Shop/Template";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import useProducts from "../../../Hooks/useProducts";
 

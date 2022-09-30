@@ -1,3 +1,4 @@
+import React, { FormEvent, useState } from "react";
 import "./Header.scss";
 import PersonIcon from "@mui/icons-material/Person";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
@@ -6,13 +7,12 @@ import { Link } from "react-router-dom";
 import { useGlobalStates } from "../../../providers/useGlobalStates";
 import { ExitToApp } from "@mui/icons-material";
 import Badge from "@mui/material/Badge";
-import { useState } from "react";
 
 export default function Header() {
   const { user, logout } = useGlobalStates();
   const [search, setSearch] = useState("");
 
-  function searchRedirect(event: any) {
+  function searchRedirect(event: FormEvent) {
     event.preventDefault();
     window.location.href = `/${search}`;
   }

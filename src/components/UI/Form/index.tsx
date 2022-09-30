@@ -1,8 +1,9 @@
+import React from "react";
 import "./Form.scss";
 
 interface formProps {
-  children: any;
-  onSubmit?: any;
+  children: React.ReactNode;
+  onSubmit?: React.FormEventHandler;
   method?: string;
   enctype?: string;
   action?: string;

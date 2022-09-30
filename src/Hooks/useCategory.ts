@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import useToken from "./useToken";
 
 export default function useCategory() {
   const [categorys, setCategorys] = useState([]);
   const [category, setCategory] = useState("");
   const [message, setMessage] = useState("");
-  function registerCategory(event: any) {
+  function registerCategory(event: FormEvent) {
     event.preventDefault();
     fetch(`${import.meta.env.VITE_API_URL}/category/register/${category}`, {
       method: "PUT",

@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import useCategory from "../../../Hooks/useCategory";
-import useToken from "../../../Hooks/useToken";
 import Button from "../../UI/Button";
 import Form from "../../UI/Form";
 
@@ -22,7 +21,7 @@ export default function FormCategory() {
         placeholder="categoria"
       />
       <div className="actions">
-        <Button type="submit" className="green" children="CADASTRAR" />
+        <Button type="submit" className="green">CADASTRAR</Button>
       </div>
     </Form>
   );

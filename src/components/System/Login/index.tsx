@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 import { useGlobalStates } from "../../../providers/useGlobalStates";
 import Button from "../../UI/Button";
@@ -12,7 +12,7 @@ export default function Login() {
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
 
-  function handleLogin(event: any) {
+  function handleLogin(event: FormEvent) {
     event.preventDefault();
     login(email, password);
   }
@@ -36,9 +36,15 @@ export default function Login() {
           value={password}
           type="password"
         />
-        <Button className="green" children="Login" type="submit" />
-        <ButtonLink className="warning" to="/register" children="cadastrar-se"/>
-        <ButtonLink className="red" to="/" children="Voltar ao site" />
+        <Button className="green" type="submit">
+          Login
+        </Button>
+        <ButtonLink className="warning" to="/register">
+          cadastrar-se
+        </ButtonLink>
+        <ButtonLink className="red" to="/">
+          Voltar ao site
+        </ButtonLink>
         <Link to="/forgotPassword">Esqueceu sua senha?</Link>
       </Form>
     </div>

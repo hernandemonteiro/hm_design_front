@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import CryptoJS from "crypto-js";
 import useToken from "../Hooks/useToken";
 
@@ -9,12 +9,12 @@ import useToken from "../Hooks/useToken";
 export const GlobalStatesContext = createContext<any>("");
 
 interface GlobalStatesProps {
-  children: any;
+  children: JSX.Element;
 }
 
 export const GlobalStatesProvider = (props: GlobalStatesProps) => {
-  const [loginMessage, setLoginMessage] = useState<string>("");
-  const [user, setUser] = useState<any>(null);
+  const [loginMessage, setLoginMessage] = useState("");
+  const [user, setUser] = useState<null | { id: string; type: string }>(null);
   const [view, setView] = useState("");
 
   const [loading, setLoading] = useState(true);
@@ -22,7 +22,7 @@ export const GlobalStatesProvider = (props: GlobalStatesProps) => {
   useEffect(() => {
     const recoveredUser = localStorage.getItem("user");
     if (recoveredUser) {
-      var iv = CryptoJS.enc.Base64.parse(import.meta.env.VITE_HASH_SECRET);
+      const iv = CryptoJS.enc.Base64.parse(import.meta.env.VITE_HASH_SECRET);
       const secret = CryptoJS.SHA256(import.meta.env.VITE_HASH_SECRET);
       const user = CryptoJS.AES.decrypt(recoveredUser, secret, {
         iv: iv,

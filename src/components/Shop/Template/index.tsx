@@ -1,5 +1,4 @@
 import React from "react";
-import TitleHome from "../../UI/TitleHome";
 import Footer from "../Footer";
 import Header from "../Header";
 import Menu from "../Menu";
@@ -9,7 +8,7 @@ import "./Template.scss";
  * for traditional React props;
  */
 interface TemplateProps {
-  children?: any;
+  children?: React.ReactNode;
 }
 
 /* @description Template is the base view for all pages in the application;

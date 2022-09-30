@@ -1,3 +1,4 @@
+import React from "react";
 import Template from "../../../components/Shop/Template";
 import { useParams } from "react-router-dom";
 import TitleHome from "../../../components/UI/TitleHome";

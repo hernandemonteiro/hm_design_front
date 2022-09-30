@@ -1,11 +1,12 @@
+import React from "react";
 import "./Button.scss";
 
 interface ButtonProps {
   children: string;
-  onClick?: any;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
-  type?: any;
-  disabled?: any;
+  type?: 'submit' | 'reset' | 'button';
+  disabled?: boolean;
 }
 export default function Button(props: ButtonProps) {
   return (

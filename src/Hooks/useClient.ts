@@ -35,7 +35,7 @@ export default function useClient() {
 
   const userRegister = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    let url = `${
+    const url = `${
       import.meta.env.VITE_API_URL
     }/users/${name}/${email}/${password}/1`;
 

@@ -1,9 +1,10 @@
+import React from "react";
 import "./CardCart.scss";
 
 interface CardProps {
     photo: string;
     description: string;
-    actions: any;
+    actions: JSX.Element;
     price: string;
 }
 export default function CardCart(props: CardProps){
