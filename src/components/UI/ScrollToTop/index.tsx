@@ -24,7 +24,11 @@ export default function ScrollToTop() {
   return (
     <>
       {visible ? (
-        <ArrowUpwardTwoTone className="scroll" onClick={scrollToTop} />
+        <ArrowUpwardTwoTone
+          className="scroll"
+          sx={{ fontSize: "2.3rem", color: "green" }}
+          onClick={scrollToTop}
+        />
       ) : (
         ""
       )}
