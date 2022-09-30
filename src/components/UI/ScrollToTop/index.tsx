@@ -1,0 +1,33 @@
+import { ArrowUpwardTwoTone } from "@mui/icons-material";
+import React, { useState } from "react";
+import "./ButtonScroll.scss";
+
+export default function ScrollToTop() {
+  const [visible, setVisible] = useState(false);
+
+  const toggleVisible = () => {
+    const scrolled = document.documentElement.scrollTop;
+    if (scrolled > 15) {
+      setVisible(true);
+    } else if (scrolled <= 15) {
+      setVisible(false);
+    }
+  };
+  window.addEventListener("scroll", toggleVisible);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+  return (
+    <>
+      {visible ? (
+        <ArrowUpwardTwoTone className="scroll" onClick={scrollToTop} />
+      ) : (
+        ""
+      )}
+    </>
+  );
+}
