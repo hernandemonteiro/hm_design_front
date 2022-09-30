@@ -6,7 +6,7 @@ import Carroussel from "../../UI/Carrousell";
 import "./ProductDetail.scss";
 
 interface ProductDetailProps {
-  image?: string;
+  image: string;
   name: string;
   price: number;
   description: string;

@@ -19,9 +19,7 @@ export default function DrivePicker() {
   }
   useEffect(() => {
     initialConfig();
-    const imgs: unknown | string = localStorage.getItem("pic")
-      ? localStorage.getItem("pic")
-      : "[]";
+    const imgs: string = localStorage.getItem("pic") || "[]";
     setPictures(JSON.parse(imgs));
     if (JSON.parse(imgs).length == 0) {
       localStorage.removeItem("pic");
@@ -48,7 +46,7 @@ export default function DrivePicker() {
       {pictures.length > 0 && (
         <>
           <div className="imgBox">
-            {pictures.map((element: string, index: number) => {
+            {pictures.map((element: { id: string }, index: number) => {
               return (
                 <>
                   <img
