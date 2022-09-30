@@ -15,13 +15,12 @@ export default function Menu() {
     <Nav>
       {/* using window.location to change the page and the view of the menu; */}
       <Button onClick={() => (window.location.href = "/")}>Inicio</Button>
-      {categorys.map((element: string) => (
+      {categorys.map((element) => (
         <Button
-          key={element}
+          key={0}
           onClick={() => (window.location.href = `/category/${element}`)}
-        >
-          {element}
-        </Button>
+        >{element}</Button>
+
       ))}
     </Nav>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import "./Button.scss";
 
 interface ButtonProps {
-  children: string;
+  children?: any;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
   type?: 'submit' | 'reset' | 'button';
