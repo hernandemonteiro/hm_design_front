@@ -1,13 +1,13 @@
 import { useState } from "react";
 import useToken from "./useToken";
 
-export default function useDashboard(){
-    const [users, setUsers] = useState([]);
+export default function useDashboard() {
+  const [users, setUsers] = useState([]);
   const [production, setProduction] = useState([]);
   const [products, setProducts] = useState([]);
   const [categorys, setCategorys] = useState([]);
   const url = `${import.meta.env.VITE_API_URL}`;
-  function fetchDashboard(){
+  function fetchDashboard() {
     fetch(`${url}/users`, {
       headers: {
         "x-access-token": useToken(),
@@ -49,6 +49,6 @@ export default function useDashboard(){
     production,
     products,
     categorys,
-    fetchDashboard
-  }
+    fetchDashboard,
+  };
 }

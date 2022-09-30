@@ -90,6 +90,6 @@ export default function usePassword() {
     setConfirmPassword,
     confirmPassword,
     setHash,
-    hash
+    hash,
   };
 }

@@ -7,16 +7,21 @@ interface buttonLinkProps {
   children: string;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
-  type?: 'submit' | 'reset' | 'button';
+  type?: "submit" | "reset" | "button";
   disabled?: boolean;
-  to: string
+  to: string;
 }
 export default function ButtonLink(props: buttonLinkProps) {
   return (
     <Link className="link" to={props.to}>
-    <button className={`btn ${props.className}`} disabled={props.disabled} type={props.type}  onClick={props.onClick}>
-      {props.children}
-    </button>
+      <button
+        className={`btn ${props.className}`}
+        disabled={props.disabled}
+        type={props.type}
+        onClick={props.onClick}
+      >
+        {props.children}
+      </button>
     </Link>
   );
 }

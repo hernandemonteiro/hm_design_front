@@ -95,27 +95,21 @@ export default function FormProduct() {
                   </tr>
                 </thead>
                 <tbody>
-                  {options.map(
-                    (element, index: number) => {
-                      return (
-                        <tr key={element.option}>
-                          <td>{element.option}</td>
-                          <td>R${element.priceOption}</td>
-                          <td>
-                            <Delete
-                              onClick={() =>
-                                dropOption(
-                                  index,
-                                  element.option,
-                                  0.00
-                                )
-                              }
-                            />
-                          </td>
-                        </tr>
-                      );
-                    }
-                  )}
+                  {options.map((element, index: number) => {
+                    return (
+                      <tr key={element.option}>
+                        <td>{element.option}</td>
+                        <td>R${element.priceOption}</td>
+                        <td>
+                          <Delete
+                            onClick={() =>
+                              dropOption(index, element.option, 0.0)
+                            }
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             )}

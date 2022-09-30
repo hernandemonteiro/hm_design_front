@@ -1,19 +1,19 @@
 .AdminPage {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 4%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 4%;
 }
 
 .mainAdmin {
-    width: 65%;
-    margin: 3%;
+  width: 65%;
+  margin: 3%;
 }
 
 @media (max-width: 800px) {
-    .mainAdmin {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        width: 100%
-    }
+  .mainAdmin {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
 }

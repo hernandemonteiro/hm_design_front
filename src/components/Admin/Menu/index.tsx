@@ -14,7 +14,9 @@ export default function Menu() {
       <ButtonLink to="/admin/clientes">Usuários</ButtonLink>
       <ButtonLink to="/admin/ordens">Ordens</ButtonLink>
       <ButtonLink to="/admin/producao">Em produção</ButtonLink>
-      <Button className="red" onClick={logout}>Sair</Button>
+      <Button className="red" onClick={logout}>
+        Sair
+      </Button>
     </Nav>
   );
 }

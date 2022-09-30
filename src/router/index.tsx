@@ -69,7 +69,7 @@ export default function Router() {
     }
 
     // cloudStorage leak fix;
-    const photos: string  = localStorage.getItem("pic") || "[]";
+    const photos: string = localStorage.getItem("pic") || "[]";
     if (useParams().register != "true" && JSON.parse(photos).length > 0) {
       const token = getTokenGoogleAPI();
       JSON.parse(photos).map((element: { id: string }) => {

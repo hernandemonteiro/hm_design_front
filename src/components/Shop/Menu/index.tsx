@@ -19,8 +19,9 @@ export default function Menu() {
         <Button
           key={0}
           onClick={() => (window.location.href = `/category/${element}`)}
-        >{element}</Button>
-
+        >
+          {element}
+        </Button>
       ))}
     </Nav>
   );

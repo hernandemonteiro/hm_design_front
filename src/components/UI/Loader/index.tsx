@@ -5,7 +5,7 @@ import "./Loader.scss";
 export default function Loader() {
   return (
     <div className="loadingBox">
-        <CircularProgress color="success" />
+      <CircularProgress color="success" />
     </div>
   );
 }

@@ -9,10 +9,9 @@ export default function useCategory() {
     event.preventDefault();
     fetch(`${import.meta.env.VITE_API_URL}/category/register/${category}`, {
       method: "PUT",
-        headers: {
-          "x-access-token": useToken(),
-        },
-    
+      headers: {
+        "x-access-token": useToken(),
+      },
     }).then(() => {
       setMessage("Cadastrado com sucesso!");
       setCategory("");
@@ -49,6 +48,6 @@ export default function useCategory() {
     setCategory,
     registerCategory,
     categoryFetch,
-    deleteCategory
-  }
+    deleteCategory,
+  };
 }

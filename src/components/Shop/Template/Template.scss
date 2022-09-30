@@ -1,19 +1,19 @@
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    min-height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: 100%;
 }
 
 .boxContent {
-    margin: 2% 0 5% 2%;
-    width: 69%;
-    min-height: 80vh;
-    padding-bottom: 7%;
+  margin: 2% 0 5% 2%;
+  width: 69%;
+  min-height: 80vh;
+  padding-bottom: 7%;
 }
 
 @media (max-width: 800px) {
-    .boxContent {
-        width: 100%;
-    }
+  .boxContent {
+    width: 100%;
+  }
 }

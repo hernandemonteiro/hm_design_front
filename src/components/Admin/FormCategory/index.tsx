@@ -21,7 +21,9 @@ export default function FormCategory() {
         placeholder="categoria"
       />
       <div className="actions">
-        <Button type="submit" className="green">CADASTRAR</Button>
+        <Button type="submit" className="green">
+          CADASTRAR
+        </Button>
       </div>
     </Form>
   );

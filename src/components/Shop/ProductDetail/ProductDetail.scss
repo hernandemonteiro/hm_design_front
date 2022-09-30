@@ -1,20 +1,20 @@
 .Detail {
-    width: 90%;
-    background-color: white;
-    height: 100%;
-    margin: 2%;
-    padding: 1%;
-    border-radius: 23px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    text-align: center;
+  width: 90%;
+  background-color: white;
+  height: 100%;
+  margin: 2%;
+  padding: 1%;
+  border-radius: 23px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  text-align: center;
 }
 
 .imageDetail {
-    max-height: 100%;
-    overflow: hidden;
+  max-height: 100%;
+  overflow: hidden;
 }
 
-.Detail>div {
-    margin: 4%;
-    user-select: none;
+.Detail > div {
+  margin: 4%;
+  user-select: none;
 }

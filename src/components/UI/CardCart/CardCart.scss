@@ -1,38 +1,35 @@
 .cardCart {
-    display: flex;
-    justify-content: center;
-    background-color: white;
-    width: 100%;
-    height: 110px;
-    padding: 1%;
-    margin: 2%;
-    border-radius: 25px;
-    text-align: center;
-   
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  width: 100%;
+  height: 110px;
+  padding: 1%;
+  margin: 2%;
+  border-radius: 25px;
+  text-align: center;
 }
 
 .photo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
 }
 
 .description {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 60%;
-    
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
 }
 
 .actions {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding-right: 3%;
-    padding-bottom: 4%;
-    width: 10%;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-right: 3%;
+  padding-bottom: 4%;
+  width: 10%;
 }
