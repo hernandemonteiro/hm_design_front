@@ -14,7 +14,7 @@ export default function useDashboard() {
       },
     })
       .then((response) => response.json())
-      .then((response) => setUsers(response.result))
+      .then((response) => setUsers(response))
       .catch((error: string) => console.log("users error: " + error));
 
     fetch(`${url}/products`, {
@@ -23,7 +23,7 @@ export default function useDashboard() {
       },
     })
       .then((response) => response.json())
-      .then((response) => setProducts(response.result))
+      .then((response) => setProducts(response))
       .catch((error: string) => console.log("users error: " + error));
 
     fetch(`${url}/orders`, {
@@ -32,7 +32,7 @@ export default function useDashboard() {
       },
     })
       .then((response) => response.json())
-      .then((response) => setProduction(response.result))
+      .then((response) => setProduction(response))
       .catch((error: string) => console.log("users error: " + error));
 
     fetch(`${url}/category`, {
@@ -41,7 +41,7 @@ export default function useDashboard() {
       },
     })
       .then((response) => response.json())
-      .then((response) => setCategorys(response.result))
+      .then((response) => setCategorys(response))
       .catch((error: string) => console.log("users error: " + error));
   }
   return {

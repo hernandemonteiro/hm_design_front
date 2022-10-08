@@ -24,7 +24,7 @@ export default function useCategory() {
       },
     })
       .then((response) => response.json())
-      .then((response) => setCategorys(response.result))
+      .then((response) => setCategorys(response))
       .catch((error: string) => console.log("categorys Error Db:" + error));
   }
   function deleteCategory(id: string) {

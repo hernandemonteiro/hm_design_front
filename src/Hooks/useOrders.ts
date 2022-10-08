@@ -10,7 +10,7 @@ export default function useOrders() {
       },
     })
       .then((response) => response.json())
-      .then((response) => setOrders(response.result))
+      .then((response) => setOrders(response))
       .catch((error: string) => console.log("Orders Error Db:" + error));
   }
 

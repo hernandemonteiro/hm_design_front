@@ -116,7 +116,7 @@ export default function useProducts() {
       },
     })
       .then((response) => response.json())
-      .then((response) => setProducts(response.result))
+      .then((response) => setProducts(response))
       .catch((error) => console.log("Error: " + error.message));
   }
 
@@ -127,7 +127,7 @@ export default function useProducts() {
       },
     })
       .then((response) => response.json())
-      .then((response) => setProducts(response.result))
+      .then((response) => setProducts(response))
       .catch((error) => console.log("Error: " + error.message));
   }
 
@@ -138,7 +138,7 @@ export default function useProducts() {
       },
     })
       .then((response) => response.json())
-      .then((response) => setProducts(response.result))
+      .then((response) => setProducts(response))
       .catch((error) => console.log("Error: " + error.message));
   }
 
@@ -191,7 +191,7 @@ export default function useProducts() {
       },
     })
       .then((response) => response.json())
-      .then((response) => setProducts(response.result))
+      .then((response) => setProducts(response))
       .catch((error) => console.log("Error: " + error.message));
   }
 

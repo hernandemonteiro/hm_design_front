@@ -20,9 +20,9 @@ export default function usePassword() {
     })
       .then((response) => response.json())
       .then((response) => {
-        if (response.result === "Email enviado!") {
+        if (response === "Email enviado!") {
           setView("Success");
-        } else if (response.result === "Usuário não existe!") {
+        } else if (response === "Usuário não existe!") {
           setMessage("Usuário não encontrado em nosso sistema!");
         } else {
           console.log(response);
@@ -49,7 +49,7 @@ export default function usePassword() {
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
-        if (response.result === "Success") {
+        if (response === "Success") {
           return (window.location.href = "/login");
         } else {
           return setMessage("Erro ao mudar senha!");
@@ -69,7 +69,7 @@ export default function usePassword() {
     })
       .then((response) => response.json())
       .then((response) => {
-        if (response.result === 0) {
+        if (response === 0) {
           setView(false);
         }
       });

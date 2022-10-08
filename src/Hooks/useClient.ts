@@ -16,7 +16,7 @@ export default function useClient() {
       },
     })
       .then((response) => response.json())
-      .then((response) => setUsers(response.result))
+      .then((response) => setUsers(response))
       .catch((error: string) => console.log("Users Error Db:" + error));
   }
   function deleteUser(id: string) {
@@ -47,9 +47,9 @@ export default function useClient() {
     })
       .then((response) => response.json())
       .then((response) => {
-        if (response.result != "user registered") {
+        if (response != "user registered") {
           setView("Success");
-        } else if (response.result === "user registered") {
+        } else if (response === "user registered") {
           setMessage("Email já registrado!");
         } else {
           setMessage("Erro ao registrar!");
