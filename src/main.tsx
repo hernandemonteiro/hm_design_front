@@ -5,9 +5,7 @@ import Main from "./components/UI/Main";
 import Router from "./router";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <Suspense fallback={<Loader />}>
     <Main>
       <Router />
     </Main>
-  </Suspense>
 );
