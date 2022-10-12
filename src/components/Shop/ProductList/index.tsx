@@ -23,24 +23,23 @@ export default function ProductList() {
       : search
       ? productsSearchFetch(search)
       : productsFetch();
-    setTimeout(() => setMessage("Nada encontrado por aqui!"), 1000);
+    setTimeout(() => setMessage("Nada encontrado por aqui!"), 3000);
   }, []);
-
   return (
     <div className="productList">
       {products.length == 0 && <h1 className="NotFoundHere">{message}</h1>}
+     
       {products
         .slice(0, pagination)
         .map(
           (element: {
-            id: string;
             images: string;
             name: string;
             price: number;
             _id: string;
           }) => (
             <ProductCard
-              key={element.id}
+              key={element._id}
               img={JSON.parse(element.images)[0].id}
               name={element.name}
               price={element.price}
