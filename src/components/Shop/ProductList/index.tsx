@@ -23,12 +23,15 @@ export default function ProductList() {
       : search
       ? productsSearchFetch(search)
       : productsFetch();
-    setTimeout(() => setMessage("Nada encontrado por aqui!"), 3000);
+    setTimeout(
+      () => products.length == 0 && setMessage("Nada encontrado por aqui!"),
+      3000
+    );
   }, []);
   return (
     <div className="productList">
       {products.length == 0 && <h1 className="NotFoundHere">{message}</h1>}
-     
+
       {products
         .slice(0, pagination)
         .map(

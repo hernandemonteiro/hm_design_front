@@ -1,27 +1,25 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import {} from "../Button/Button.scss";
 import {} from "./ButtonLink.scss";
 
 interface buttonLinkProps {
-  children: string;
+  children?: any;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
-  type?: "submit" | "reset" | "button";
   disabled?: boolean;
   to: string;
 }
 export default function ButtonLink(props: buttonLinkProps) {
   return (
-    <Link className="link" to={props.to}>
+    <a className="link" href={props.to}>
       <button
         className={`btn ${props.className}`}
         disabled={props.disabled}
-        type={props.type}
+        type="button"
         onClick={props.onClick}
       >
         {props.children}
       </button>
-    </Link>
+    </a>
   );
 }

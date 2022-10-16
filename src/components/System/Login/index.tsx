@@ -1,5 +1,4 @@
 import React, { FormEvent, useState } from "react";
-import { Link } from "react-router-dom";
 import { useGlobalStates } from "../../../providers/useGlobalStates";
 import Button from "../../UI/Button";
 import ButtonLink from "../../UI/ButtonLink";
@@ -45,7 +44,7 @@ export default function Login() {
         <ButtonLink className="red" to="/">
           Voltar ao site
         </ButtonLink>
-        <Link to="/forgotPassword">Esqueceu sua senha?</Link>
+        <a href="/forgotPassword">Esqueceu sua senha?</a>
       </Form>
     </div>
   );

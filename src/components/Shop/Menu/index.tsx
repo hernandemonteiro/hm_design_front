@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import useProducts from "../../../Hooks/useProducts";
-import Button from "../../UI/Button";
+import ButtonLink from "../../UI/ButtonLink";
 import Nav from "../../UI/Nav";
 
 export default function Menu() {
@@ -14,14 +14,11 @@ export default function Menu() {
   return (
     <Nav>
       {/* using window.location to change the page and the view of the menu; */}
-      <Button onClick={() => (window.location.href = "/")}>Inicio</Button>
+      <ButtonLink to={"/"}>Inicio</ButtonLink>
       {categorys.map((element) => (
-        <Button
-          key={0}
-          onClick={() => (window.location.href = `/category/${element}`)}
-        >
+        <ButtonLink key={0} to={`/category/${element}`}>
           {element}
-        </Button>
+        </ButtonLink>
       ))}
     </Nav>
   );

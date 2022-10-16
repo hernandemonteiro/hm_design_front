@@ -3,7 +3,6 @@ import {} from "./Header.scss";
 import PersonIcon from "@mui/icons-material/Person";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";
-import { Link } from "react-router-dom";
 import { useGlobalStates } from "../../../providers/useGlobalStates";
 import { ExitToApp } from "@mui/icons-material";
 import Badge from "@mui/material/Badge";
@@ -19,9 +18,9 @@ export default function Header() {
   return (
     <header>
       <div className="HeaderLogo">
-        <Link to="/" style={{ color: "white", textDecoration: "none" }}>
+        <a href="/" style={{ color: "white", textDecoration: "none" }}>
           <h1>HM Design</h1>
-        </Link>
+        </a>
       </div>
       <form className="formSearch" onSubmit={searchRedirect}>
         <div className="SearchBox">
@@ -40,20 +39,20 @@ export default function Header() {
       </form>
       <div className="UserCart">
         {!user ? (
-          <Link to="/login" style={{ color: "black" }}>
+          <a href="/login" style={{ color: "black" }}>
             <PersonIcon className="Icon" sx={{ fontSize: 40, margin: 2 }} />
-          </Link>
+          </a>
         ) : (
-          <Link to="/user" style={{ color: "black" }}>
+          <a href="/user" style={{ color: "black" }}>
             <PersonIcon className="Icon" sx={{ fontSize: 40, margin: 2 }} />
-          </Link>
+          </a>
         )}
         {user && user.type == "1" ? (
-          <Link to="/cart" style={{ color: "black" }}>
+          <a href="/cart" style={{ color: "black" }}>
             <Badge badgeContent={2} color="warning" sx={{ margin: 2 }}>
               <ShoppingCartIcon className="Icon" sx={{ fontSize: 40 }} />
             </Badge>
-          </Link>
+          </a>
         ) : (
           ""
         )}
