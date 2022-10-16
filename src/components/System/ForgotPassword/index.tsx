@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../../UI/Button";
-import "./ForgotPassword.scss";
+import {} from "./ForgotPassword.scss";
 import forgotSuccess from "../../../assets/images/forgotsuccess.svg";
 import Form from "../../UI/Form";
 import usePassword from "../../../Hooks/usePassword";

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Form.scss";
+import {} from "./Form.scss";
 
 interface formProps {
   children: React.ReactNode;

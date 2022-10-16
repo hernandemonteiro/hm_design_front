@@ -1,6 +1,6 @@
 import React from "react";
 import Menu from "../Menu";
-import "./Template.scss";
+import {} from "./Template.scss";
 
 interface TemplateProps {
   children: React.ReactNode;

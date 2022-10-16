@@ -3,7 +3,7 @@ import { useGlobalStates } from "../../../providers/useGlobalStates";
 import Button from "../../UI/Button";
 import ButtonLink from "../../UI/ButtonLink";
 import Carroussel from "../../UI/Carrousell";
-import "./ProductDetail.scss";
+import {} from "./ProductDetail.scss";
 
 interface ProductDetailProps {
   image: string;

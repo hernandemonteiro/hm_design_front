@@ -1,5 +1,5 @@
 import React from "react";
-import "./NotFoundError.scss";
+import {} from "./NotFoundError.scss";
 import notFound from "../../../assets/images/404.svg";
 import ButtonLink from "../../UI/ButtonLink";
 

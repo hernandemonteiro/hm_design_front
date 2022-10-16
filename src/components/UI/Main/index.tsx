@@ -1,6 +1,6 @@
 import React from "react";
 import ScrollToTop from "../ScrollToTop";
-import "./Main.scss";
+import {} from "./Main.scss";
 
 interface MainProps {
   children?: JSX.Element;

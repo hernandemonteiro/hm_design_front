@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../Button/Button.scss";
-import "./ButtonLink.scss";
+import {} from "../Button/Button.scss";
+import {} from "./ButtonLink.scss";
 
 interface buttonLinkProps {
   children: string;

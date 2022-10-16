@@ -1,6 +1,6 @@
 import React from "react";
 import { CircularProgress } from "@mui/material";
-import "./Loader.scss";
+import {} from "./Loader.scss";
 
 export default function Loader() {
   return (
