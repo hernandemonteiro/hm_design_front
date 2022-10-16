@@ -1,7 +1,7 @@
 import { Delete } from "@mui/icons-material";
 import React, { useEffect } from "react";
 import Button from "../../UI/Button";
-import {} from "./FormProduct.scss";
+import "./FormProduct.scss";
 import Form from "../../UI/Form";
 import useCategory from "../../../Hooks/useCategory";
 import useProducts from "../../../Hooks/useProducts";

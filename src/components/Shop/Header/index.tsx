@@ -1,5 +1,5 @@
 import React, { FormEvent, useState } from "react";
-import {} from "./Header.scss";
+import "./Header.scss";
 import PersonIcon from "@mui/icons-material/Person";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SearchIcon from "@mui/icons-material/Search";

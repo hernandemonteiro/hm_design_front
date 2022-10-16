@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import usePagination from "../../../Hooks/usePagination";
 import useProducts from "../../../Hooks/useProducts";
 import ProductCard from "../../UI/ProductCard";
-import {} from "./ProductList.scss";
+import "./ProductList.scss";
 
 export default function ProductList() {
   const { pagination, buttonPaginate } = usePagination(9);

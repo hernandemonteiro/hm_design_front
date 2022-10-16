@@ -3,7 +3,7 @@ import useClient from "../../../Hooks/useClient";
 import Button from "../../UI/Button";
 import ButtonLink from "../../UI/ButtonLink";
 import Form from "../../UI/Form";
-import {} from "./Register.scss";
+import "./Register.scss";
 
 export default function Register() {
   const {

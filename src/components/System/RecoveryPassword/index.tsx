@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Button from "../../UI/Button";
-import {} from "./RecoveryPassword.scss";
+import "./RecoveryPassword.scss";
 import forgotFailure from "../../../assets/images/forgotsuccess.svg";
 import { useParams } from "react-router-dom";
 import Form from "../../UI/Form";

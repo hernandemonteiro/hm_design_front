@@ -2,7 +2,7 @@ import React from "react";
 import Footer from "../Footer";
 import Header from "../Header";
 import Menu from "../Menu";
-import {} from "./Template.scss";
+import "./Template.scss";
 
 /* @descrition TemplateProps : this interface create the types
  * for traditional React props;
