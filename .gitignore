@@ -24,5 +24,8 @@ dist-ssr
 *.sw?
 
 # ambient variables
-
 .env
+
+# test ambient
+cypress
+coverage

@@ -8,7 +8,8 @@
     "build": "tsc && vite build",
     "lint": "npx eslint .",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "test:EtoE": "cypress open"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
@@ -35,6 +36,7 @@
     "@typescript-eslint/parser": "^5.38.1",
     "@vitejs/plugin-react": "^2.0.1",
     "babel-loader": "^8.2.5",
+    "cypress": "^10.10.0",
     "eslint": "^8.24.0",
     "eslint-plugin-react": "^7.31.8",
     "ts-jest": "^29.0.3",
