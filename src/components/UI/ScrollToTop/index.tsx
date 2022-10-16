@@ -1,6 +1,6 @@
 import { ArrowUpwardTwoTone } from "@mui/icons-material";
 import React, { useState } from "react";
-import "./ButtonScroll.scss";
+import {} from "./ButtonScroll.scss";
 
 export default function ScrollToTop() {
   const [visible, setVisible] = useState(false);

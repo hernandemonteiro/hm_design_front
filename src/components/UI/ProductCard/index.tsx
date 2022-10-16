@@ -1,6 +1,6 @@
 import React from "react";
 import ButtonLink from "../ButtonLink";
-import "./ProductCard.scss";
+import {} from "./ProductCard.scss";
 
 interface ProductCardProps {
   image?: string;

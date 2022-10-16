@@ -4,7 +4,7 @@ import { useGlobalStates } from "../../../providers/useGlobalStates";
 import Button from "../../UI/Button";
 import ButtonLink from "../../UI/ButtonLink";
 import Form from "../../UI/Form";
-import "./Login.scss";
+import {} from "./Login.scss";
 
 export default function Login() {
   const { login, loginMessage } = useGlobalStates();

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "../Button";
-import "./Nav.scss";
+import {} from "./Nav.scss";
 
 interface NavProps {
   children: React.ReactNode;
