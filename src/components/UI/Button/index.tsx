@@ -4,14 +4,7 @@ import {} from "./Button.scss";
 interface ButtonProps {
   children?: string | React.ReactNode;
   onClick?: () => void;
-  className?:
-    | ""
-    | "warning"
-    | "transparent"
-    | "red"
-    | "green"
-    | "gradientHover"
-    | string;
+  className?: string;
   type?: "submit" | "reset" | "button";
   disabled?: boolean;
 }
