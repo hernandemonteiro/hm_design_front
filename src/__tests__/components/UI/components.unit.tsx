@@ -1,15 +1,20 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
 import Button from "../../../components/UI/Button";
 import ButtonLink from "../../../components/UI/ButtonLink";
 import CardCart from "../../../components/UI/CardCart";
 
-describe("UI components", () => {
+describe("UI test", () => {
   it("<Button />", () => {
-    render(<Button>Test</Button>);
-    const button = screen.getByText("Test");
+    const onClicked = jest.fn();
+    render(<Button onClick={onClicked}>Test</Button>);
+    const button = screen.getByRole("button");
+    userEvent.click(button);
     expect(button).toBeInTheDocument();
+    expect(button).toMatchSnapshot();
+    expect(onClicked).toHaveBeenCalledTimes(1);
   });
 
   it("<ButtonLink />", () => {
@@ -20,6 +25,7 @@ describe("UI components", () => {
 
     expect(container.getElementsByClassName("btn").length).toBe(1);
     expect(buttonLink).toBeInTheDocument();
+    expect(buttonLink).toMatchSnapshot();
   });
 
   it("<CardCart />", () => {
@@ -31,5 +37,12 @@ describe("UI components", () => {
         price={"12.99"}
       />
     );
+
+    const cardCartDescription = screen.getByText("Test description");
+    expect(cardCartDescription).toBeInTheDocument();
+    expect(cardCartDescription).toMatchSnapshot();
+    const cardCartPrice = screen.getByText("12.99");
+    expect(cardCartPrice).toBeInTheDocument();
+    expect(cardCartPrice).toMatchSnapshot();
   });
 });

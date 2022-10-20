@@ -3,8 +3,7 @@ import {} from "../Button/Button.scss";
 import {} from "./ButtonLink.scss";
 
 interface buttonLinkProps {
-  children?: any;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  children: any;
   className?: string;
   disabled?: boolean;
   to: string;
@@ -16,7 +15,6 @@ export default function ButtonLink(props: buttonLinkProps) {
         className={`btn ${props.className}`}
         disabled={props.disabled}
         type="button"
-        onClick={props.onClick}
       >
         {props.children}
       </button>

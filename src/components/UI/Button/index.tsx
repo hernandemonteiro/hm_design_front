@@ -2,9 +2,15 @@ import React from "react";
 import {} from "./Button.scss";
 
 interface ButtonProps {
-  children?: any;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  className?: string;
+  children?: string | React.ReactNode;
+  onClick?: () => void;
+  className?:
+    | ""
+    | "warning"
+    | "transparent"
+    | "red"
+    | "green"
+    | "gradientHover";
   type?: "submit" | "reset" | "button";
   disabled?: boolean;
 }
@@ -16,7 +22,7 @@ export default function Button(props: ButtonProps) {
       className={`btn ${props.className}`}
       onClick={props.onClick}
     >
-      {props.children}
+      {props.children || "BUTTON"}
     </button>
   );
 }

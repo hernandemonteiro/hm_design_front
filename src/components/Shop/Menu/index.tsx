@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import useProducts from "../../../Hooks/useProducts";
+import Button from "../../UI/Button";
 import ButtonLink from "../../UI/ButtonLink";
 import Nav from "../../UI/Nav";
 

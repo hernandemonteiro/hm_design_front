@@ -61,13 +61,17 @@ export default function Register() {
             type="password"
             placeholder="Confirmar Senha"
           />
-          {password === confirmPassword && password != "" ? (
-            <Button type="submit" className="green">
-              Cadastrar
-            </Button>
-          ) : (
-            "Preencha todos os campos para cadastrar"
-          )}
+
+          <Button
+            type="submit"
+            disabled={
+              password === confirmPassword && password != "" ? false : true
+            }
+            className="green"
+          >
+            Cadastrar
+          </Button>
+
           <ButtonLink to="/login" className="warning">
             Já tem conta?
           </ButtonLink>
