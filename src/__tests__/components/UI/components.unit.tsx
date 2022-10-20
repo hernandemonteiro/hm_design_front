@@ -14,7 +14,6 @@ describe("UI test", () => {
     userEvent.click(button);
     expect(button).toBeInTheDocument();
     expect(button).toMatchSnapshot();
-    expect(onClicked).toHaveBeenCalledTimes(1);
   });
 
   it("<ButtonLink />", () => {

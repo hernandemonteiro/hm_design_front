@@ -17,6 +17,6 @@
     "jsx": "react-jsx",
     "types": ["node", "jest", "@testing-library/jest-dom"]
   },
-  "include": ["src", "**/*.ts", "*.ts", "**/*.tsx"],
+  "include": ["src", "**/*.ts", "*.ts", "**/*.tsx", "jest.config.js"],
   "exclude": ["node_modules", "./cypress.config.ts"],
 }
