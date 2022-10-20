@@ -10,7 +10,8 @@ interface ButtonProps {
     | "transparent"
     | "red"
     | "green"
-    | "gradientHover";
+    | "gradientHover"
+    | string;
   type?: "submit" | "reset" | "button";
   disabled?: boolean;
 }
