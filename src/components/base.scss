@@ -9,6 +9,7 @@ $backgroundGradient: linear-gradient(
   rgba(0, 212, 255, 1) 100%
 );
 $primeBlueColor: rgba(0, 212, 255, 1);
+$secondPurpleColor: rgba(107, 9, 121, 0.9472163865546218);
 
 // mixins;
 @mixin flexTotalCenter {
@@ -54,5 +55,23 @@ $slide-in-left: slide-in-left 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   100% {
     transform: translateX(0);
     opacity: 1;
+  }
+}
+
+$color-change-2x: color-change-2x 4s linear infinite alternate both;
+@-webkit-keyframes color-change-2x {
+  0% {
+    background: $primeBlueColor;
+  }
+  100% {
+    background: $secondPurpleColor;
+  }
+}
+@keyframes color-change-2x {
+  0% {
+    background: $primeBlueColor;
+  }
+  100% {
+    background: $secondPurpleColor;
   }
 }

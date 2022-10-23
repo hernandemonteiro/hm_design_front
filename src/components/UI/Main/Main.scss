@@ -17,7 +17,7 @@
 body {
   display: flex;
   justify-content: center;
-  background-color: rgb(184, 195, 255);
+  animation: $color-change-2x;
   main {
     width: 83vw;
   }

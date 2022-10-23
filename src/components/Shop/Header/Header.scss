@@ -46,7 +46,7 @@ header {
   border-radius: 15px;
 
   .Icon {
-    color: rgba(107, 9, 121, 0.9472163865546218);
+    color: $secondPurpleColor;
     &:hover {
       color: $primeBlueColor;
     }
@@ -60,7 +60,7 @@ header {
   padding: 2%;
   outline: none;
   &::placeholder {
-    color: rgba(107, 9, 121, 0.9472163865546218);
+    color: $secondPurpleColor;
   }
 }
 

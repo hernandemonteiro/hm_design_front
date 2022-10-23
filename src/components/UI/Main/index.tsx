@@ -12,7 +12,7 @@ export default function Main(props: MainProps) {
   useEffect(() => {
     setTimeout(() => {
       setLoader(false);
-    }, 1000);
+    }, 2000);
   }, []);
   return (
     <main>
