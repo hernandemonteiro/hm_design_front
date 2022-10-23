@@ -5,7 +5,6 @@ describe("Shop navigate:", () => {
     cy.wait("@getProducts").then((xhr) => {
       xhr.response && expect(xhr.response.statusCode).be.eq(200);
     });
-    
   });
 
   it("Menu", () => {
