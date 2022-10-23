@@ -10,37 +10,35 @@
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   text-align: center;
   animation: $puff-in-center;
+}
 
-  .imageCard {
-    height: 100px;
-    overflow: hidden;
-    img {
-      width: 100%;
-      object-fit: contain;
-    }
-  }
-
-  .productName,
-  .productPrice {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-  }
-
-  .card > div {
-    margin: 4%;
-    user-select: none;
+.imageCard {
+  height: 100px;
+  overflow: hidden;
+  img {
+    width: 100%;
+    object-fit: contain;
   }
 }
 
+.productName,
+.productPrice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+}
+
+.card > div {
+  margin: 4%;
+  user-select: none;
+}
 @media (max-width: 600px) {
+  .imageCard {
+    height: 210px;
+  }
   .card {
     width: 90%;
     height: 450px;
-  }
-
-  .imageCard {
-    height: 210px;
   }
 }
