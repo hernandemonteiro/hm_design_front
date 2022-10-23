@@ -25,7 +25,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - run: npm install
-      - run: npm start & wait-on http://localhost:3000
+      - run: npm start
       - run: npx cypress run --record --key ${{ secrets.CYPRESS_TOKEN }}
       - run: npm run build
       - run: npm test
