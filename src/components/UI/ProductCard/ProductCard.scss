@@ -1,16 +1,4 @@
-@keyframes puff-in-center {
-  0% {
-    transform: scale(2);
-    filter: blur(4px);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    filter: blur(0px);
-    opacity: 1;
-  }
-}
-
+@import "../../base.scss";
 
 .card {
   width: 150px;
@@ -21,40 +9,38 @@
   border-radius: 23px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   text-align: center;
-  animation: puff-in-center 0.9s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
-}
+  animation: puff-in-center 0.9s cubic-bezier(0.47, 0, 0.745, 0.715) both;
 
-.imageCard {
-  height: 100px;
-  overflow: hidden;
+  .imageCard {
+    height: 100px;
+    overflow: hidden;
+    img {
+      width: 100%;
+      object-fit: contain;
+    }
+  }
 
-}
+  .productName,
+  .productPrice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+  }
 
-img {
-  width: 100%;
-  object-fit: contain;
-  
-
-}
-.productName,
-.productPrice {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 50px;
-}
-
-.card > div {
-  margin: 4%;
-  user-select: none;
+  .card > div {
+    margin: 4%;
+    user-select: none;
+  }
 }
 
 @media (max-width: 600px) {
-  .imageCard {
-    height: 210px;
-  }
   .card {
     width: 90%;
     height: 450px;
+  }
+
+  .imageCard {
+    height: 210px;
   }
 }

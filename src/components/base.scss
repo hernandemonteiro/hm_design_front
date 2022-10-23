@@ -1,3 +1,6 @@
+// typographys;
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@600&display=swap");
+
 // paleta de cores;
 $backgroundGradient: linear-gradient(
   90deg,
@@ -5,14 +8,37 @@ $backgroundGradient: linear-gradient(
   rgba(107, 9, 121, 0.9472163865546218) 35%,
   rgba(0, 212, 255, 1) 100%
 );
-
-// fontes;
+$primeBlueColor: rgba(0, 212, 255, 1);
 
 // mixins;
-
 @mixin flexTotalCenter {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+}
+
+// animations:
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes puff-in-center {
+  0% {
+    transform: scale(2);
+    filter: blur(4px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    filter: blur(0px);
+    opacity: 1;
+  }
 }
