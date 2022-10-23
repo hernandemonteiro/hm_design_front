@@ -1,5 +1,5 @@
 name: GitHub Actions Demo
-on: [pull_request]
+on: [push]
 jobs:
  cypress-run:
     runs-on: ubuntu-latest
