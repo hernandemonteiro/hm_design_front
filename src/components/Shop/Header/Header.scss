@@ -1,4 +1,14 @@
 $primeBlueColor: rgba(0, 212, 255, 1);
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 header {
   display: flex;
   flex-wrap: wrap;
@@ -15,6 +25,7 @@ header {
     rgba(107, 9, 121, 0.9472163865546218) 35%,
     rgba(0, 212, 255, 1) 100%
   );
+  animation: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 .HeaderLogo {
