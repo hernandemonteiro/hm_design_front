@@ -1,13 +1,4 @@
-@keyframes slide-in-left {
-  0% {
-    transform: translateX(-1000px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
+@import "../../base.scss";
 
 nav {
   text-align: center;
@@ -19,13 +10,8 @@ nav {
   background-color: rgb(248, 248, 248);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(107, 9, 121, 0.9472163865546218) 35%,
-    rgba(0, 212, 255, 1) 100%
-  );
-  animation: slide-in-left 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  background: $backgroundGradient;
+  animation: $slide-in-left;
 }
 
 @media (min-width: 800px) {
@@ -38,7 +24,6 @@ nav {
   nav {
     width: 100%;
   }
-
   .menuMobile {
     display: none;
   }

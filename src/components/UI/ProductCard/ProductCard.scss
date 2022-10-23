@@ -9,7 +9,7 @@
   border-radius: 23px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   text-align: center;
-  animation: puff-in-center 0.9s cubic-bezier(0.47, 0, 0.745, 0.715) both;
+  animation: $puff-in-center;
 
   .imageCard {
     height: 100px;
