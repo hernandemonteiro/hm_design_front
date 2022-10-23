@@ -27,5 +27,6 @@ dist-ssr
 .env
 
 # test ambient
-cypress
+./cypress/videos
+./cypress/screenshots
 coverage
