@@ -15,4 +15,4 @@ jobs:
         run: npm start & wait-on http://localhost:3000  
       - name: Cypress run
         uses: cypress-io/github-action@v2
-        run: npx cypress run --record --key ${{ secrets.CYPRESS_TOKEN }}
+      - run: npx cypress run --record --key ${{ secrets.CYPRESS_TOKEN }}
