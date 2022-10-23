@@ -5,11 +5,13 @@ describe("Shop navigate:", () => {
     cy.wait("@getProducts").then((xhr) => {
       xhr.response && expect(xhr.response.statusCode).be.eq(200);
     });
+    
   });
 
   it("Menu", () => {
+    cy.wait(2000);
     cy.get(".btn").eq(1).click();
-    cy.wait(2000).then(() => cy.get(".btn").eq(2).click());
+    cy.wait(4000).then(() => cy.get(".btn").eq(2).click());
   });
 
   it("Search", () => {
