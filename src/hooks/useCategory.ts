@@ -5,6 +5,7 @@ export default function useCategory() {
   const [categorys, setCategorys] = useState([]);
   const [category, setCategory] = useState("");
   const [message, setMessage] = useState("");
+  
   function registerCategory(event: FormEvent) {
     event.preventDefault();
     fetch(`${import.meta.env.VITE_API_URL}/category/register/${category}`, {
@@ -12,11 +13,17 @@ export default function useCategory() {
       headers: {
         "x-access-token": useToken(),
       },
-    }).then(() => {
-      setMessage("Cadastrado com sucesso!");
-      setCategory("");
-    });
+    })
+      .then(() => {
+        setMessage("Cadastrado com sucesso!");
+        setCategory("");
+      })
+      .catch((error) => {
+        setMessage("Erro: contate seu desenvolvedor!");
+        console.log("Error: " + error);
+      });
   }
+
   function categoryFetch() {
     fetch(`${import.meta.env.VITE_API_URL}/categorys`, {
       headers: {
@@ -27,6 +34,7 @@ export default function useCategory() {
       .then((response) => setCategorys(response))
       .catch((error: string) => console.log("categorys Error Db:" + error));
   }
+
   function deleteCategory(id: string) {
     fetch(`${import.meta.env.VITE_API_URL}/category/${id}`, {
       method: "DELETE",
@@ -38,7 +46,7 @@ export default function useCategory() {
         console.log(response.status);
         categoryFetch();
       })
-      .catch((error: string) => console.log("categorys Error delete:" + error));
+      .catch((error) => console.log("categorys Error delete:" + error));
   }
   return {
     message,

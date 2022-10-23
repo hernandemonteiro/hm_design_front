@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import CryptoJS from "crypto-js";
-import useToken from "../Hooks/useToken";
+import useToken from "../hooks/useToken";
 
 /*
  * @description provide an global state context for user login status;

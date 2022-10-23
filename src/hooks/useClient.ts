@@ -9,6 +9,7 @@ export default function useClient() {
   const [message, setMessage] = useState<string>();
   const [view, setView] = useState<string>("Register");
   const [users, setUsers] = useState([]);
+
   function usersFetch() {
     fetch(`${import.meta.env.VITE_API_URL}/users`, {
       headers: {
@@ -19,6 +20,7 @@ export default function useClient() {
       .then((response) => setUsers(response))
       .catch((error: string) => console.log("Users Error Db:" + error));
   }
+
   function deleteUser(id: string) {
     fetch(`${import.meta.env.VITE_API_URL}/users/${id}`, {
       method: "DELETE",
@@ -47,13 +49,11 @@ export default function useClient() {
     })
       .then((response) => response.json())
       .then((response) => {
-        if (response != "user registered") {
-          setView("Success");
-        } else if (response === "user registered") {
-          setMessage("Email já registrado!");
-        } else {
-          setMessage("Erro ao registrar!");
-        }
+        response != "user registered"
+          ? setView("Success")
+          : response === "user registered"
+          ? setMessage("Email já registrado!")
+          : setMessage("Erro ao registrar!");
       })
       .catch((error) => console.log(error));
   };

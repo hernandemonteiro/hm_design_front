@@ -7,8 +7,8 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Check, Delete, Edit } from "@mui/icons-material";
-import usePagination from "../../../Hooks/usePagination";
-import useOrders from "../../../Hooks/useOrders";
+import usePagination from "../../../hooks/usePagination";
+import useOrders from "../../../hooks/useOrders";
 
 export default function InProductionList() {
   const { pagination, buttonPaginate } = usePagination(15);

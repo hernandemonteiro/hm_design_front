@@ -3,7 +3,7 @@ import Button from "../../UI/Button";
 import {} from "./ForgotPassword.scss";
 import forgotSuccess from "../../../assets/images/forgotsuccess.svg";
 import Form from "../../UI/Form";
-import usePassword from "../../../Hooks/usePassword";
+import usePassword from "../../../hooks/usePassword";
 
 export default function ForgotPassword() {
   const {

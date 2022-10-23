@@ -27,7 +27,7 @@ import Produtos from "../pages/Admin/Produtos";
 import Dashboard from "../pages/Admin/Dashboard";
 import User from "../pages/Shop/User";
 import ProductRegister from "../pages/Admin/ProductRegister";
-import useProducts from "../Hooks/useProducts";
+import useProducts from "../hooks/useProducts";
 
 export default function Router() {
   interface propsChildren {

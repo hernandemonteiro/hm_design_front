@@ -1,35 +1,17 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import usePagination from "../../../Hooks/usePagination";
-import useProducts from "../../../Hooks/useProducts";
+import React from "react";
+import usePagination from "../../../hooks/usePagination";
 import ProductCard from "../../UI/ProductCard";
 import {} from "./ProductList.scss";
 
-export default function ProductList() {
+interface ProductListProps{
+  products: any;
+  message: React.ReactNode;
+
+}
+export default function ProductList(props: ProductListProps) {
   const { pagination, buttonPaginate } = usePagination(9);
-  const [message, setMessage] = useState(<h1></h1>);
-  const {
-    products,
-    productsFetch,
-    productsCategoryFetch,
-    productsSearchFetch,
-  } = useProducts();
-  const category = useParams().category;
-  const search = useParams().search;
-
-  useEffect(() => {
-    category
-      ? productsCategoryFetch(category)
-      : search
-      ? productsSearchFetch(search)
-      : productsFetch();
-    setTimeout(
-      () =>
-        setMessage(<h1 className="NotFoundHere">Nada encontrado por aqui!</h1>),
-      3000
-    );
-  }, []);
-
+  const products = props.products;
+  const message = props.message;
   return (
     <div className="productList">
       {products.length === 0 && message}

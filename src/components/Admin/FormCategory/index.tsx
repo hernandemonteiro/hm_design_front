@@ -1,5 +1,5 @@
 import React from "react";
-import useCategory from "../../../Hooks/useCategory";
+import useCategory from "../../../hooks/useCategory";
 import Button from "../../UI/Button";
 import Form from "../../UI/Form";
 

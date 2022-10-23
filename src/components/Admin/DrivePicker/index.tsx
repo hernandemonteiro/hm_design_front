@@ -1,6 +1,6 @@
 import { useGlobalStates } from "../../../providers/useGlobalStates";
 import Button from "../../UI/Button";
-import useProducts from "../../../Hooks/useProducts";
+import useProducts from "../../../hooks/useProducts";
 import {} from "./DrivePicker.scss";
 import React, { useEffect } from "react";
 import { Delete } from "@mui/icons-material";

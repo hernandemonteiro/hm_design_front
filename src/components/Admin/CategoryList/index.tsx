@@ -7,8 +7,8 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Delete } from "@mui/icons-material";
-import usePagination from "../../../Hooks/usePagination";
-import useCategory from "../../../Hooks/useCategory";
+import usePagination from "../../../hooks/usePagination";
+import useCategory from "../../../hooks/useCategory";
 
 export default function CategoryList() {
   const { pagination, buttonPaginate } = usePagination(15);

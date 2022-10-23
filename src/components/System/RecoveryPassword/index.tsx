@@ -4,7 +4,7 @@ import {} from "./RecoveryPassword.scss";
 import forgotFailure from "../../../assets/images/forgotsuccess.svg";
 import { useParams } from "react-router-dom";
 import Form from "../../UI/Form";
-import usePassword from "../../../Hooks/usePassword";
+import usePassword from "../../../hooks/usePassword";
 
 export default function RecoveryPassword() {
   const {

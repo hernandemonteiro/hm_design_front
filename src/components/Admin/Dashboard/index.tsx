@@ -1,7 +1,7 @@
 import CardDashboard from "../../UI/CardDashboard";
 import React, { useEffect } from "react";
 import {} from "./Dashboard.scss";
-import useDashboard from "../../../Hooks/useDashboard";
+import useDashboard from "../../../hooks/useDashboard";
 
 export default function Dashboard() {
   const { users, production, products, categorys, fetchDashboard } =

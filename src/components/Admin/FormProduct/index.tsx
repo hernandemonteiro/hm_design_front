@@ -3,8 +3,8 @@ import React, { useEffect } from "react";
 import Button from "../../UI/Button";
 import {} from "./FormProduct.scss";
 import Form from "../../UI/Form";
-import useCategory from "../../../Hooks/useCategory";
-import useProducts from "../../../Hooks/useProducts";
+import useCategory from "../../../hooks/useCategory";
+import useProducts from "../../../hooks/useProducts";
 import { useGlobalStates } from "../../../providers/useGlobalStates";
 import DrivePicker from "../DrivePicker";
 
