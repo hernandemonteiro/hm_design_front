@@ -25,8 +25,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - run: npm install
-      - run: npm start
-      - run: npx cypress run --record --key ${{ secrets.CYPRESS_TOKEN }}
+      - run: npm start && npx cypress run --record --key ${{ secrets.CYPRESS_TOKEN }}
       - run: npm run build
       - run: npm test
       - name: Install Vercel CLI
