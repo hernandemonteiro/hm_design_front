@@ -5,7 +5,7 @@ import {} from "./ProductList.scss";
 
 interface ProductListProps{
   products: any;
-  message: React.ReactNode;
+  message: any;
 
 }
 export default function ProductList(props: ProductListProps) {
