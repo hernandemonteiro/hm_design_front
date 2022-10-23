@@ -11,6 +11,9 @@
     ],
     "overrides": [
     ],
+    "globals": {
+        "cy": true
+    },
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaVersion": "latest",

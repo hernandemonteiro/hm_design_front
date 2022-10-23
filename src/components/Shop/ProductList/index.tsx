@@ -7,7 +7,7 @@ import {} from "./ProductList.scss";
 
 export default function ProductList() {
   const { pagination, buttonPaginate } = usePagination(9);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(<h1></h1>);
   const {
     products,
     productsFetch,
@@ -23,15 +23,22 @@ export default function ProductList() {
       : search
       ? productsSearchFetch(search)
       : productsFetch();
-    setTimeout(
-      () => products.length == 0 && setMessage("Nada encontrado por aqui!"),
-      3000
-    );
+    // verify product list;
+    search === undefined
+      ? setTimeout(() => products.length === 0 && productsFetch(), 3000)
+      : setTimeout(
+          () =>
+            products.length === 0 &&
+            setMessage(
+              <h1 className="NotFoundHere">Nada encontrado por aqui!</h1>
+            ),
+          3000
+        );
   }, []);
+
   return (
     <div className="productList">
-      {products.length == 0 && <h1 className="NotFoundHere">{message}</h1>}
-
+      {message}
       {products
         .slice(0, pagination)
         .map(

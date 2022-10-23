@@ -44,7 +44,7 @@ export default function Login() {
         <ButtonLink className="red" to="/">
           Voltar ao site
         </ButtonLink>
-        <a href="/forgotPassword">Esqueceu sua senha?</a>
+        <a href="/forgotPassword" className="forgotPassword">Esqueceu sua senha?</a>
       </Form>
     </div>
   );

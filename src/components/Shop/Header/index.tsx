@@ -39,7 +39,7 @@ export default function Header() {
       </form>
       <div className="UserCart">
         {!user ? (
-          <a href="/login" style={{ color: "black" }}>
+          <a href="/login" className="loginLink" style={{ color: "black" }}>
             <PersonIcon className="Icon" sx={{ fontSize: 40, margin: 2 }} />
           </a>
         ) : (
