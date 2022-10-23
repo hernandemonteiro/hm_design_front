@@ -3,19 +3,16 @@ import usePagination from "../../../hooks/usePagination";
 import ProductCard from "../../UI/ProductCard";
 import {} from "./ProductList.scss";
 
-interface ProductListProps{
-  products: any;
-  message: any;
-
+interface ProductListProps {
+  products?: any;
+  message?: React.ReactNode;
 }
 export default function ProductList(props: ProductListProps) {
   const { pagination, buttonPaginate } = usePagination(9);
-  const products = props.products;
-  const message = props.message;
   return (
     <div className="productList">
-      {products.length === 0 && message}
-      {products
+      {props.products.length === 0 && props.message}
+      {props.products
         .slice(0, pagination)
         .map(
           (element: {
@@ -33,7 +30,7 @@ export default function ProductList(props: ProductListProps) {
             />
           )
         )}
-      {buttonPaginate(products.length)}
+      {buttonPaginate(props.products.length)}
     </div>
   );
 }
