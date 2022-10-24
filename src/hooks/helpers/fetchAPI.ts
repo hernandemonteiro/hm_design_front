@@ -10,3 +10,8 @@ export async function fetchAPI(route: string, method: string) {
     },
   }).then(async (response) => await response.json());
 }
+
+export function errorCase(error: string) {
+  alert("Erro: contate seu desenvolvedor!");
+  console.log("Error: " + error);
+}

@@ -1,5 +1,5 @@
 import { FormEvent, useState } from "react";
-import { fetchAPI } from "./helpers/fetchAPI";
+import { errorCase, fetchAPI } from "./helpers/fetchAPI";
 
 export default function usePassword() {
   const [email, setEmail] = useState("");
@@ -23,10 +23,7 @@ export default function usePassword() {
           setMessage("Erro em nosso servidor, tente novamente mais tarde!");
         }
       })
-      .catch((error) => {
-        setMessage("Erro em nosso servidor, tente novamente mais tarde!");
-        console.log(error);
-      });
+      .catch((error) => errorCase(error));
   }
 
   function updatePassword(event: FormEvent) {
@@ -40,16 +37,15 @@ export default function usePassword() {
           return setMessage("Erro ao mudar senha!");
         }
       })
-      .catch((error) => {
-        setMessage("Erro ao mudar senha!");
-        console.log(error);
-      });
+      .catch((error) => errorCase(error));
   }
 
   function confirmHash() {
-    fetchAPI(`/confirmHash/${hash}`, "GET").then((response) => {
-      response === 0 && setView(false);
-    });
+    fetchAPI(`/confirmHash/${hash}`, "GET")
+      .then((response) => {
+        response === 0 && setView(false);
+      })
+      .catch((error) => errorCase(error));
   }
 
   return {

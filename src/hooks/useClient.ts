@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fetchAPI } from "./helpers/fetchAPI";
+import { errorCase, fetchAPI } from "./helpers/fetchAPI";
 
 export default function useClient() {
   const [name, setName] = useState<string>();
@@ -13,13 +13,13 @@ export default function useClient() {
   function usersFetch() {
     fetchAPI("/users", "GET")
       .then((response) => setUsers(response))
-      .catch((error: string) => console.log("Users Error Db:" + error));
+      .catch((error) => errorCase(error));
   }
 
   function deleteUser(id: string) {
     fetchAPI(`/users/${id}`, "DELETE")
       .then(() => usersFetch())
-      .catch((error: string) => console.log("Users Error delete:" + error));
+      .catch((error) => errorCase(error));
   }
 
   const userRegister = (event: { preventDefault: () => void }) => {
@@ -32,7 +32,7 @@ export default function useClient() {
           ? setMessage("Email já registrado!")
           : setMessage("Erro ao registrar!");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => errorCase(error));
   };
 
   return {

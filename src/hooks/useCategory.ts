@@ -1,5 +1,5 @@
 import { FormEvent, useState } from "react";
-import { fetchAPI } from "./helpers/fetchAPI";
+import { errorCase, fetchAPI } from "./helpers/fetchAPI";
 
 export default function useCategory() {
   const [categorys, setCategorys] = useState([]);
@@ -13,22 +13,19 @@ export default function useCategory() {
         setMessage("Cadastrado com sucesso!");
         setCategory("");
       })
-      .catch((error) => {
-        setMessage("Erro: contate seu desenvolvedor!");
-        console.log("Error: " + error);
-      });
+      .catch((error) => errorCase(error));
   }
 
   function categoryFetch() {
     fetchAPI("/categorys", "GET")
       .then((response) => setCategorys(response))
-      .catch((error) => console.log("categorys Error Db:" + error));
+      .catch((error) => errorCase(error));
   }
 
   function deleteCategory(id: string) {
     fetchAPI(`/category/${id}`, "DELETE")
       .then(() => categoryFetch())
-      .catch((error) => console.log("categorys Error delete:" + error));
+      .catch((error) => errorCase(error));
   }
   return {
     message,

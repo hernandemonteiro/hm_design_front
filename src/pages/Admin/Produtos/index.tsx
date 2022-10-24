@@ -9,7 +9,7 @@ export default function Produtos() {
       <ButtonLink className="green" to="/admin/produto/register/true">
         Cadastrar Produto
       </ButtonLink>
-      <ProductList />
+      {/* <ProductList /> */}
     </Template>
   );
 }
