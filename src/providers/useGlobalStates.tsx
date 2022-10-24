@@ -60,7 +60,6 @@ export const GlobalStatesProvider = (props: GlobalStatesProps) => {
   function logout() {
     localStorage.removeItem("user");
     setUser(null);
-    window.location.href = "/";
   }
 
   return (

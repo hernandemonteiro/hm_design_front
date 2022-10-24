@@ -10,7 +10,7 @@ describe("Shop navigate:", () => {
   it("Menu", () => {
     cy.wait(2000);
     cy.get(".btn").eq(1).click();
-    cy.wait(4000).then(() => cy.get(".btn").eq(2).click());
+    cy.wait(5000).then(() => cy.get(".btn").eq(2).click());
   });
 
   it("Search", () => {
