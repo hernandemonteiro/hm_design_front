@@ -5,8 +5,8 @@ name: Hm-design Front - CI
 
 on:  
   pull_request:
-    branches:
-      - master
+    branches-ignore:
+      - Development
 
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
