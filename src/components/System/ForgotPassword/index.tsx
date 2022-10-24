@@ -1,39 +1,21 @@
-import { useState } from "react";
+import React from "react";
 import Button from "../../UI/Button";
-import "./ForgotPassword.scss";
-import forgotSuccess from "../../../assets/images/forgotsuccess.svg";
-import useToken from "../../../Hooks/useToken";
+import {} from "./ForgotPassword.scss";
+import forgotSuccess from "../../../../public/images/forgotsuccess.svg";
+import Form from "../../UI/Form";
+import usePassword from "../../../hooks/usePassword";
 
 export default function ForgotPassword() {
-  const [email, setEmail] = useState("");
-  const [view, setView] = useState("");
-  const [message, setMessage] = useState("");
-  const [seconds, setSeconds] = useState(4);
+  const {
+    view,
+    setSeconds,
+    seconds,
+    forgotPassword,
+    message,
+    setEmail,
+    email,
+  } = usePassword();
 
-  function forgotPassword(event: any) {
-    event.preventDefault();
-    fetch(`${import.meta.env.VITE_API_URL}/forgotPassword/${email}`, {
-      method: "POST",
-        headers: {
-          "x-access-token": useToken(),
-        }
-    })
-      .then((response) => response.json())
-      .then((response) => {
-       
-        if (response.result === "Email enviado!") {
-          setView("Success");
-        } else if (response.result === "Usuário não existe!") {
-          setMessage("Usuário não encontrado em nosso sistema!");
-        } else {
-          console.log(response);
-          setMessage("Erro em nosso servidor, tente novamente mais tarde!");
-        }
-      })
-      .catch((error) => {
-        setMessage("Erro em nosso servidor, tente novamente mais tarde!");
-        console.log(error)});
-  }
   if (view === "Success") {
     setInterval(async function () {
       setSeconds(seconds - 1);
@@ -45,7 +27,7 @@ export default function ForgotPassword() {
   return (
     <div className="ForgotPasswordBox">
       {view != "Success" ? (
-        <form onSubmit={forgotPassword}>
+        <Form onSubmit={forgotPassword}>
           <p>Digite seu email abaixo e envie para recuperar sua senha!</p>
           <h3 className="MessageSystem">{message}</h3>
           <br />
@@ -54,6 +36,7 @@ export default function ForgotPassword() {
             required
             autoFocus
             onChange={(event) => setEmail(event.target.value)}
+            value={email}
             placeholder="Email registrado!"
           />
           <Button type={"submit"} className="green">
@@ -65,12 +48,12 @@ export default function ForgotPassword() {
           >
             VOLTAR
           </Button>
-        </form>
+        </Form>
       ) : (
         <div className="forgotSuccess">
           <img src={forgotSuccess} />
           <br />
-          <h1>Enviado com sucesso!</h1>
+          <h2>Em alguns minutos você receberá nosso email!</h2>
           <br />
           <p>Redirecionando em {seconds}s</p>
         </div>

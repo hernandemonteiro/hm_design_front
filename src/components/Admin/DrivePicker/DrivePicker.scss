@@ -1,0 +1,13 @@
+.imgBox {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin: 4%;
+}
+
+.imgView {
+  width: 20%;
+  margin: 2%;
+}

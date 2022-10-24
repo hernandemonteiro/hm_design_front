@@ -1,50 +1,73 @@
 .btn {
-    width: 90%;
-    padding: 3%;
-    text-transform: uppercase;
-    margin: 4%;
-    border-radius: 10px;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  width: 90%;
+  padding: 3%;
+  text-transform: uppercase;
+  margin: 4%;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .btn:hover {
-    background-color: black;
-    color: white;
+  background-color: gainsboro;
+}
+
+.btn:disabled {
+  background-color: rgba(173, 169, 169, 0.3);
+  color: white;
+  cursor: not-allowed
+}
+
+.transparent {
+  background: none;
+  color: yellow;
+  box-shadow: none;
+}
+
+.transparent:hover:enabled {
+  background: rgba(221, 221, 221, 0.1);
+  color: yellow;
 }
 
 .red {
-    background-color: red;
-    color: white;
+  background-color: red;
+  color: white;
 }
 
-.red:hover {
-    background-color: black;
-    color: white;
+.red:hover:enabled {
+  background-color: rgb(230, 1, 1);
+  color: white;
 }
 
 .warning {
-    background-color: orangered;
-    color: white;
+  background-color: orangered;
+  color: white;
 }
 
-.warning:hover {
-    background-color: rgb(245, 84, 26);
+.warning:hover:enabled {
+  background-color: rgb(245, 84, 26);
+  color: white;
 }
 
 .green {
-    background-color: green;
-    color: white;
+  background-color: green;
+  color: white;
 }
 
-.green:hover {
-    background-color: rgb(4, 179, 4);
+.green:hover:enabled {
+  background-color: rgb(4, 179, 4);
+  color: white;
 }
 
-.gradientHover:hover {
-    background: rgb(2, 0, 36);
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(107, 9, 121, 0.9472163865546218) 35%, rgba(0, 212, 255, 1) 100%);
-    color: white
+.gradientHover:hover:enabled {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(107, 9, 121, 0.9472163865546218) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  color: white;
 }

@@ -1,9 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Button from "../Button";
-import "./Nav.scss";
+import {} from "./Nav.scss";
 
 interface NavProps {
-  children: any;
+  children: React.ReactNode;
 }
 
 export default function Nav(props: NavProps) {

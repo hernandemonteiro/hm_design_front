@@ -1,51 +1,12 @@
 import CardDashboard from "../../UI/CardDashboard";
-import { useEffect, useState } from "react";
-import "./Dashboard.scss";
-import useToken from "../../../Hooks/useToken";
+import React, { useEffect } from "react";
+import {} from "./Dashboard.scss";
+import useDashboard from "../../../hooks/useDashboard";
 
 export default function Dashboard() {
-  const [users, setUsers] = useState([]);
-  const [production, setProduction] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [categorys, setCategorys] = useState([]);
-  const url = `${import.meta.env.VITE_API_URL}`;
-  useEffect(() => {
-    fetch(`${url}/users`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => setUsers(response.result))
-      .catch((error: string) => console.log("users error: " + error));
-
-    fetch(`${url}/products`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => setProducts(response.result))
-      .catch((error: string) => console.log("users error: " + error));
-
-    fetch(`${url}/orders`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => setProduction(response.result))
-      .catch((error: string) => console.log("users error: " + error));
-
-    fetch(`${url}/category`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => setCategorys(response.result))
-      .catch((error: string) => console.log("users error: " + error));
-  }, []);
+  const { users, production, products, categorys, fetchDashboard } =
+    useDashboard();
+  useEffect(fetchDashboard, []);
   return (
     <div>
       <div className="Dashboard">

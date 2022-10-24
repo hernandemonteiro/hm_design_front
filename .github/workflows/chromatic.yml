@@ -1,0 +1,17 @@
+name: 'Chromatic Publish'
+
+on:
+  push:
+    branches:
+      - Development
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: yarn
+      - uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_TOKEN_DOCS }}
+          token: ${{ secrets.TOKEN_REPO }}

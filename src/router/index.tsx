@@ -1,5 +1,15 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { AuthProvider, useAuth } from "../Hooks/useAuth";
+import React from "react";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useParams,
+} from "react-router-dom";
+import {
+  GlobalStatesProvider,
+  useGlobalStates,
+} from "../providers/useGlobalStates";
 import NotFoundError from "../components/System/NotFoundError";
 import Home from "../pages/Shop/Home";
 import CartPage from "../pages/Shop/Cart";
@@ -16,10 +26,15 @@ import Clientes from "../pages/Admin/Clientes";
 import Produtos from "../pages/Admin/Produtos";
 import Dashboard from "../pages/Admin/Dashboard";
 import User from "../pages/Shop/User";
+import ProductRegister from "../pages/Admin/ProductRegister";
+import useProducts from "../hooks/useProducts";
 
 export default function Router() {
-  function RedirectLogged(props: any) {
-    const { authenticated, loading, user } = useAuth();
+  interface propsChildren {
+    children: JSX.Element;
+  }
+  function RedirectLogged(props: propsChildren) {
+    const { authenticated, loading, user } = useGlobalStates();
 
     loading ?? <Loader />;
 
@@ -33,8 +48,8 @@ export default function Router() {
     return props.children;
   }
 
-  function PrivateUser(props: any) {
-    const { authenticated, loading, user } = useAuth();
+  function PrivateUser(props: propsChildren) {
+    const { authenticated, loading, user } = useGlobalStates();
 
     loading ?? <Loader />;
 
@@ -44,24 +59,42 @@ export default function Router() {
     return props.children;
   }
 
-  function PrivateAdmin(props: any) {
-    const { authenticated, loading, user } = useAuth();
-    loading ?? <Loader />;
-    if (!authenticated || user.type != "0") {
+  function PrivateAdmin(props: propsChildren) {
+    const { authenticated, loading, user } = useGlobalStates();
+    const { getTokenGoogleAPI, deleteCloudImageCanceled } = useProducts();
+    if (loading) {
+      return <Loader />;
+    } else if (!authenticated || user.type != "0") {
       return <Navigate to="/login" />;
     }
+
+    // cloudStorage leak fix;
+    const photos: string = localStorage.getItem("pic") || "[]";
+    if (useParams().register != "true" && JSON.parse(photos).length > 0) {
+      JSON.parse(photos).map(async (element: { id: string }) => {
+        deleteCloudImageCanceled(await getTokenGoogleAPI(), element.id);
+      });
+    }
+
     return props.children;
   }
 
   return (
-    <AuthProvider>
+    <GlobalStatesProvider>
       <BrowserRouter>
         <Routes>
           {/* shop; */}
           <Route path="/" element={<Home />} />
           <Route path="/:search" element={<Home />} />
-          <Route path="category/:category" element={<Home />} />
-          <Route path="/cart" element={<CartPage />} />
+          <Route path="/category/:category" element={<Home />} />
+          <Route
+            path="/cart"
+            element={
+              <PrivateUser>
+                <CartPage />
+              </PrivateUser>
+            }
+          />
           <Route path="/details/:id" element={<Details />} />
           {/* user; */}
           <Route
@@ -86,6 +119,14 @@ export default function Router() {
             element={
               <PrivateAdmin>
                 <Produtos />
+              </PrivateAdmin>
+            }
+          />
+          <Route
+            path="/admin/produto/register/:register"
+            element={
+              <PrivateAdmin>
+                <ProductRegister />
               </PrivateAdmin>
             }
           />
@@ -146,6 +187,6 @@ export default function Router() {
           <Route path="*" element={<NotFoundError />} />
         </Routes>
       </BrowserRouter>
-    </AuthProvider>
+    </GlobalStatesProvider>
   );
 }

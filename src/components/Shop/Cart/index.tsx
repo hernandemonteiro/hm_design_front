@@ -1,7 +1,8 @@
+import React from "react";
 import { SummarizeOutlined } from "@mui/icons-material";
 import Button from "../../UI/Button";
 import CardCart from "../../UI/CardCart";
-import "./Cart.scss";
+import {} from "./Cart.scss";
 
 export default function Cart() {
   return (
@@ -10,19 +11,23 @@ export default function Cart() {
         <CardCart
           photo={"photo"}
           description={"description"}
-          actions={<div>
-            <SummarizeOutlined/>
-            <SummarizeOutlined/>
-          </div>}
+          actions={
+            <div>
+              <SummarizeOutlined />
+              <SummarizeOutlined />
+            </div>
+          }
           price={"R$25.00"}
         />
         <CardCart
           photo={"photo"}
           description={"description"}
-          actions={<div>
-            <SummarizeOutlined/>
-            <SummarizeOutlined/>
-          </div>}
+          actions={
+            <div>
+              <SummarizeOutlined />
+              <SummarizeOutlined />
+            </div>
+          }
           price={"R$25.00"}
         />
       </div>

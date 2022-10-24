@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import FormCategory from "../../../components/Admin/FormCategory";
 import Template from "../../../components/Admin/Template";
 import Button from "../../../components/UI/Button";
@@ -10,7 +10,10 @@ export default function Categoria() {
     <Template>
       {categoryView === "Categorys List" ? (
         <>
-          <Button onClick={() => setCategoryView("Category Register")}>
+          <Button
+            className="green"
+            onClick={() => setCategoryView("Category Register")}
+          >
             Cadastrar Categoria
           </Button>
           <CategoryList />
@@ -18,7 +21,10 @@ export default function Categoria() {
       ) : (
         <>
           <FormCategory />
-          <Button className="red" onClick={() => setCategoryView("Categorys List")}>
+          <Button
+            className="red"
+            onClick={() => setCategoryView("Categorys List")}
+          >
             voltar
           </Button>
         </>

@@ -1,30 +1,19 @@
-import { Link } from "react-router-dom";
-import { useAuth } from "../../../Hooks/useAuth";
+import React from "react";
+import { useGlobalStates } from "../../../providers/useGlobalStates";
 import Button from "../../UI/Button";
+import ButtonLink from "../../UI/ButtonLink";
 import Nav from "../../UI/Nav";
 
 export default function Menu() {
-  const { logout } = useAuth();
+  const { logout } = useGlobalStates();
   return (
     <Nav>
-      <Link to="/admin">
-        <Button>Dashboard</Button>
-      </Link>
-      <Link to="/admin/categorias">
-        <Button>Categorias</Button>
-      </Link>
-      <Link to="/admin/produtos">
-        <Button>Produtos</Button>
-      </Link>
-      <Link to="/admin/clientes">
-        <Button>Usuários</Button>
-      </Link>
-      <Link to="/admin/ordens">
-        <Button>Ordens</Button>
-      </Link>
-      <Link to="/admin/producao">
-        <Button>Em produção</Button>
-      </Link>
+      <ButtonLink to="/admin">Dashboard</ButtonLink>
+      <ButtonLink to="/admin/categorias">Categorias</ButtonLink>
+      <ButtonLink to="/admin/produtos">Produtos</ButtonLink>
+      <ButtonLink to="/admin/clientes">Usuários</ButtonLink>
+      <ButtonLink to="/admin/ordens">Ordens</ButtonLink>
+      <ButtonLink to="/admin/producao">Em produção</ButtonLink>
       <Button className="red" onClick={logout}>
         Sair
       </Button>

@@ -1,9 +1,29 @@
-import "./Main.scss";
+import React, { useEffect, useState } from "react";
+import Loader from "../Loader";
+import ScrollToTop from "../ScrollToTop";
+import {} from "./Main.scss";
 
 interface MainProps {
-    children?: any;
-  }
-  
+  children?: JSX.Element;
+}
+
 export default function Main(props: MainProps) {
-  return <main>{props.children}</main>;
+  const [loading, setLoader] = useState(true);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoader(false);
+    }, 2000);
+  }, []);
+  return (
+    <main>
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
+          {props.children}
+          <ScrollToTop />
+        </>
+      )}
+    </main>
+  );
 }

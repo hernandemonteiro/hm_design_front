@@ -1,0 +1,77 @@
+// typographys;
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@600&display=swap");
+
+// colors and shadows;
+$backgroundGradient: linear-gradient(
+  90deg,
+  rgba(2, 0, 36, 1) 0%,
+  rgba(107, 9, 121, 0.9472163865546218) 35%,
+  rgba(0, 212, 255, 1) 100%
+);
+$primeBlueColor: rgba(0, 212, 255, 1);
+$secondPurpleColor: rgba(107, 9, 121, 0.9472163865546218);
+
+// mixins;
+@mixin flexTotalCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+// animations:
+$slide-in-top: slide-in-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(-1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+$puff-in-center: puff-in-center 0.9s cubic-bezier(0.47, 0, 0.745, 0.715) both;
+@keyframes puff-in-center {
+  0% {
+    transform: scale(2);
+    filter: blur(4px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+$slide-in-left: slide-in-left 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+$color-change-2x: color-change-2x 4s linear infinite alternate both;
+@-webkit-keyframes color-change-2x {
+  0% {
+    background: $primeBlueColor;
+  }
+  100% {
+    background: $secondPurpleColor;
+  }
+}
+@keyframes color-change-2x {
+  0% {
+    background: $primeBlueColor;
+  }
+  100% {
+    background: $secondPurpleColor;
+  }
+}

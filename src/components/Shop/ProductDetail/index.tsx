@@ -1,11 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useAuth } from "../../../Hooks/useAuth";
+import { useGlobalStates } from "../../../providers/useGlobalStates";
 import Button from "../../UI/Button";
-import "./ProductDetail.scss";
+import ButtonLink from "../../UI/ButtonLink";
+import Carroussel from "../../UI/Carrousell";
+import {} from "./ProductDetail.scss";
 
 interface ProductDetailProps {
-  image?: string;
+  image: string;
   name: string;
   price: number;
   description: string;
@@ -13,15 +14,10 @@ interface ProductDetailProps {
 }
 
 export default function ProductDetail(props: ProductDetailProps) {
-  const { authenticated } = useAuth();
+  const { authenticated } = useGlobalStates();
   return (
     <div className="Detail">
-      <div className="imageDetail">
-        <img
-          width="60%"
-          src="https://www.datocms-assets.com/76860/1660532346-product_hm_design.png"
-        />
-      </div>
+      <Carroussel data={props.image} />
       <div className="productName">
         <h2>{props.name}</h2>
       </div>
@@ -33,11 +29,11 @@ export default function ProductDetail(props: ProductDetailProps) {
       </div>
       <div className="buttonsAction">
         {authenticated ? (
-          <Button>ADICIONAR AO CARRINHO</Button>
+          <Button className="green">ADICIONAR AO CARRINHO</Button>
         ) : (
-          <Link to="/login">
-            <Button className="green gradientHover">Fazer Login para comprar</Button>
-          </Link>
+          <ButtonLink to="/login" className="green gradientHover">
+            Fazer Login para comprar
+          </ButtonLink>
         )}
       </div>
     </div>

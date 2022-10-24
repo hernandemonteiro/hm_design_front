@@ -1,51 +1,18 @@
 .formHeader {
-    width: 100%;
+  width: 100%;
 }
-.formHeader > h3 {
-    text-align: center;
-    padding: 2%
-}
-
-.options {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
-    padding: 3%;
+.formBox {
+  padding: 5% 15% 5% 15%;
 }
 
-input {
-    width: 90%;
-    padding: 3%;
-}
-
-select,
-option {
-    width: 90%;
-    padding: 3%;
-}
-
-textarea {
-    width: 90%;
-    padding: 2%;
-    height: 300px;
-    resize: none;
-    overflow: auto;
-
-}
-
-label {
-    margin-left: 3%;
-    margin-top: 0.5%;
-}
-
-.actions {
-    width: 90%;
-    display: flex;
-    margin-top: 1%;
+.formHeader > h2 {
+  text-align: center;
+  text-transform: uppercase;
+  margin: 2%;
+  color: rgb(58, 0, 58);
 }
 
 .tableOptions {
-    width: 100%;
-    text-align: center;
+  width: 100%;
+  text-align: center;
 }

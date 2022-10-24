@@ -1,0 +1,17 @@
+.productList {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+
+}
+
+.NotFoundHere {
+  padding: 4%;
+}
+
+@media (max-width: 600px) {
+  .productList {
+    margin-top: 4%;
+  }
+}

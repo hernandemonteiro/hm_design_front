@@ -1,53 +1,33 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import useToken from "../../../Hooks/useToken";
+import React from "react";
+import useClient from "../../../hooks/useClient";
 import Button from "../../UI/Button";
-import "./Register.scss";
+import ButtonLink from "../../UI/ButtonLink";
+import Form from "../../UI/Form";
+import {} from "./Register.scss";
 
 export default function Register() {
-  const [name, setName] = useState<string>();
-  const [email, setEmail] = useState<string>();
-  const [password, setPassword] = useState<string>();
-  const [confirmPassword, setConfirmPassword] = useState<string>();
-  const [message, setMessage] = useState<string>();
-  const [view, setView] = useState<string>("Register");
-
-  const userRegister = (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-    let url = `${
-      import.meta.env.VITE_API_URL
-    }/users/${name}/${email}/${password}/1`;
-
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        if (response.result != "user registered") {
-          setView("Success");
-        } else if (response.result === "user registered") {
-          setMessage("Email já registrado!");
-        } else {
-          setMessage("Erro ao registrar!");
-        }
-      })
-      .catch((error) => console.log(error));
-  };
+  const {
+    view,
+    userRegister,
+    message,
+    setName,
+    setEmail,
+    setPassword,
+    password,
+    confirmPassword,
+    setConfirmPassword,
+  } = useClient();
 
   return (
     <div className="RegisterBox">
-      {view === "Register" && (
-        <form className='formRegister' onSubmit={userRegister}>
+      {view === "Register" ? (
+        <Form onSubmit={userRegister}>
           <h1>Cadastro</h1>
           {message}
           <label>Digite seu nome!</label>
           <input
             required
             type="text"
-            autoFocus
             onChange={(e) => setName(e.target.value)}
             autoComplete="off"
             placeholder="Nome"
@@ -81,30 +61,31 @@ export default function Register() {
             type="password"
             placeholder="Confirmar Senha"
           />
-          {password === confirmPassword ? (
-            <Button className="green btnWidth" type="submit">
-              Cadastrar
-            </Button>
-          ) : (
-            <Button disabled className="btnWidth" type="submit">
-              Cadastrar
-            </Button>
-          )}
-          <Link className="Link" to="/login">
-            <Button className="warning">Já tem conta?</Button>
-          </Link>
-          <Link className="Link" to="/">
-            <Button>Voltar ao site</Button>
-          </Link>
-        </form>
-      )}
-      {view === "Success" && (
-        <div>
+
+          <Button
+            type="submit"
+            disabled={
+              password === confirmPassword && password != "" ? false : true
+            }
+            className="green"
+          >
+            Cadastrar
+          </Button>
+
+          <ButtonLink to="/login" className="warning">
+            Já tem conta?
+          </ButtonLink>
+          <ButtonLink className="red" to="/">
+            Voltar ao site
+          </ButtonLink>
+        </Form>
+      ) : (
+        <div className="sucessRegister">
           <h1>Registrado com sucesso!</h1>
           <br />
-          <Link className="Link" to="/login">
-            <Button className="green">Ir para login</Button>
-          </Link>
+          <ButtonLink to="/login" className="green">
+            Ir para login
+          </ButtonLink>
         </div>
       )}
     </div>

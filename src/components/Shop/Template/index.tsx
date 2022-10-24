@@ -2,13 +2,13 @@ import React from "react";
 import Footer from "../Footer";
 import Header from "../Header";
 import Menu from "../Menu";
-import "./Template.scss";
+import {} from "./Template.scss";
 
 /* @descrition TemplateProps : this interface create the types
  * for traditional React props;
  */
 interface TemplateProps {
-  children?: any;
+  children?: React.ReactNode;
 }
 
 /* @description Template is the base view for all pages in the application;

@@ -1,32 +1,32 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { useAuth } from "../../../Hooks/useAuth";
+import React, { FormEvent, useState } from "react";
+import { useGlobalStates } from "../../../providers/useGlobalStates";
 import Button from "../../UI/Button";
-import "./Login.scss";
+import ButtonLink from "../../UI/ButtonLink";
+import Form from "../../UI/Form";
+import {} from "./Login.scss";
 
 export default function Login() {
-  const { login, loginMessage } = useAuth();
+  const { login, loginMessage } = useGlobalStates();
 
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
 
-  function handleSubmit(event: any) {
+  function handleLogin(event: FormEvent) {
     event.preventDefault();
     login(email, password);
   }
 
   return (
     <div className="LoginBox">
-      <form className='formLogin' onSubmit={handleSubmit}>
+      <Form onSubmit={handleLogin}>
         <h1>HM Design</h1>
-        <h4 className="loginMessage">{loginMessage}</h4>
+        <h4 className="ErrorMessage">{loginMessage}</h4>
         <label>Digite seu email!</label>
         <input
-          required
+          required={true}
           onChange={(event) => setEmail(event.target.value)}
           value={email}
           type="email"
-          autoFocus
         />
         <label>Digite sua senha!</label>
         <input
@@ -35,17 +35,17 @@ export default function Login() {
           value={password}
           type="password"
         />
-        <Button className='green' type="submit">Login</Button>
-        <Link className="Link" to="/register">
-          <Button className="warning">cadastrar-se</Button>
-        </Link>
-        <Link className="Link" to="/">
-          <Button>Voltar ao site</Button>
-        </Link>
-        <Link to='/forgotPassword'>
-          Esqueceu sua senha?
-        </Link>
-      </form>
+        <Button className="green" type="submit">
+          Login
+        </Button>
+        <ButtonLink className="warning" to="/register">
+          cadastrar-se
+        </ButtonLink>
+        <ButtonLink className="red" to="/">
+          Voltar ao site
+        </ButtonLink>
+        <a href="/forgotPassword" className="forgotPassword">Esqueceu sua senha?</a>
+      </Form>
     </div>
   );
 }

@@ -1,16 +1,25 @@
-import { Link, useParams } from "react-router-dom";
-import Button from "../../UI/Button";
+import React, { useEffect } from "react";
+import useProducts from "../../../hooks/useProducts";
+import ButtonLink from "../../UI/ButtonLink";
 import Nav from "../../UI/Nav";
 
 export default function Menu() {
+  const { products, productsFetch } = useProducts();
+  useEffect(productsFetch, []);
+  const categorys = [
+    ...new Set(
+      products.map((element: { category: string }) => element.category)
+    ),
+  ];
   return (
     <Nav>
-      <Link to="/">
-        <Button>Inicio</Button>
-      </Link>
-      <Link to="/category/Cartão de visita">
-        <Button>Cartão de visita</Button>
-      </Link>
+      {/* using window.location to change the page and the view of the menu; */}
+      <ButtonLink to={"/"}>Inicio</ButtonLink>
+      {categorys.map((element) => (
+        <ButtonLink key={0} to={`/category/${element}`}>
+          {element}
+        </ButtonLink>
+      ))}
     </Nav>
   );
 }

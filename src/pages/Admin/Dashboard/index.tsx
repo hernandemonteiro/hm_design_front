@@ -1,3 +1,4 @@
+import React from "react";
 import Dashboard from "../../../components/Admin/Dashboard";
 import Template from "../../../components/Admin/Template";
 
