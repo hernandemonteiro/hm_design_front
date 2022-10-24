@@ -20,5 +20,6 @@ body {
   animation: $color-change-2x;
   main {
     width: 83vw;
+    overflow: hidden;
   }
 }
