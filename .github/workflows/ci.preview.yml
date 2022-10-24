@@ -3,7 +3,10 @@
 
 name: Hm-design Front - CI
 
-on: [push]
+on: 
+  push:
+    branches:
+      - master
 
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
