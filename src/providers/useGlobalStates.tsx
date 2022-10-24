@@ -6,7 +6,7 @@ import useToken from "../hooks/useToken";
  * @description provide an global state context for user login status;
  */
 
-export const GlobalStatesContext = createContext<any>("");
+export const GlobalStatesContext = createContext<string | object>("");
 
 interface GlobalStatesProps {
   children: JSX.Element;

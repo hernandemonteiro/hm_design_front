@@ -7,6 +7,13 @@ interface ProductListProps {
   products?: any;
   message?: React.ReactNode;
 }
+interface productsArrayElement {
+  _id: string;
+  images: string;
+  name: string;
+  price: number;
+}
+
 export default function ProductList(props: ProductListProps) {
   const { pagination, buttonPaginate } = usePagination(9);
   return (
@@ -15,12 +22,7 @@ export default function ProductList(props: ProductListProps) {
       {props.products
         .slice(0, pagination)
         .map(
-          (element: {
-            images: string;
-            name: string;
-            price: number;
-            _id: string;
-          }) => (
+          (element: productsArrayElement) => (
             <ProductCard
               key={element._id}
               img={JSON.parse(element.images)[0].id}
