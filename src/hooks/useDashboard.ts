@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fetchAPI } from "./helpers/fetchAPI";
+import { errorCase, fetchAPI } from "./helpers/fetchAPI";
 
 export default function useDashboard() {
   const [users, setUsers] = useState([]);
@@ -9,19 +9,19 @@ export default function useDashboard() {
   function fetchDashboard() {
     fetchAPI("/users", "GET")
       .then((response) => setUsers(response))
-      // .catch((error) => errorCase(error));
+      .catch((error) => errorCase(error));
 
     fetchAPI("/products", "GET")
       .then((response) => setProducts(response))
-      // .catch((error) => errorCase(error));
+      .catch((error) => errorCase(error));
 
     fetchAPI("/orders", "GET")
       .then((response) => setProduction(response))
-      // .catch((error) => errorCase(error));
+      .catch((error) => errorCase(error));
 
-    fetchAPI("/category", "GET")
+    fetchAPI("/categorys", "GET")
       .then((response) => setCategorys(response))
-      // .catch((error) => errorCase(error));
+      .catch((error) => errorCase(error));
   }
   return {
     users,
