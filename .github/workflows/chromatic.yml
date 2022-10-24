@@ -2,7 +2,8 @@ name: 'Chromatic Publish'
 
 on:
   push:
-    - Development
+    branches:
+      - Development
 
 jobs:
   test:
