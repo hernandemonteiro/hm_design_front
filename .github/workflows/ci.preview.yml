@@ -5,8 +5,10 @@ name: Hm-design Front - CI
 
 on: 
   push:
-    branches:
+    branches-ignore:
       - master
+    branches:
+      - Development
 
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
