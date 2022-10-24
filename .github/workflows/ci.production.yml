@@ -4,7 +4,7 @@
 name: Hm-design Front Production - CI
 
 on:  
-  push:
+  pull_request:
     branches:
       - master
 
