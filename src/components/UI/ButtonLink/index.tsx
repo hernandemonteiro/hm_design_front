@@ -3,7 +3,7 @@ import {} from "../Button/Button.scss";
 import {} from "./ButtonLink.scss";
 
 interface buttonLinkProps {
-  children?: React.ReactNode;
+  children?: any;
   className?: string;
   disabled?: boolean;
   to: string;

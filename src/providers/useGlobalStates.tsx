@@ -2,11 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 import CryptoJS from "crypto-js";
 import useToken from "../hooks/useToken";
 
-/*
- * @description provide an global state context for user login status;
- */
-
-export const GlobalStatesContext = createContext<string | object>("");
+export const GlobalStatesContext = createContext<any>("");
 
 interface GlobalStatesProps {
   children: JSX.Element;

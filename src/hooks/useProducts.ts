@@ -18,7 +18,7 @@ export default function useProducts() {
     Array<{ option: string; priceOption: string | number }>
   >([]);
   const [message, setMessage] = useState("");
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState<any>([]);
   const [productsView, setProductsView] = useState("Products List");
   const [token, setToken] = useState("");
 
