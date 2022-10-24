@@ -5,8 +5,6 @@ name: Hm-design Front - CI
 
 on: 
   push:
-    branches-ignore:
-      - master
     branches:
       - Development
 
