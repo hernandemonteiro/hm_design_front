@@ -1,5 +1,5 @@
 import { FormEvent, useState } from "react";
-import useToken from "./useToken";
+import { fetchAPI } from "./helpers/fetchAPI";
 
 export default function usePassword() {
   const [email, setEmail] = useState("");
@@ -12,13 +12,7 @@ export default function usePassword() {
 
   function forgotPassword(event: FormEvent) {
     event.preventDefault();
-    fetch(`${import.meta.env.VITE_API_URL}/forgotPassword/${email}`, {
-      method: "POST",
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
+    fetchAPI(`/forgotPassword/${email}`, "POST")
       .then((response) => {
         if (response === "Email enviado!") {
           setView("Success");
@@ -37,16 +31,7 @@ export default function usePassword() {
 
   function updatePassword(event: FormEvent) {
     event.preventDefault();
-    fetch(
-      `${import.meta.env.VITE_API_URL}/updatePassword/${hash}/${password}`,
-      {
-        method: "PUT",
-        headers: {
-          "x-access-token": useToken(),
-        },
-      }
-    )
-      .then((response) => response.json())
+    fetchAPI(`/updatePassword/${hash}/${password}`, "PUT")
       .then((response) => {
         console.log(response);
         if (response === "Success") {
@@ -62,17 +47,9 @@ export default function usePassword() {
   }
 
   function confirmHash() {
-    fetch(`${import.meta.env.VITE_API_URL}/confirmHash/${hash}`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        if (response === 0) {
-          setView(false);
-        }
-      });
+    fetchAPI(`/confirmHash/${hash}`, "GET").then((response) => {
+      response === 0 && setView(false);
+    });
   }
 
   return {

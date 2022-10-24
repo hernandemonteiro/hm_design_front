@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
-import CryptoJS from "crypto-js";
-import useToken from "../hooks/useToken";
+import { fetchAPI } from "../hooks/helpers/fetchAPI";
+import CryptoHelper from "../hooks/helpers/crypto";
 
 export const GlobalStatesContext = createContext<any>("");
 
@@ -18,37 +18,26 @@ export const GlobalStatesProvider = (props: GlobalStatesProps) => {
   useEffect(() => {
     const recoveredUser = localStorage.getItem("user");
     if (recoveredUser) {
-      const iv = CryptoJS.enc.Base64.parse(import.meta.env.VITE_HASH_SECRET);
-      const secret = CryptoJS.SHA256(import.meta.env.VITE_HASH_SECRET);
-      const user = CryptoJS.AES.decrypt(recoveredUser, secret, {
-        iv: iv,
-        mode: CryptoJS.mode.CBC,
-        padding: CryptoJS.pad.Pkcs7,
-      }).toString(CryptoJS.enc.Utf8);
-      const userJson = JSON.parse(user);
-      setUser(userJson);
+      const user = JSON.parse(CryptoHelper.cryptoDecrypt(recoveredUser));
+      setUser(user);
+      setLoading(false);
     }
-    setLoading(false);
   }, []);
 
+  function setLocalUser(user: string) {
+    localStorage.setItem("user", user);
+    window.location.reload();
+  }
+
   function login(email: string, password: string) {
-    fetch(`${import.meta.env.VITE_API_URL}/login/${email}/${password}`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
+    fetchAPI(`/login/${email}/${password}`, "GET")
       .then((response) => {
-        // implementing jwt method;
-        if (response.length > 1) {
-          localStorage.setItem("user", response);
-          window.location.reload();
-        } else {
-          setLoginMessage("Email ou senha Inválidos");
-        }
+        response.length > 1
+          ? setLocalUser(response)
+          : setLoginMessage("Email ou senha Inválidos");
       })
       .catch((error) => {
-        setLoginMessage("Email ou senha Inválidos");
+        setLoginMessage("Erro: contatar seu desenvolvedor");
         console.log("Login Error:" + error);
       });
   }

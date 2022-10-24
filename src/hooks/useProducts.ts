@@ -1,6 +1,6 @@
 import { FormEvent, useState } from "react";
-import useToken from "./useToken";
 import useDrivePicker from "react-google-drive-picker";
+import { fetchAPI } from "./helpers/fetchAPI";
 
 export default function useProducts() {
   const [openPicker] = useDrivePicker();
@@ -109,35 +109,20 @@ export default function useProducts() {
     });
   };
 
-  function productsCategoryFetch(category: string | undefined) {
-    fetch(`${import.meta.env.VITE_API_URL}/products/category/${category}`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
+  function productsCategoryFetch(category: string) {
+    fetchAPI(`/products/category/${category}`, "GET")
       .then((response) => setProducts(response))
       .catch((error) => console.log("Error: " + error.message));
   }
 
-  function productsSearchFetch(search: string | undefined) {
-    fetch(`${import.meta.env.VITE_API_URL}/products/search/${search}`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
+  function productsSearchFetch(search: string) {
+    fetchAPI(`/products/search/${search}`, "GET")
       .then((response) => setProducts(response))
       .catch((error) => console.log("Error: " + error.message));
   }
 
   function productsFetch() {
-    fetch(`${import.meta.env.VITE_API_URL}/products`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
+    fetchAPI("/products", "GET")
       .then((response) => setProducts(response))
       .catch((error) => console.log("Error: " + error.message));
   }
@@ -165,32 +150,19 @@ export default function useProducts() {
     const photos = localStorage.getItem("pic") || "[{'id': 'undefined'}]";
     setPictures(JSON.parse(photos));
     const priceFormat = parseFloat(price).toFixed(2).toString();
-    fetch(
-      `${
-        import.meta.env.VITE_API_URL
-      }/product/register/${name}/${priceFormat}/${JSON.stringify(
+    fetchAPI(
+      `/product/register/${name}/${priceFormat}/${JSON.stringify(
         photos
       )}/${description}/${category}/${JSON.stringify(options)}`,
-      {
-        method: "PUT",
-        headers: {
-          "x-access-token": useToken(),
-        },
-      }
-    ).then((response) => {
-      console.log(response);
+      "PUT"
+    ).then(() => {
       localStorage.removeItem("pic");
       window.location.href = "/admin/produtos";
       setMessage("Cadastrado com sucesso!");
     });
   }
   function productID(id: string | undefined) {
-    fetch(`${import.meta.env.VITE_API_URL}/product/${id}`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
+    fetchAPI(`/product/${id}`, "GET")
       .then((response) => setProducts(response))
       .catch((error) => console.log("Error: " + error.message));
   }

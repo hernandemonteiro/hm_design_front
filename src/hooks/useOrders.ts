@@ -1,15 +1,10 @@
 import { useState } from "react";
-import useToken from "./useToken";
+import { fetchAPI } from "./helpers/fetchAPI";
 
 export default function useOrders() {
   const [orders, setOrders] = useState([]);
   function orderFetch() {
-    fetch(`${import.meta.env.VITE_API_URL}/orders`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
+    fetchAPI("/orders", "GET")
       .then((response) => setOrders(response))
       .catch((error: string) => console.log("Orders Error Db:" + error));
   }

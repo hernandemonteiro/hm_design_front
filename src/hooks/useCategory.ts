@@ -1,19 +1,14 @@
 import { FormEvent, useState } from "react";
-import useToken from "./useToken";
+import { fetchAPI } from "./helpers/fetchAPI";
 
 export default function useCategory() {
   const [categorys, setCategorys] = useState([]);
   const [category, setCategory] = useState("");
   const [message, setMessage] = useState("");
-  
+
   function registerCategory(event: FormEvent) {
     event.preventDefault();
-    fetch(`${import.meta.env.VITE_API_URL}/category/register/${category}`, {
-      method: "PUT",
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
+    fetchAPI(`/category/register/${category}`, "PUT")
       .then(() => {
         setMessage("Cadastrado com sucesso!");
         setCategory("");
@@ -25,27 +20,14 @@ export default function useCategory() {
   }
 
   function categoryFetch() {
-    fetch(`${import.meta.env.VITE_API_URL}/categorys`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
+    fetchAPI("/categorys", "GET")
       .then((response) => setCategorys(response))
-      .catch((error: string) => console.log("categorys Error Db:" + error));
+      .catch((error) => console.log("categorys Error Db:" + error));
   }
 
   function deleteCategory(id: string) {
-    fetch(`${import.meta.env.VITE_API_URL}/category/${id}`, {
-      method: "DELETE",
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => {
-        console.log(response.status);
-        categoryFetch();
-      })
+    fetchAPI(`/category/${id}`, "DELETE")
+      .then(() => categoryFetch())
       .catch((error) => console.log("categorys Error delete:" + error));
   }
   return {

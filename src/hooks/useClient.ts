@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useToken from "./useToken";
+import { fetchAPI } from "./helpers/fetchAPI";
 
 export default function useClient() {
   const [name, setName] = useState<string>();
@@ -11,43 +11,20 @@ export default function useClient() {
   const [users, setUsers] = useState([]);
 
   function usersFetch() {
-    fetch(`${import.meta.env.VITE_API_URL}/users`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
+    fetchAPI("/users", "GET")
       .then((response) => setUsers(response))
       .catch((error: string) => console.log("Users Error Db:" + error));
   }
 
   function deleteUser(id: string) {
-    fetch(`${import.meta.env.VITE_API_URL}/users/${id}`, {
-      method: "DELETE",
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => {
-        console.log(response.status);
-        usersFetch();
-      })
+    fetchAPI(`/users/${id}`, "DELETE")
+      .then(() => usersFetch())
       .catch((error: string) => console.log("Users Error delete:" + error));
   }
 
   const userRegister = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    const url = `${
-      import.meta.env.VITE_API_URL
-    }/users/${name}/${email}/${password}/1`;
-
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
+    fetchAPI(`/users/${name}/${email}/${password}/1`, "POST")
       .then((response) => {
         response != "user registered"
           ? setView("Success")

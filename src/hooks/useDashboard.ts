@@ -1,46 +1,25 @@
 import { useState } from "react";
-import useToken from "./useToken";
+import { fetchAPI } from "./helpers/fetchAPI";
 
 export default function useDashboard() {
   const [users, setUsers] = useState([]);
   const [production, setProduction] = useState([]);
   const [products, setProducts] = useState([]);
   const [categorys, setCategorys] = useState([]);
-  const url = `${import.meta.env.VITE_API_URL}`;
   function fetchDashboard() {
-    fetch(`${url}/users`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
+    fetchAPI("/users", "GET")
       .then((response) => setUsers(response))
       .catch((error: string) => console.log("users error: " + error));
 
-    fetch(`${url}/products`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
+    fetchAPI("/products", "GET")
       .then((response) => setProducts(response))
       .catch((error: string) => console.log("users error: " + error));
 
-    fetch(`${url}/orders`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
+    fetchAPI("/orders", "GET")
       .then((response) => setProduction(response))
       .catch((error: string) => console.log("users error: " + error));
 
-    fetch(`${url}/category`, {
-      headers: {
-        "x-access-token": useToken(),
-      },
-    })
-      .then((response) => response.json())
+    fetchAPI("/category", "GET")
       .then((response) => setCategorys(response))
       .catch((error: string) => console.log("users error: " + error));
   }
