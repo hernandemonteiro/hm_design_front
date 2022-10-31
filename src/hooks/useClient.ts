@@ -13,13 +13,13 @@ export default function useClient() {
   function usersFetch() {
     fetchAPI("/users", "GET")
       .then((response) => setUsers(response))
-      .catch((error) => errorCase(error));
+      .catch(async(error) => await errorCase(error));
   }
 
   function deleteUser(id: string) {
     fetchAPI(`/users/${id}`, "DELETE")
       .then(() => usersFetch())
-      .catch((error) => errorCase(error));
+      .catch(async(error) => await errorCase(error));
   }
 
   const userRegister = (event: { preventDefault: () => void }) => {
@@ -32,7 +32,7 @@ export default function useClient() {
           ? setMessage("Email já registrado!")
           : setMessage("Erro ao registrar!");
       })
-      .catch((error) => errorCase(error));
+      .catch(async(error) => await errorCase(error));
   };
 
   return {

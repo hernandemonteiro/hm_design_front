@@ -23,7 +23,7 @@ export default function usePassword() {
           setMessage("Erro em nosso servidor, tente novamente mais tarde!");
         }
       })
-      .catch((error) => errorCase(error));
+      .catch(async(error) => await errorCase(error));
   }
 
   function updatePassword(event: FormEvent) {
@@ -37,7 +37,7 @@ export default function usePassword() {
           return setMessage("Erro ao mudar senha!");
         }
       })
-      .catch((error) => errorCase(error));
+      .catch(async(error) => await errorCase(error));
   }
 
   function confirmHash() {
@@ -45,7 +45,7 @@ export default function usePassword() {
       .then((response) => {
         response === 0 && setView(false);
       })
-      .catch((error) => errorCase(error));
+      .catch(async(error) => await errorCase(error));
   }
 
   return {

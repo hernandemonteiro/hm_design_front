@@ -13,19 +13,19 @@ export default function useCategory() {
         setMessage("Cadastrado com sucesso!");
         setCategory("");
       })
-      .catch((error) => errorCase(error));
+      .catch(async(error) => await errorCase(error));
   }
 
   function categoryFetch() {
     fetchAPI("/categorys", "GET")
       .then((response) => setCategorys(response))
-      .catch((error) => errorCase(error));
+      .catch(async(error) => await errorCase(error));
   }
 
   function deleteCategory(id: string) {
     fetchAPI(`/category/${id}`, "DELETE")
       .then(() => categoryFetch())
-      .catch((error) => errorCase(error));
+      .catch(async(error) => await errorCase(error));
   }
   return {
     message,

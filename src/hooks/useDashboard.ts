@@ -9,19 +9,19 @@ export default function useDashboard() {
   function fetchDashboard() {
     fetchAPI("/users", "GET")
       .then((response) => setUsers(response))
-      .catch((error) => errorCase(error));
+      .catch(async(error) => await errorCase(error));
 
     fetchAPI("/products", "GET")
       .then((response) => setProducts(response))
-      .catch((error) => errorCase(error));
+      .catch(async(error) => await errorCase(error));
 
     fetchAPI("/orders", "GET")
       .then((response) => setProduction(response))
-      .catch((error) => errorCase(error));
+      .catch(async(error) => await errorCase(error));
 
     fetchAPI("/categorys", "GET")
       .then((response) => setCategorys(response))
-      .catch((error) => errorCase(error));
+      .catch(async(error) => await errorCase(error));
   }
   return {
     users,

@@ -6,7 +6,7 @@ export default function useOrders() {
   function orderFetch() {
     fetchAPI("/orders", "GET")
       .then((response) => setOrders(response))
-      .catch((error) => errorCase(error));
+      .catch(async(error) => await errorCase(error));
   }
 
   return {

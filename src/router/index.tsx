@@ -30,6 +30,9 @@ import ProductRegister from "../pages/Admin/ProductRegister";
 import useProducts from "../hooks/useProducts";
 
 export default function Router() {
+  if (Notification.permission !== "granted") {
+    Notification.requestPermission();
+  }
   interface propsChildren {
     children: JSX.Element;
   }

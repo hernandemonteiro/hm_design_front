@@ -12,6 +12,6 @@ export async function fetchAPI(route: string, method: string) {
 }
 
 export function errorCase(error: string) {
-  alert("Erro: contate seu desenvolvedor!");
   console.log("Error: " + error);
+  return "Erro: contate seu desenvolvedor ou tente novamente!";
 }

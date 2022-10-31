@@ -42,7 +42,7 @@ export default function useProducts() {
           localStorage.removeItem("pic");
         }
       })
-      .catch((error) => errorCase(error));
+      .catch(async(error) => await errorCase(error));
   }
 
   function deletePhotoOnRegister(token: string, index: number, id: string) {
@@ -66,7 +66,7 @@ export default function useProducts() {
         localStorage.setItem("pic", JSON.stringify(pictures));
         window.location.reload();
       })
-      .catch((error) => errorCase(error));
+      .catch(async(error) => await errorCase(error));
   }
 
   function getTokenGoogleAPI() {
@@ -77,7 +77,7 @@ export default function useProducts() {
       .then((response) => {
         setToken(response.access_token);
       })
-      .catch((error) => errorCase(error));
+      .catch(async(error) => await errorCase(error));
     return token;
   }
 
@@ -112,19 +112,19 @@ export default function useProducts() {
   function productsCategoryFetch(category: string) {
     fetchAPI(`/products/category/${category}`, "GET")
       .then((response) => setProducts(response))
-      .catch((error) => errorCase(error));
+      .catch(async(error) => await errorCase(error));
   }
 
   function productsSearchFetch(search: string) {
     fetchAPI(`/products/search/${search}`, "GET")
       .then((response) => setProducts(response))
-      .catch((error) => errorCase(error));
+      .catch(async(error) => await errorCase(error));
   }
 
   function productsFetch() {
     fetchAPI("/products", "GET")
       .then((response) => setProducts(response))
-      .catch((error) => errorCase(error));
+      .catch(async(error) => await errorCase(error));
   }
 
   function addOption() {
@@ -164,7 +164,7 @@ export default function useProducts() {
   function productID(id: string | undefined) {
     fetchAPI(`/product/${id}`, "GET")
       .then((response) => setProducts(response))
-      .catch((error) => errorCase(error));
+      .catch(async(error) => await errorCase(error));
   }
 
   return {
