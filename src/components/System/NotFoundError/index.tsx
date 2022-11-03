@@ -1,6 +1,6 @@
 import React from "react";
 import {} from "./NotFoundError.scss";
-import notFound from "../../../../public/images/404.svg";
+import notFound from "../../../../src/images/404.svg";
 import ButtonLink from "../../UI/ButtonLink";
 
 export default function NotFoundError() {

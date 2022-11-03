@@ -10,7 +10,7 @@ interface GlobalStatesProps {
 
 export const GlobalStatesProvider = (props: GlobalStatesProps) => {
   const [loginMessage, setLoginMessage] = useState("");
-  const [user, setUser] = useState<null | { id: string; type: string }>(null);
+  const [user, setUser] = useState<any>(null);
   const [view, setView] = useState("");
 
   const [loading, setLoading] = useState(true);
@@ -18,7 +18,7 @@ export const GlobalStatesProvider = (props: GlobalStatesProps) => {
   useEffect(() => {
     const recoveredUser = localStorage.getItem("user");
     if (recoveredUser) {
-      const user = JSON.parse(CryptoHelper.cryptoDecrypt(recoveredUser));
+      const user = JSON.parse(CryptoHelper.cryptoDecrypt(recoveredUser) || "[]");
       setUser(user);
       setLoading(false);
     }

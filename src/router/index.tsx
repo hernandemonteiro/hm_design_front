@@ -28,6 +28,8 @@ import Dashboard from "../pages/Admin/Dashboard";
 import User from "../pages/Shop/User";
 import ProductRegister from "../pages/Admin/ProductRegister";
 import useProducts from "../hooks/useProducts";
+import LGPDterms from "../pages/LGPDterms";
+
 
 export default function Router() {
   if (Notification.permission !== "granted") {
@@ -99,6 +101,7 @@ export default function Router() {
             }
           />
           <Route path="/details/:id" element={<Details />} />
+          <Route path="/LGPD" element={<LGPDterms />} />
           {/* user; */}
           <Route
             path="/user"
